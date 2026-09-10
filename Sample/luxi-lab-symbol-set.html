@@ -103,6 +103,12 @@
       用于金融/数据类物料（衡流、观澜等）时存在<strong>识别混淆</strong>风险。本套件通过
       <strong>横线位置、臂端处理、分叉角度</strong>三处刻意偏离 ¥ 的标准形态来规避（见第 4 节）。
     </div>
+    <div class="notice">
+      <strong>用法前提（LOGO ≠ 应用图标）：</strong>标识<strong>本身不含方框背景</strong>，
+      因此主色不是"固定的绿"，而是<strong>与所在底材形成差异的那个颜色</strong>：
+      底为绿 → 标取<strong>源启白</strong>；底为白 → 标取<strong>鹿溪绿</strong>；底为深 → 标取<strong>标题金</strong>；
+      单色工艺时横线随主色同色。<strong>凡给标识加绿砖背景者，属应用图标用法（如方案 04），不作为 LOGO。</strong>
+    </div>
   </div>
 </header>
 
@@ -279,10 +285,11 @@ const MARKS = [
   {
     id:"02", key:"s2", title:"角本位 ★推荐", imagery:"两臂上扬 + 斜切角尖 + 横线上移",
     usage:"主用 · 兼得符号感与鹿角感 · 全工艺",
-    dw:"杆 4.6 · 臂 4.6 · 横 3.0", rk:"抗混淆优",
-    svg:`<path d="M9.5 8.5L24 25L38.5 8.5" stroke-width="4.6"/>
-         <path d="M24 25V39.5" stroke-width="4.6"/>
-         <path d="M16 29.5H32" stroke="#00D2FF" stroke-width="3"/>`
+    dw:"杆 6.0 · 臂 6.0 · 横 4.0（加粗终版）", rk:"抗混淆优",
+    svg:`<path d="M10 10L22.5 26" stroke-width="6"/>
+         <path d="M38 10L25.5 26" stroke-width="6"/>
+         <path d="M24 24.5V39" stroke-width="6"/>
+         <path d="M16 31H32" stroke="#00D2FF" stroke-width="4"/>`
   },
   {
     id:"03", key:"s3", title:"溪本位", imagery:"Y + 底部水平清溪（作底座）",
@@ -291,13 +298,13 @@ const MARKS = [
     svg:`<path d="M11 9L24 26L37 9"/><path d="M24 26V35"/><path d="M7 41H41" stroke="#00D2FF" stroke-width="3.4"/>`
   },
   {
-    id:"04", key:"s4", title:"砖本位", imagery:"绿砖负空间：白 Y + 蓝横",
-    usage:"favicon / 应用图标 / 方形容器",
-    dw:"砖 48·rx12 · 符 4.6", rk:"抗混淆优",
+    id:"04", key:"s4", title:"砖本位（应用图标变体）", imagery:"绿砖负空间：白 Y + 蓝横",
+    usage:"应用图标专用（非 LOGO 用法）：favicon / App 图标 / 方形容器",
+    dw:"砖 48·rx12 · 符 6.0",
     svg:`<rect x="0" y="0" width="48" height="48" rx="12" fill="#0D5E42" stroke="none"/>
-         <path d="M13 12L24 26L35 12" stroke="#F5F7FA" stroke-width="4.4"/>
-         <path d="M24 26V37" stroke="#F5F7FA" stroke-width="4.4"/>
-         <path d="M17 31H31" stroke="#00D2FF" stroke-width="3"/>`
+         <path d="M13 12L24 26L35 12" stroke="#F5F7FA" stroke-width="6"/>
+         <path d="M24 26V37" stroke="#F5F7FA" stroke-width="6"/>
+         <path d="M17 31H31" stroke="#00D2FF" stroke-width="4"/>`
   },
   {
     id:"05", key:"s5", title:"工业本位", imagery:"直角折线 Y + 一横（机械感）",
