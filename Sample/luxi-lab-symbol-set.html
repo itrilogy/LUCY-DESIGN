@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>实验室符号标 · Y 形几何套件（6 案 + 设计考量）| 鹿溪设计范式</title>
+<style>
+  :root{
+    --luxi-green:#0D5E42; --luxi-green-2:#127A55; --luxi-deep:#073B29;
+    --origin-white:#F5F7FA; --luxi-cyan:#00D2FF; --luxi-gold:#F1C40F;
+    --text-primary:#1A2428; --text-secondary:#42525C; --text-muted:#64748B;
+    --bg-page:#FFFFFF; --bg-card:#F5F7FA; --bg-sunken:#EEF2F5;
+    --border-subtle:rgba(13,94,66,.10); --border-line:rgba(13,94,66,.18);
+    --r-sm:6px; --r-md:10px; --r-lg:16px; --r-pill:999px; --r-tile:12px;
+    --sh-xs:0 1px 2px rgba(13,94,66,.06); --sh-sm:0 2px 8px rgba(13,94,66,.08);
+    --sh-md:0 8px 24px rgba(13,94,66,.10); --sh-lg:0 16px 48px rgba(13,94,66,.14);
+    --sans:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    --mono:"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg-page);color:var(--text-primary);font-family:var(--sans);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header.top{border-bottom:1px solid var(--border-line);background:linear-gradient(180deg,#fff,rgba(245,247,250,.6))}
+  .top-inner{padding:28px 0 22px;display:flex;flex-direction:column;gap:10px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--luxi-green);margin:0}
+  h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em}
+  h2{font-size:19px;margin:0 0 4px}
+  h3{font-size:15px;margin:0 0 10px}
+  .sub{margin:0;color:var(--text-secondary);max-width:860px}
+  .notice{margin:18px 0 0;padding:14px 16px;border:1px solid var(--border-line);border-left:3px solid var(--luxi-gold);
+    background:var(--bg-card);border-radius:var(--r-sm);font-size:13px;color:var(--text-secondary)}
+  .warn{border-left-color:#E74C3C;background:#FEF6F5}
+  main{padding:32px 0 64px}
+  .sec{margin:36px 0 0}
+  .sec-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .note{font-size:12px;color:var(--text-muted);margin:0}
+  .mono{font-family:var(--mono)}
+  .card{background:var(--bg-card);border:1px solid var(--border-line);border-radius:var(--r-md);padding:20px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+  .proposal{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border-line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs)}
+  .prop-head{padding:16px 20px 12px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .prop-id{font-family:var(--mono);font-size:11px;color:#fff;background:var(--luxi-green);border-radius:var(--r-pill);padding:2px 9px}
+  .prop-title{font-size:16px;font-weight:600;margin:6px 0 2px}
+  .prop-imgry{font-size:12px;color:var(--text-muted)}
+  .hero-stage{display:flex;align-items:center;justify-content:center;gap:20px;padding:24px 20px;background:var(--bg-sunken);flex-wrap:wrap}
+  .stage-tile{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .tile-box{display:grid;place-items:center;border-radius:var(--r-tile);box-shadow:var(--sh-sm)}
+  .tile-box.green{background:linear-gradient(135deg,var(--luxi-green-2),var(--luxi-green))}
+  .tile-box.white{background:#fff;border:1px solid var(--border-line)}
+  .tile-box.ink{background:#121A17}
+  .tile-box.gold{background:#EDE6D2}
+  .tile-cap{font-family:var(--mono);font-size:10px;color:var(--text-muted)}
+  .scale-row{display:flex;align-items:flex-end;gap:18px;padding:16px 20px;border-top:1px solid var(--border-subtle);flex-wrap:wrap}
+  .scale-cell{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .prop-body{padding:0 20px 16px}
+  .kv{display:grid;grid-template-columns:66px 1fr;gap:6px 10px;font-size:12.5px;margin:0}
+  .kv dt{color:var(--text-muted)}
+  .kv dd{margin:0;color:var(--text-secondary)}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 18px}
+  .btn{appearance:none;border:1px solid var(--border-line);background:#fff;color:var(--text-primary);border-radius:var(--r-sm);padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit}
+  .btn:hover{background:var(--bg-card)}
+  .btn.primary{background:var(--luxi-green);border-color:var(--luxi-green);color:#fff}
+  .btn.primary:hover{background:var(--luxi-green-2)}
+  pre.src{margin:0 20px 18px;padding:12px;background:#121A17;color:#D8E6E0;border-radius:var(--r-sm);font-family:var(--mono);font-size:11px;line-height:1.5;overflow:auto;max-height:140px}
+  :focus-visible{outline:2px solid var(--luxi-cyan);outline-offset:2px}
+  .apps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  @media (max-width:900px){.apps{grid-template-columns:repeat(2,1fr)}}
+  .app{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .app .cap{font-size:11px;color:var(--text-muted)}
+  .mock-card{width:200px;height:118px;background:#fff;border-radius:6px;border:1px solid #E2E8F0;box-shadow:0 10px 24px rgba(0,0,0,.10);padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:#1A2428}
+  .mock-badge{width:110px;height:158px;background:#fff;border-radius:8px;border:1px solid #E2E8F0;box-shadow:0 10px 26px rgba(0,0,0,.12);padding:12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+  .mock-pin{width:130px;height:130px;border-radius:50%;background:var(--origin-white);border:5px solid var(--luxi-gold);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+  .mock-cup{width:78px;height:150px;background:var(--luxi-green);border-radius:14px 14px 8px 8px;display:grid;place-items:center;color:#F5F7FA;box-shadow:0 12px 26px rgba(13,94,66,.28)}
+  .mock-fav{width:64px;height:64px;border-radius:14px;background:var(--luxi-green);display:grid;place-items:center;box-shadow:var(--sh-md)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border-subtle)}
+  th{font-weight:600;color:var(--text-secondary);background:var(--bg-card)}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(12px);background:#121A17;color:#fff;padding:9px 16px;border-radius:var(--r-pill);font-size:12.5px;opacity:0;pointer-events:none;transition:.24s}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:center;text-align:center}
+  .vs-cell{display:flex;flex-direction:column;align-items:center;gap:8px}
+  footer{border-top:1px solid var(--border-line);padding:22px 0;color:var(--text-muted);font-size:12px;text-align:center}
+  ul.tight{margin:0;padding-left:18px}
+  ul.tight li{margin:5px 0}
+  .tag{font-family:var(--mono);font-size:10px;border:1px solid var(--border-line);border-radius:var(--r-pill);padding:1px 8px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <p class="eyebrow">LUXI DESIGN · Symbol Mark Study</p>
+    <h1>实验室符号标 · Y 形几何套件</h1>
+    <p class="sub">
+      鹿角的本质是「<strong>Y 形分叉</strong>」——把它符号化（像 <span class="mono">¥</span> / <span class="mono">$</span> 那样成为「字符级」标记），
+      配合<strong>几何加粗 + 一道横线（清溪）</strong>，可得到极高辨识度、极小尺寸可用、单色烫印友好的符号标。
+      本页给出 <strong>6 个方案</strong>，并附我的设计考量与风险提示。
+    </p>
+    <div class="notice warn">
+      <strong>⚠ 必须先知的风险：</strong>「Y + 一横」与人民币符号 <span class="mono">¥</span> 结构同源。
+      用于金融/数据类物料（衡流、观澜等）时存在<strong>识别混淆</strong>风险。本套件通过
+      <strong>横线位置、臂端处理、分叉角度</strong>三处刻意偏离 ¥ 的标准形态来规避（见第 4 节）。
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>一、与 ¥ 的形态关系</h2>
+      <span class="note">先把「简化到什么程度」定清楚</span>
+    </div>
+    <div class="card">
+      <div class="vs">
+        <div class="vs-cell">
+          <svg width="72" height="72" viewBox="0 0 48 48" aria-label="人民币符号">
+            <path d="M12 10L24 26L36 10" fill="none" stroke="#64748B" stroke-width="4.5" stroke-linecap="butt"/>
+            <path d="M24 26V40" fill="none" stroke="#64748B" stroke-width="4.5" stroke-linecap="butt"/>
+            <path d="M14 30H34M14 35H34" fill="none" stroke="#64748B" stroke-width="3.6"/>
+          </svg>
+          <span class="tile-cap">¥ = Y + 两横（货币符号）</span>
+        </div>
+        <div class="vs-cell">
+          <svg width="72" height="72" viewBox="0 0 48 48" aria-label="Y 形">
+            <path d="M12 10L24 26L36 10" fill="none" stroke="#0D5E42" stroke-width="4.5" stroke-linecap="butt"/>
+            <path d="M24 26V40" fill="none" stroke="#0D5E42" stroke-width="4.5" stroke-linecap="butt"/>
+          </svg>
+          <span class="tile-cap">Y（鹿角分叉本体）</span>
+        </div>
+        <div class="vs-cell">
+          <svg width="72" height="72" viewBox="0 0 48 48" aria-label="Y 加一横">
+            <path d="M12 10L24 26L36 10" fill="none" stroke="#0D5E42" stroke-width="4.5" stroke-linecap="butt"/>
+            <path d="M24 26V40" fill="none" stroke="#0D5E42" stroke-width="4.5" stroke-linecap="butt"/>
+            <path d="M15 33H33" fill="none" stroke="#00D2FF" stroke-width="3.2"/>
+          </svg>
+          <span class="tile-cap">本次方向：Y + <strong>一</strong>横（清溪）</span>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px">
+        减掉一横后，符号与 ¥ 拉开距离；横线改用<strong>进化蓝</strong>并<strong>下移贴近杆底</strong>，在语义上由「货币」转为「溪流」。
+      </p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>二、六个 Y 形符号方案</h2>
+      <span class="note">几何加粗 · 直角端点 · 48 视口 · 每个含四配色 + 尺寸阶梯 + SVG 源码</span>
+    </div>
+    <div class="grid-2" id="proposals"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>三、应用示意</h2>
+      <span class="note">符号标的最大优势：favicon / 水印 / 编号前缀都成立</span>
+    </div>
+    <div class="actions" style="padding:0 0 16px">
+      <button class="btn" data-apply="1">01 符本位</button>
+      <button class="btn" data-apply="2">02 角本位</button>
+      <button class="btn" data-apply="3">03 溪本位</button>
+      <button class="btn" data-apply="4">04 砖本位</button>
+      <button class="btn" data-apply="5">05 工业本位</button>
+    </div>
+    <div class="apps">
+      <div class="app">
+        <div class="mock-fav"><span class="slot" data-slot="fav"></span></div>
+        <div class="cap">favicon 64px（浏览器标签/应用图标）</div>
+      </div>
+      <div class="app">
+        <div class="mock-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div><div style="font-weight:700;font-size:14px">洪光华</div><div class="mono" style="font-size:10px;color:#64748B">LUXI LAB</div></div>
+            <span class="slot" data-slot="card"></span>
+          </div>
+          <div class="mono" style="font-size:9px;color:#64748B;line-height:1.5">鹿溪联合创新实验室<br/>github.com/itrilogy/LUCY-DESIGN</div>
+        </div>
+        <div class="cap">名片（烫金单色）</div>
+      </div>
+      <div class="app">
+        <div class="mock-badge">
+          <div style="width:24px;height:4px;background:#E2E8F0;border-radius:3px"></div>
+          <span class="slot" data-slot="badge"></span>
+          <div style="font-weight:600;font-size:12px">鹿溪实验室成员</div>
+          <div class="mono" style="font-size:9px;color:#64748B">LUXI LAB ID #042</div>
+        </div>
+        <div class="cap">工牌</div>
+      </div>
+      <div class="app">
+        <div class="mock-cup"><span class="slot" data-slot="cup"></span></div>
+        <div class="cap">随行杯（激光雕刻）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设计考量 -->
+  <section class="sec">
+    <div class="sec-head">
+      <h2>四、我的设计考量</h2>
+      <span class="note">取舍理由、风险与推荐（这部分是我的判断，供你决策）</span>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>为什么这个方向成立</h3>
+        <ul class="tight" style="font-size:13px;color:var(--text-secondary)">
+          <li><strong>意象天然同构</strong>：鹿角 = 分叉 = Y，不需要「翻译」，抽象不丢义。</li>
+          <li><strong>字符级记忆</strong>：可像 ¥/$ 一样被当作「一个字符」记住，优于插画式标识。</li>
+          <li><strong>工艺全通吃</strong>：几何加粗 + 直角端点 → 14px 可辨、单色不糊、激光/蚀刻/压凹/钢印都成立。</li>
+          <li><strong>排版友好</strong>：可作编号前缀（如 <span class="mono">Y-042</span>）、水印、等宽并列，不破坏文字流。</li>
+          <li><strong>体系自洽</strong>：与既有 <span class="mono">L·U·X·I</span> 法则中「X=变量（交叉）」「Y=分叉（路径选择）」形成语义区分，不撞车。</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left:3px solid #E74C3C">
+        <h3>风险与我的规避建议</h3>
+        <ul class="tight" style="font-size:13px;color:var(--text-secondary)">
+          <li><strong>¥ 混淆（最大风险）</strong>：横线<b>只用一道</b>（¥ 是两道）；横线<b>贴近杆底</b>而非居中；横线用<b>进化蓝</b>而非主色 —— 三重差异。</li>
+          <li><strong>金融场景仍敏感</strong>：建议在衡流/观澜所属物料的标识位<b>改用方案 02/03</b>（横线上移或下置为底座），或在该场景直接沿用官方写实主标。</li>
+          <li><strong>过度抽象</strong>：纯直线 Y 会失去「角的气质」。建议臂端做 <b>2–3° 上扬斜切</b>（见方案 02），一眼是角、再看是符。</li>
+          <li><strong>端点工艺</strong>：印刷用 <span class="mono">butt</span>（直角）；激光雕刻建议 <span class="mono">square</span> 以弥补烧蚀圆角。</li>
+          <li><strong>笔画比例</strong>：杆宽 : 臂宽 : 横宽 ≈ <span class="mono">4.5 : 4.5 : 3.2</span>（48 视口），保证视觉等重；放大到 512 视口按 ×10.67 等比。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h3>与既有标识体系的关系（重要）</h3>
+      <p class="note" style="font-size:13px;color:var(--text-secondary);margin:0">
+        建议采用<strong>三层标识体系</strong>，各司其职、互不替代：
+      </p>
+      <table style="margin-top:10px">
+        <thead><tr><th>层级</th><th>形态</th><th>使用场景</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>① 权威主标</td><td>写实鹿标（绿 + 蓝，2048 视口）</td><td>README / 官网 / 页脚 / 关于页 / 正式文件</td><td class="mono">官方 LUXI LAB.svg</td></tr>
+          <tr><td>② 产品方标</td><td>绿砖 + 业务图形 + 水平溪流 + 五角星</td><td>产品 UI / 12+23 产品识别</td><td class="mono">.brick 体系</td></tr>
+          <tr><td>③ 符号标（本次）</td><td><strong>Y + 一横</strong>（几何加粗）</td><td>物料小尺寸 / 单色烫印 / favicon / 水印 / 编号前缀</td><td>本页 6 案</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>五、对比与推荐</h2>
+      <span class="note">按「符号感 / 鹿角感 / 抗混淆 / 工艺适配」四项打分</span>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <table>
+        <thead><tr><th>方案</th><th>符号感</th><th>鹿角感</th><th>抗 ¥ 混淆</th><th>工艺适配</th><th>我的评价</th></tr></thead>
+        <tbody id="cmp"></tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:16px;border-left:3px solid var(--luxi-green)">
+      <h3>推荐：<span class="mono">02 角本位</span> 为主，<span class="mono">04 砖本位</span> 为辅</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin:0">
+        <strong>02</strong> 把两臂做 2–3° 上扬斜切（角尖感）、横线上移贴近分叉（脱离 ¥ 的比例），符号感与鹿角感兼得，抗混淆最强；
+        <strong>04</strong> 是同一符号放进绿砖的 favicon 版本，用于浏览器/应用图标与需要「方块化」的场景。
+        <br/><span class="note">若你更看重「一眼读成符号」，选 01；若更看重「一眼读成角」，选 02。我的建议是 02 —— 因为货币符号的既视感一旦形成就很难纠正，而 01 与 ¥ 的距离只差一道横。</span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">鹿溪联合创新实验室 · LUXI Joint Innovation Lab · 林深见鹿，源启清溪</div></footer>
+<div class="toast" id="toast">已复制</div>
+
+<script>
+/* ── 六个 Y 形符号方案（viewBox 0 0 48 48；几何加粗、直角端点） ── */
+const MARKS = [
+  {
+    id:"01", key:"s1", title:"符本位", imagery:"标准 Y + 一横（贴杆底）",
+    usage:"通用符号标 · 最强符号感 · 编号前缀 / 水印",
+    dw:"杆 4.5 · 臂 4.5 · 横 3.2", rk:"抗混淆良",
+    svg:`<path d="M11 10L24 27L37 10"/><path d="M24 27V40"/><path d="M15 34H33" stroke="#00D2FF" stroke-width="3.2"/>`
+  },
+  {
+    id:"02", key:"s2", title:"角本位 ★推荐", imagery:"两臂上扬 + 斜切角尖 + 横线上移",
+    usage:"主用 · 兼得符号感与鹿角感 · 全工艺",
+    dw:"杆 4.6 · 臂 4.6 · 横 3.0", rk:"抗混淆优",
+    svg:`<path d="M9.5 8.5L24 25L38.5 8.5" stroke-width="4.6"/>
+         <path d="M24 25V39.5" stroke-width="4.6"/>
+         <path d="M16 29.5H32" stroke="#00D2FF" stroke-width="3"/>`
+  },
+  {
+    id:"03", key:"s3", title:"溪本位", imagery:"Y + 底部水平清溪（作底座）",
+    usage:"文化/长图/杯身竖排 · 溪流语义最强",
+    dw:"杆 4.5 · 臂 4.5 · 底座 3.4", rk:"抗混淆优",
+    svg:`<path d="M11 9L24 26L37 9"/><path d="M24 26V35"/><path d="M7 41H41" stroke="#00D2FF" stroke-width="3.4"/>`
+  },
+  {
+    id:"04", key:"s4", title:"砖本位", imagery:"绿砖负空间：白 Y + 蓝横",
+    usage:"favicon / 应用图标 / 方形容器",
+    dw:"砖 48·rx12 · 符 4.6", rk:"抗混淆优",
+    svg:`<rect x="0" y="0" width="48" height="48" rx="12" fill="#0D5E42" stroke="none"/>
+         <path d="M13 12L24 26L35 12" stroke="#F5F7FA" stroke-width="4.4"/>
+         <path d="M24 26V37" stroke="#F5F7FA" stroke-width="4.4"/>
+         <path d="M17 31H31" stroke="#00D2FF" stroke-width="3"/>`
+  },
+  {
+    id:"05", key:"s5", title:"工业本位", imagery:"直角折线 Y + 一横（机械感）",
+    usage:"澄矩等工坊矩阵 · 几何/工业语境",
+    dw:"杆 4.5 · 臂 4.5 · 横 3.2", rk:"抗混淆良",
+    svg:`<path d="M11 10V19L24 32L37 19V10"/><path d="M24 32V40"/><path d="M16 35H32" stroke="#F1C40F" stroke-width="3.2"/>`
+  },
+  {
+    id:"06", key:"s6", title:"无横对照", imagery:"纯 Y + 源启点（检验是否必须加横）",
+    usage:"对照实验 · 判断「一横」是否必要",
+    dw:"杆 4.5 · 臂 4.5 · 点 r2.6", rk:"无混淆",
+    svg:`<path d="M11 10L24 27L37 10"/><path d="M24 27V40"/>
+         <circle cx="24" cy="18.5" r="2.6" fill="#F1C40F" stroke="none"/>`
+  }
+];
+
+function markSVG(m, size, color){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" fill="none" stroke="${color}"
+    stroke-width="4.5" stroke-linecap="butt" stroke-linejoin="miter" aria-label="鹿溪 ${m.title}">${m.svg}</svg>`;
+}
+
+document.getElementById("proposals").innerHTML = MARKS.map(m => `
+  <article class="proposal">
+    <div class="prop-head">
+      <div>
+        <span class="prop-id">方案 ${m.id}</span>
+        <div class="prop-title">${m.title}</div>
+        <div class="prop-imgry">${m.imagery}</div>
+      </div>
+      <span class="prop-id" style="background:var(--luxi-gold);color:#1A2428">${m.rk}</span>
+    </div>
+    <div class="hero-stage">
+      <div class="stage-tile"><div class="tile-box green" style="width:100px;height:100px">${markSVG(m,56,"#F5F7FA")}</div><span class="tile-cap">鹿溪绿底 · 反白</span></div>
+      <div class="stage-tile"><div class="tile-box white" style="width:100px;height:100px">${markSVG(m,56,"#0D5E42")}</div><span class="tile-cap">源启白 · 单色</span></div>
+      <div class="stage-tile"><div class="tile-box ink" style="width:100px;height:100px">${markSVG(m,56,"#F1C40F")}</div><span class="tile-cap">深林底 · 烫金</span></div>
+      <div class="stage-tile"><div class="tile-box gold" style="width:100px;height:100px">${markSVG(m,56,"#0D5E42")}</div><span class="tile-cap">压凹 / 蚀刻</span></div>
+    </div>
+    <div class="scale-row">
+      ${[14,20,28,40].map(s=>`<div class="scale-cell"><div class="tile-box white" style="width:${s+14}px;height:${s+14}px;border-radius:8px">${markSVG(m,s,"#0D5E42")}</div><span class="tile-cap">${s}px</span></div>`).join("")}
+    </div>
+    <div class="prop-body"><dl class="kv"><dt>用途</dt><dd>${m.usage}</dd><dt>笔画</dt><dd>${m.dw}</dd></dl></div>
+    <div class="actions">
+      <button class="btn primary" data-copy="${m.key}">复制 SVG</button>
+      <button class="btn" data-dl="${m.key}">下载 .svg</button>
+    </div>
+    <pre class="src">${markSVG(m,48,"currentColor").replace(/</g,"&lt;")}</pre>
+  </article>`).join("");
+
+const CMP = [
+  ["01 符本位","★★★★★","★★★","★★★","★★★★★","符号感最强，但最接近 ¥"],
+  ["02 角本位 ★","★★★★","★★★★★","★★★★★","★★★★★","我的推荐：两头兼顾"],
+  ["03 溪本位","★★★","★★★★","★★★★★","★★★★","溪流叙事好，符号感弱一档"],
+  ["04 砖本位","★★★★","★★★★","★★★★★","★★★★","favicon / App 图标首选"],
+  ["05 工业本位","★★★★","★★★","★★★","★★★★★","直角更机械，适合工坊矩阵"],
+  ["06 无横对照","★★★★","★★★★","★★★★★","★★★★★","证明「一横」是溪流语义的锚点"]
+];
+document.getElementById("cmp").innerHTML = CMP.map(r=>`<tr><td class="mono">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td></tr>`).join("");
+
+function applyTo(slot,m,size,color){ document.querySelectorAll(`.slot[data-slot="${slot}"]`).forEach(el=>{el.innerHTML=markSVG(m,size,color)}); }
+function applySet(idNum){
+  const m = MARKS.find(x => x.id === String(idNum).padStart(2,"0"));
+  if(!m) return;
+  applyTo("fav", m, 40, "#F5F7FA");
+  applyTo("card", m, 26, "#0D5E42");
+  applyTo("badge", m, 46, "#0D5E42");
+  applyTo("cup", m, 40, "#F5F7FA");
+  document.querySelectorAll("[data-apply]").forEach(b=>b.classList.toggle("primary", b.dataset.apply===String(idNum)));
+}
+document.querySelectorAll("[data-apply]").forEach(b=>b.addEventListener("click",()=>applySet(b.dataset.apply)));
+applySet("2");
+
+function toast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("on");setTimeout(()=>el.classList.remove("on"),1400);}
+document.addEventListener("click", async (e)=>{
+  const c=e.target.closest("[data-copy]"), d=e.target.closest("[data-dl]");
+  if(c){const m=MARKS.find(x=>x.key===c.dataset.copy);
+    const code=markSVG(m,48,"currentColor").replace(/ stroke="currentColor"/,'');
+    try{await navigator.clipboard.writeText(code);toast("已复制 "+m.title+" 的 SVG");}catch{toast("复制失败，请手动选择源码");}}
+  if(d){const m=MARKS.find(x=>x.key===d.dataset.dl);
+    const code='<?xml version="1.0" encoding="UTF-8"?>\n'+markSVG(m,48,"#0D5E42");
+    const url=URL.createObjectURL(new Blob([code],{type:"image/svg+xml"}));
+    const a=document.createElement("a");a.href=url;a.download=`luxi-symbol-${m.id}-${m.key}.svg`;a.click();
+    URL.revokeObjectURL(url);toast("已下载 "+m.title);}
+});
+</script>
+</body>
+</html>
