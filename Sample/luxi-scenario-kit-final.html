@@ -313,6 +313,11 @@
       <path fill="#0D5E42" d="M864 794C988 781 1110 812 1208 891C1243 919 1280 963 1286 1009C1290 1031 1282 1045 1260 1050C1258 1001 1228 960 1192 929C930 704 479 884 458 1233C457 1253 456 1271 456 1291C457 1307 468 1304 479 1302C532 1282 541 1211 556 1162C595 1035 723 920 863 936C867 936 881 938 882 943C833 967 806 989 781 1016C731 1072 703 1144 702 1219C701 1310 737 1396 802 1460C922 1580 1096 1610 1256 1565C1348 1533 1391 1518 1483 1510C1545 1510 1622 1529 1666 1574C1626 1570 1598 1566 1557 1570C1482 1578 1426 1615 1359 1645C1308 1669 1242 1682 1186 1685C1051 1693 910 1653 810 1558C779 1529 757 1495 724 1466C677 1423 620 1392 557 1381C514 1406 525 1409 549 1412C578 1417 605 1426 631 1439C669 1458 710 1493 738 1524C766 1557 781 1574 814 1603C919 1686 1047 1722 1179 1717C1264 1709 1235 1731 1130 1762C969 1800 807 1777 666 1689C551 1617 463 1509 430 1376C402 1258 420 1128 485 1025C540 937 622 869 718 830L864 794Z"/>
       <path fill="#00D2FF" d="M479 1302C532 1282 541 1211 556 1162C595 1035 723 920 863 936C833 967 806 989 781 1016C687 1026 605 1101 570 1187C552 1232 541 1292 484 1302Z"/>
     </symbol>
+    <symbol id="luxi-symbol-mark" viewBox="0 0 48 48">
+      <path d="M9.5 8.5L24 25L38.5 8.5" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="butt" stroke-linejoin="miter"/>
+      <path d="M24 25V39.5" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="butt"/>
+      <path d="M16 29.5H32" fill="none" stroke="var(--mark-accent, currentColor)" stroke-width="3" stroke-linecap="butt"/>
+    </symbol>
   </svg>
 
   <header class="top-shell" data-od-id="app-header">
@@ -634,6 +639,52 @@
           </div>
         </article>
       </div>
+      <article class="card" data-od-id="symbol-mark" style="margin-bottom:32px;">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+          <h2 style="font-size:16px;">物料符号标 · 角本位（Y + 一横）</h2>
+          <span class="badge badge-neutral">小尺寸 / 单色工艺 / favicon / 水印</span>
+        </div>
+        <p class="note" style="margin-bottom:16px;">
+          鹿角即「Y 形分叉」：符号化为 <strong>Y + 一道清溪横线</strong>，几何加粗、直角端点。
+          与 <span class="mono">¥</span> 的差异有三：<strong>只有一道横</strong>、<strong>横线下移贴杆底</strong>、<strong>横线用进化蓝</strong>。
+          三层标识体系：① <strong>权威主标</strong>（README / 官网 / 正式文件）→ ② <strong>产品方标</strong>（<span class="mono">.brick</span>）→ ③ <strong>物料符号标</strong>（本项）。
+        </p>
+        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:20px;background:var(--bg-sunken);border-radius:10px;justify-content:center;">
+          <div style="text-align:center;">
+            <div style="width:76px;height:76px;background:linear-gradient(135deg,#127A55,#0D5E42);border-radius:12px;display:grid;place-items:center;">
+              <svg width="46" height="46" style="color:#F5F7FA;--mark-accent:#00D2FF" aria-label="符号标 绿底反白"><use href="#luxi-symbol-mark"></use></svg>
+            </div>
+            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px;">绿底反白</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:76px;height:76px;background:#FFFFFF;border:1px solid var(--border-line);border-radius:12px;display:grid;place-items:center;">
+              <svg width="46" height="46" style="color:#0D5E42;--mark-accent:#00D2FF" aria-label="符号标 白底单色"><use href="#luxi-symbol-mark"></use></svg>
+            </div>
+            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px;">白底 · 双色</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:76px;height:76px;background:#121A17;border-radius:12px;display:grid;place-items:center;">
+              <svg width="46" height="46" style="color:#F1C40F" aria-label="符号标 烫金单色"><use href="#luxi-symbol-mark"></use></svg>
+            </div>
+            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px;">深底烫金 · 单色</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:76px;height:76px;background:#EDE6D2;border-radius:12px;display:grid;place-items:center;">
+              <svg width="46" height="46" style="color:#0D5E42" aria-label="符号标 压凹单色"><use href="#luxi-symbol-mark"></use></svg>
+            </div>
+            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px;">压凹 / 蚀刻</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="display:flex;align-items:flex-end;gap:14px;">
+              <svg width="14" height="14" style="color:#0D5E42" aria-label="符号标 14px"><use href="#luxi-symbol-mark"></use></svg>
+              <svg width="20" height="20" style="color:#0D5E42" aria-label="符号标 20px"><use href="#luxi-symbol-mark"></use></svg>
+              <svg width="32" height="32" style="color:#0D5E42" aria-label="符号标 32px"><use href="#luxi-symbol-mark"></use></svg>
+            </div>
+            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:8px;">14 / 20 / 32px</div>
+          </div>
+        </div>
+      </article>
+
       <h2 style="font-size:16px;margin-bottom:16px;">12 款产品方标</h2>
       <div class="grid-3" id="tile-grid" data-od-id="product-tiles"></div>
     </section>
@@ -793,7 +844,7 @@
         <p class="eyebrow">Collateral</p>
         <h1 class="section-title">办公识别、数字传播、实体触点</h1>
         <p class="section-desc">
-          线下物料沿用四色与双标规则。<strong>所有物料上的实验室标识统一引用权威主标 <span class="mono">#luxi-lab-mark</span>（与 VI 段双标并排同源），不自绘、不变形。</strong>
+          线下物料沿用四色规则；标识统一使用<strong>物料符号标（角本位 · Y + 一横）</strong><span class="mono">#luxi-symbol-mark</span>——小尺寸清晰、单色可烫印/蚀刻，并刻意与 <span class="mono">¥</span> 保持形态差异。文档与对外正式件仍用权威主标。
           ESC 键帽取版本一图样（鹿角 + 贯穿清溪 + 金色源启点）；工牌保留「行政佩戴版（版本一）」与「工程规格版（ID-1）」两版。
         </p>
       </div>
@@ -833,7 +884,7 @@
               <rect x="62" y="44" width="48" height="8" rx="2" fill="#1E293B"/>
               <rect x="62" y="58" width="80" height="5" rx="1.5" fill="#64748B"/>
               <rect x="62" y="68" width="60" height="4" rx="1" fill="#94A3B8"/>
-              <svg x="133" y="76" width="24" height="24" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <svg x="131" y="74" width="26" height="26" aria-label="鹿溪符号标" style="color:#0D5E42;--mark-accent:#00D2FF"><use href="#luxi-symbol-mark"></use></svg>
             </svg>
           </div>
           <div class="merch-detail">
@@ -851,7 +902,7 @@
             <svg width="180" height="110" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="10" width="160" height="90" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
               <path d="M10 10H170" stroke="#F1C40F" stroke-width="2"/>
-              <svg x="22" y="28" width="28" height="28" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <svg x="20" y="26" width="30" height="30" aria-label="鹿溪符号标" style="color:#0D5E42;--mark-accent:#00D2FF"><use href="#luxi-symbol-mark"></use></svg>
               <rect x="62" y="32" width="64" height="8" rx="2" fill="#0F172A"/>
               <rect x="62" y="44" width="40" height="5" rx="1.5" fill="#64748B"/>
               <line x1="26" y1="64" x2="154" y2="64" stroke="#E2E8F0" stroke-width="1"/>
@@ -877,7 +928,7 @@
               <circle cx="80" cy="50" r="6" fill="#F1C40F" stroke="#B45309" stroke-width="1"/>
               <circle cx="80" cy="74" r="6" fill="#F1C40F" stroke="#B45309" stroke-width="1"/>
               <path d="M80 50C86 58 74 66 80 74" stroke="#F5F7FA" stroke-width="2"/>
-              <svg x="24" y="84" width="18" height="18" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <svg x="22" y="82" width="22" height="22" aria-label="鹿溪符号标" style="color:#F1C40F"><use href="#luxi-symbol-mark"></use></svg>
               <rect x="48" y="88" width="40" height="4" rx="1" fill="#F1C40F"/>
               <rect x="48" y="96" width="60" height="3" rx="1" fill="#167D59"/>
             </svg>
@@ -924,7 +975,7 @@
               <rect x="35" y="10" width="50" height="10" rx="3" fill="#1E293B"/>
               <rect x="30" y="20" width="60" height="8" rx="2" fill="#334155"/>
               <path d="M32 28L38 135C38 138 41 140 45 140H75C79 140 82 138 82 135L88 28H32Z" fill="#0D5E42" stroke="#167D59" stroke-width="2"/>
-              <svg x="44" y="52" width="32" height="32" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <svg x="42" y="50" width="36" height="36" aria-label="鹿溪符号标" style="color:#F5F7FA;--mark-accent:#00D2FF"><use href="#luxi-symbol-mark"></use></svg>
               <rect x="50" y="94" width="20" height="3" rx="1" fill="#F5F7FA"/>
               <rect x="46" y="100" width="28" height="2" rx="1" fill="#94A3B8"/>
             </svg>
@@ -944,7 +995,7 @@
             <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="65" cy="65" r="54" fill="#F5F7FA" stroke="#F1C40F" stroke-width="5"/>
               <circle cx="65" cy="65" r="48" fill="none" stroke="#F1C40F" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <svg x="35" y="35" width="60" height="60" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <svg x="31" y="31" width="68" height="68" aria-label="鹿溪符号标" style="color:#0D5E42;--mark-accent:#00D2FF"><use href="#luxi-symbol-mark"></use></svg>
             </svg>
           </div>
           <div class="merch-detail">
@@ -965,7 +1016,7 @@
             <svg width="130" height="150" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M45 45V15C45 10 52 8 65 8C78 8 85 10 85 15V45" stroke="#0D5E42" stroke-width="4" stroke-linecap="round" fill="none"/>
               <rect x="20" y="45" width="90" height="95" rx="3" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.8"/>
-              <svg x="47" y="62" width="36" height="36" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <svg x="45" y="60" width="40" height="40" aria-label="鹿溪符号标" style="color:#0D5E42;--mark-accent:#00D2FF"><use href="#luxi-symbol-mark"></use></svg>
               <path d="M30 118H100" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
@@ -983,7 +1034,7 @@
           <div class="merch-preview-stage">
             <div style="width:150px;height:112px;background:#EFECE6;border-radius:6px;border:1px solid #D8D4CC;display:flex;flex-direction:column;justify-content:space-between;padding:12px;color:#2A363B;">
               <div style="display:flex;align-items:center;gap:8px;">
-                <svg width="18" height="18" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+                <svg width="20" height="20" aria-label="鹿溪符号标" style="color:#0D5E42;--mark-accent:#00D2FF"><use href="#luxi-symbol-mark"></use></svg>
                 <span style="font-size:10px;font-weight:700;color:#0D5E42;">LUXI LAB · 鹿溪</span>
               </div>
               <div class="mono" style="font-size:8px;color:#64748B;">GEO: 28.45°N, 117.94°E<br/>EST. 2026</div>
@@ -1025,8 +1076,8 @@
 
       <div class="quote" style="margin-top:20px;">
         <p class="note" style="margin:0;">
-          <strong>标识红线：</strong>物料上的实验室标识一律引用权威主标 <span class="mono">#luxi-lab-mark</span>（源自官方 <span class="mono">LUXI LAB.svg</span>），
-          不得自绘、简化或改色；实体配色仅取四色（鹿溪绿 / 源启白 / 进化蓝 / 标题金），不得引入第五专色。全部图样须可 100% 矢量复现。
+          <strong>标识红线：</strong>物料用<strong>符号标 <span class="mono">#luxi-symbol-mark</span></strong>（单一几何源，不得自绘变体）；文档 / 官网 / 正式件用<strong>权威主标 <span class="mono">#luxi-lab-mark</span></strong>；两者不得混用或互相替代。
+          实体配色仅取四色（鹿溪绿 / 源启白 / 进化蓝 / 标题金），不得引入第五专色。全部图样须可 100% 矢量复现（单色工艺下横线随主色同色）。
         </p>
       </div>
     </section>
@@ -1048,7 +1099,7 @@
           <div class="check"><span class="ok">✓</span>prefers-reduced-motion 取消位移与光晕。</div>
           <div class="check"><span class="ok">✓</span>实体物料给出标称尺寸 / 材质 / 工艺；图样可 100% 矢量复现。</div>
           <div class="check"><span class="ok">✓</span>工牌保留「行政佩戴版 + 工程规格版」两版，规格互不替代。</div>
-          <div class="check"><span class="ok">✓</span>物料上的实验室标识统一引用权威主标（<span class="mono">#luxi-lab-mark</span>），不自绘、不简化、不改色。</div>
+          <div class="check"><span class="ok">✓</span>物料统一使用符号标（<span class="mono">#luxi-symbol-mark</span>，角本位）；文档用权威主标；两者不混用。</div>
           <div class="check"><span class="ok">✓</span>未来产品池不含与正式产品重名的命名与图形。</div>
         </article>
         <article class="card" data-od-id="p0-forbid">
