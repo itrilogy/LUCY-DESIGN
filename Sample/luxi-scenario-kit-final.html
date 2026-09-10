@@ -1,0 +1,1097 @@
+
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-density="comfortable">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>鹿溪设计范式 · 全场景参考套件（最终方案：合并版本一/二/三）</title>
+  <style>
+    :root {
+      --luxi-green: #0D5E42;
+      --origin-white: #F5F7FA;
+      --luxi-cyan: #00D2FF;
+      --luxi-gold: #F1C40F;
+      --alert-red: #E74C3C;
+      --info-blue: #3498DB;
+      --state-up: #22C55E;
+      --state-down: #EF4444;
+      --state-flat: #94A3B8;
+      --text-primary: #1A2428;
+      --text-secondary: #42525C;
+      --text-muted: #64748B;
+      --text-inverse: #F5F7FA;
+      --bg-page: #F5F7FA;
+      --bg-card: #FFFFFF;
+      --bg-raised: #FFFFFF;
+      --bg-sunken: #EEF2F5;
+      --border-subtle: rgba(13, 94, 66, 0.10);
+      --border-line: rgba(13, 94, 66, 0.18);
+      --border-strong: rgba(13, 94, 66, 0.32);
+      --color-primary: var(--luxi-green);
+      --color-primary-hover: #127A55;
+      --color-primary-active: #0A4A33;
+      --color-accent: var(--luxi-cyan);
+      --color-highlight: var(--luxi-gold);
+      --product-accent: var(--luxi-green);
+      --bg: oklch(97.2% 0.005 240);
+      --surface: oklch(100% 0 0);
+      --fg: oklch(22% 0.018 200);
+      --muted: oklch(54% 0.03 250);
+      --border: oklch(90% 0.02 160);
+      --accent: oklch(42% 0.08 160);
+      --font-sans-zh: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      --font-serif-zh: "Songti SC", "Source Han Serif SC", "Noto Serif SC", Georgia, serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      --font-body: var(--font-sans-zh);
+      --font-display: var(--font-sans-zh);
+      --fs-display: 40px; --fs-h1: 28px; --fs-h2: 22px; --fs-h3: 17px;
+      --fs-body: 14px; --fs-small: 13px; --fs-caption: 12px; --fs-micro: 11px;
+      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+      --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px;
+      --radius-xs: 4px; --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-pill: 999px; --radius-tile: 12px;
+      --shadow-xs: 0 1px 2px rgba(13, 94, 66, 0.05);
+      --shadow-sm: 0 2px 8px rgba(13, 94, 66, 0.08);
+      --shadow-md: 0 8px 24px rgba(13, 94, 66, 0.10);
+      --shadow-lg: 0 16px 48px rgba(13, 94, 66, 0.14);
+      --shadow-focus: 0 0 0 3px rgba(0, 210, 255, 0.35);
+      --density-row: 44px; --density-control: 36px; --density-gap: 12px;
+      --header-h: 56px; --sidebar-w: 240px; --container-max: 1240px;
+      --dur-fast: 160ms; --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    }
+    [data-theme="dark"] {
+      --text-primary: #E6EFEA; --text-secondary: #C3D3CB; --text-muted: #8FA3BF; --text-inverse: #121A17;
+      --bg-page: #121A17; --bg-card: #1A2428; --bg-raised: #22302B; --bg-sunken: #0E1613;
+      --border-subtle: rgba(245, 247, 250, 0.08); --border-line: rgba(245, 247, 250, 0.14); --border-strong: rgba(245, 247, 250, 0.28);
+      --color-primary: #14805C; --color-primary-hover: #17946B; --color-primary-active: #0D5E42;
+      --bg: oklch(18% 0.02 160); --surface: oklch(22% 0.02 180); --fg: oklch(93% 0.015 160); --muted: oklch(68% 0.03 220); --border: oklch(32% 0.02 160);
+    }
+    [data-theme="ink"] {
+      --text-primary: #F3EEE6; --text-secondary: rgba(243, 238, 230, 0.78); --text-muted: rgba(243, 238, 230, 0.55); --text-inverse: #0B0C0E;
+      --bg-page: #0B0C0E; --bg-card: #141517; --bg-raised: #1B1D20; --bg-sunken: #08090A;
+      --border-subtle: rgba(243, 238, 230, 0.08); --border-line: rgba(243, 238, 230, 0.14); --border-strong: rgba(243, 238, 230, 0.26);
+      --color-primary: #14805C; --font-body: var(--font-serif-zh); --font-display: var(--font-serif-zh);
+    }
+    [data-density="compact"] { --density-row: 36px; --density-control: 32px; --density-gap: 8px; }
+    [data-density="comfortable"] { --density-row: 44px; --density-control: 36px; --density-gap: 12px; }
+    [data-density="sparse"] { --density-row: 52px; --density-control: 40px; --density-gap: 20px; }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-page);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+    button, input, select { font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .mono, code { font-family: var(--font-mono); }
+    .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    :focus { outline: none; }
+    :focus-visible { outline: 2px solid var(--luxi-cyan); outline-offset: 2px; border-radius: var(--radius-xs); }
+    ::selection { background: rgba(0, 210, 255, 0.28); }
+
+    .top-shell {
+      position: sticky; top: 0; z-index: 100;
+      background: color-mix(in oklab, var(--bg-card) 86%, transparent);
+      border-bottom: 1px solid var(--border-line);
+      backdrop-filter: blur(16px) saturate(140%);
+    }
+    .top-nav {
+      max-width: var(--container-max); margin: 0 auto; height: var(--header-h);
+      padding: 0 var(--space-6); display: flex; align-items: center; gap: var(--space-4); justify-content: space-between;
+    }
+    .brand-mark { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+    .brand-mark svg { width: 32px; height: 32px; flex-shrink: 0; }
+    .brand-title { font-size: 15px; font-weight: 600; line-height: 1.2; }
+    .brand-subtitle { display: block; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.06em; font-weight: 400; }
+    .nav-tabs {
+      display: flex; gap: 2px; background: var(--bg-sunken); padding: 3px;
+      border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); overflow-x: auto;
+    }
+    .nav-tab-btn {
+      border: 0; background: transparent; color: var(--text-secondary);
+      padding: 6px 12px; border-radius: var(--radius-xs); font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap;
+    }
+    .nav-tab-btn:hover { color: var(--text-primary); background: color-mix(in oklab, var(--bg-card) 70%, transparent); }
+    .nav-tab-btn.active { background: var(--bg-card); color: var(--color-primary); box-shadow: var(--shadow-xs); }
+    .controller-bar { display: flex; align-items: center; gap: var(--space-2); }
+    .select-control {
+      background: var(--bg-card); border: 1px solid var(--border-line); border-radius: var(--radius-xs);
+      padding: 6px 8px; font-size: 12px; color: var(--text-secondary); height: 32px;
+    }
+
+    .viewport { max-width: var(--container-max); margin: 0 auto; padding: var(--space-8) var(--space-6) var(--space-12); }
+    .scene { display: none; }
+    .scene.active { display: block; animation: fadeIn var(--dur-fast) var(--ease-standard); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    .section-header { margin-bottom: var(--space-8); padding-bottom: var(--space-5); border-bottom: 1px solid var(--border-line); }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--color-primary); font-weight: 600; margin-bottom: var(--space-2);
+    }
+    .section-title { font-size: var(--fs-h1); font-weight: 700; margin-bottom: var(--space-2); }
+    .section-desc { color: var(--text-muted); max-width: 72ch; }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-line); border-radius: var(--radius-md);
+      padding: var(--space-6); box-shadow: var(--shadow-xs);
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+    .stack { display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      height: var(--density-control); padding: 0 16px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid transparent; white-space: nowrap;
+      transition: background var(--dur-fast) var(--ease-standard), border-color var(--dur-fast);
+    }
+    .btn-primary { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); color: #fff; }
+    .btn-primary:active { background: var(--color-primary-active); }
+    .btn-primary:disabled { opacity: 0.38; cursor: not-allowed; }
+    .btn-secondary { background: var(--bg-card); color: var(--color-primary); border-color: var(--border-line); }
+    .btn-secondary:hover { background: var(--bg-sunken); border-color: var(--border-strong); color: var(--color-primary); }
+    .btn-ghost { background: transparent; color: var(--text-secondary); }
+    .btn-ghost:hover { background: var(--bg-sunken); color: var(--text-primary); }
+    .btn-danger { background: var(--alert-red); color: #fff; }
+    .btn-danger:hover { background: color-mix(in oklab, var(--alert-red) 86%, black); color: #fff; }
+
+    .badge {
+      display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--radius-pill);
+      font-size: 11px; font-weight: 600;
+    }
+    .badge-ok { background: rgba(34, 197, 94, 0.12); color: #15803d; }
+    .badge-warn { background: rgba(241, 196, 15, 0.18); color: #92400e; }
+    .badge-danger { background: rgba(231, 76, 60, 0.12); color: var(--alert-red); }
+    .badge-neutral { background: var(--bg-sunken); color: var(--text-muted); border: 1px solid var(--border-subtle); }
+    [data-theme="dark"] .badge-ok, [data-theme="ink"] .badge-ok { color: #86efac; }
+    [data-theme="dark"] .badge-warn, [data-theme="ink"] .badge-warn { color: #fde68a; }
+
+    .quote {
+      background: linear-gradient(135deg, rgba(13, 94, 66, 0.05), rgba(0, 210, 255, 0.04));
+      border: 1px solid var(--border-line); border-left: 4px solid var(--luxi-green);
+      border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-8);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-line); vertical-align: top; }
+    th { color: var(--text-muted); font-weight: 500; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+    .swatch { border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-card); }
+    .swatch-chip { height: 72px; display: flex; align-items: flex-end; padding: 8px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+    .swatch-meta { padding: 10px 12px; font-size: 12px; }
+    .swatch-meta small { display: block; color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+
+    .tile {
+      display: flex; gap: 12px; align-items: center; background: var(--bg-card);
+      border: 1px solid var(--border-line); border-radius: var(--radius-md); padding: 12px;
+    }
+    .brick {
+      width: 48px; height: 48px; border-radius: var(--radius-tile); background: var(--luxi-green);
+      color: #F5F7FA; display: grid; place-items: center; position: relative; flex-shrink: 0;
+    }
+    .brick svg { width: 26px; height: 26px; }
+    .stream { position: absolute; left: 8px; right: 8px; bottom: 6px; height: 3px; border-radius: 99px;
+      background: linear-gradient(90deg, rgba(0,210,255,.2), #00D2FF 50%, rgba(124,240,255,.55)); }
+    .star { position: absolute; top: 5px; right: 5px; width: 5px; height: 5px; background: var(--luxi-gold);
+      clip-path: polygon(50% 0, 61% 35%, 100% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 0 35%, 39% 35%); }
+
+    .sub-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: var(--space-5); }
+    .sub-tab {
+      border: 1px solid var(--border-line); background: var(--bg-card); color: var(--text-secondary);
+      border-radius: var(--radius-pill); padding: 6px 12px; font-size: 12px; cursor: pointer;
+    }
+    .sub-tab:hover { color: var(--text-primary); border-color: var(--border-strong); }
+    .sub-tab.active { background: rgba(13, 94, 66, 0.08); color: var(--color-primary); border-color: var(--border-strong); }
+    .archetype { display: none; }
+    .archetype.active { display: block; }
+    .app-frame { border: 1px solid var(--border-line); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); }
+    .app-bar {
+      height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
+      border-bottom: 1px solid var(--border-line);
+    }
+    .app-body { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 360px; }
+    .app-side { background: var(--bg-sunken); padding: 16px; border-right: 1px solid var(--border-subtle); }
+    .side-item { padding: 8px 10px; border-radius: 6px; font-size: 13px; color: var(--text-secondary); }
+    .side-item.active { background: var(--bg-card); color: var(--color-primary); font-weight: 600; }
+    .app-main { padding: 16px; overflow: auto; }
+    .state-bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+
+    .chart { display: flex; flex-direction: column; gap: 10px; --max: 100; }
+    .bar-row { display: grid; grid-template-columns: 72px 1fr 64px; gap: 10px; align-items: center; font-size: 12px; }
+    .bar-track { height: 10px; background: var(--bg-sunken); border-radius: 99px; overflow: hidden; }
+    .bar { height: 100%; width: calc(var(--v) / var(--max) * 100%); background: var(--product-accent, #60A5FA); border-radius: 99px; }
+    .empty, .error, .loading {
+      min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; color: var(--text-muted); text-align: center; padding: 32px;
+    }
+    .spinner { width: 22px; height: 22px; border: 2px solid var(--border-line); border-top-color: var(--luxi-cyan); border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .immersive {
+      background: #0B0C0E; color: #F3EEE6; border-radius: var(--radius-lg); padding: 28px 28px 20px;
+      min-height: 360px; position: relative; overflow: hidden; font-family: var(--font-serif-zh);
+    }
+    .glow { position: absolute; inset: auto 20% -40px 20%; height: 180px; background: radial-gradient(circle, rgba(0,210,255,.18), transparent 70%); pointer-events: none; }
+    .play {
+      width: 96px; height: 96px; border-radius: 50%; border: 1px solid rgba(243,238,230,.2);
+      background: rgba(243,238,230,.12); color: #F3EEE6; cursor: pointer;
+    }
+    .play:hover, .play:focus-visible { background: rgba(243,238,230,.5); color: #0B0C0E; }
+
+    .merch-stage {
+      height: 160px; background: var(--bg-sunken); display: grid; place-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .check { display: flex; gap: 10px; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
+    .ok { color: var(--color-primary); font-weight: 700; width: 16px; }
+    .no { color: var(--alert-red); font-weight: 700; width: 16px; }
+
+    .overlay {
+      position: fixed; inset: 0; background: rgba(10, 16, 14, 0.48); display: none; place-items: center; z-index: 800; padding: 24px;
+    }
+    .overlay.open { display: grid; }
+    .dialog {
+      background: var(--bg-raised); border: 1px solid var(--border-line); border-radius: var(--radius-md);
+      max-width: 480px; width: 100%; padding: var(--space-6); box-shadow: var(--shadow-lg);
+    }
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(12px);
+      background: var(--bg-raised); border: 1px solid var(--border-line); border-radius: var(--radius-sm);
+      padding: 10px 14px; font-size: 13px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; z-index: 1000;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .field { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+    .field input, .field select {
+      height: var(--density-control); padding: 0 12px; border: 1px solid var(--border-line);
+      border-radius: var(--radius-xs); background: var(--bg-card);
+    }
+    .note { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 10px; }
+
+    @media (max-width: 920px) {
+      .grid-2, .grid-3, .grid-4, .app-body { grid-template-columns: 1fr; }
+      .top-nav { height: auto; flex-wrap: wrap; padding: 10px 16px; }
+      .nav-tabs { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 160ms !important; }
+      .glow { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="luxi-lab-mark" viewBox="0 0 2048 2048">
+      <path fill="#0D5E42" d="M864 794C988 781 1110 812 1208 891C1243 919 1280 963 1286 1009C1290 1031 1282 1045 1260 1050C1258 1001 1228 960 1192 929C930 704 479 884 458 1233C457 1253 456 1271 456 1291C457 1307 468 1304 479 1302C532 1282 541 1211 556 1162C595 1035 723 920 863 936C867 936 881 938 882 943C833 967 806 989 781 1016C731 1072 703 1144 702 1219C701 1310 737 1396 802 1460C922 1580 1096 1610 1256 1565C1348 1533 1391 1518 1483 1510C1545 1510 1622 1529 1666 1574C1626 1570 1598 1566 1557 1570C1482 1578 1426 1615 1359 1645C1308 1669 1242 1682 1186 1685C1051 1693 910 1653 810 1558C779 1529 757 1495 724 1466C677 1423 620 1392 557 1381C514 1406 525 1409 549 1412C578 1417 605 1426 631 1439C669 1458 710 1493 738 1524C766 1557 781 1574 814 1603C919 1686 1047 1722 1179 1717C1264 1709 1235 1731 1130 1762C969 1800 807 1777 666 1689C551 1617 463 1509 430 1376C402 1258 420 1128 485 1025C540 937 622 869 718 830L864 794Z"/>
+      <path fill="#00D2FF" d="M479 1302C532 1282 541 1211 556 1162C595 1035 723 920 863 936C833 967 806 989 781 1016C687 1026 605 1101 570 1187C552 1232 541 1292 484 1302Z"/>
+    </symbol>
+  </svg>
+
+  <header class="top-shell" data-od-id="app-header">
+    <div class="top-nav">
+      <div class="brand-mark">
+        <svg aria-label="鹿溪联合创新实验室主标"><use href="#luxi-lab-mark"></use></svg>
+        <div class="brand-title">鹿溪设计范式<span class="brand-subtitle">LUXI DESIGN · 全场景套件</span></div>
+      </div>
+      <nav class="nav-tabs" role="tablist" aria-label="场景模块" data-od-id="scene-nav">
+        <button class="nav-tab-btn active" data-scene="ci" role="tab">01 理念 CI</button>
+        <button class="nav-tab-btn" data-scene="vi" role="tab">02 视觉 VI</button>
+        <button class="nav-tab-btn" data-scene="web" role="tab">03 网页骨架</button>
+        <button class="nav-tab-btn" data-scene="ui" role="tab">04 组件交互</button>
+        <button class="nav-tab-btn" data-scene="merch" role="tab">05 周边物料</button>
+        <button class="nav-tab-btn" data-scene="check" role="tab">06 自检清单</button>
+      </nav>
+      <div class="controller-bar">
+        <select id="theme" class="select-control" aria-label="主题">
+          <option value="light">亮色 · 工作台</option>
+          <option value="dark">深色 · 数据</option>
+          <option value="ink">沉浸 · 播放</option>
+        </select>
+        <select id="density" class="select-control" aria-label="密度">
+          <option value="comfortable">舒适</option>
+          <option value="compact">紧凑</option>
+          <option value="sparse">疏朗</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="viewport" id="content">
+    <section class="scene active" id="scene-ci" data-od-id="ci-section">
+      <div class="section-header">
+        <p class="eyebrow">Corporate Identity</p>
+        <h1 class="section-title">林深见鹿，源启清溪</h1>
+        <p class="section-desc">鹿溪联合创新实验室把 12 款产品的视觉与交互收敛为一套可执行范式。LUXI = Lucy（始祖）+ Lucky（价值）+ Xi/Stream（鹿溪）。</p>
+      </div>
+      <div class="quote" data-od-id="ci-quote">
+        <p style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:8px;">使命与愿景</p>
+        <p style="color:var(--text-secondary);">使命：在复杂中看见价值，在流动中定义未来。愿景：构建空地一体、虚实共生的行业进化母体。</p>
+      </div>
+      <div class="grid-2" style="margin-bottom:32px;">
+        <article class="card" data-od-id="luxi-laws">
+          <h2 style="font-size:16px;margin-bottom:16px;">L-U-X-I 设计法则</h2>
+          <div class="stack" style="font-size:13px;color:var(--text-secondary);">
+            <p><strong style="color:var(--color-primary);">L · Link 连接</strong>：数据与操作同屏；空状态给出下一步。</p>
+            <p><strong style="color:var(--color-primary);">U · Unveil 揭示</strong>：关键指标第一眼可见；图表标注口径与边界。</p>
+            <p><strong style="color:var(--color-primary);">X · X-Factor 变量</strong>：预测必须带置信度；模型输出不得包装成事实。</p>
+            <p><strong style="color:var(--color-primary);">I · Iterate 迭代</strong>：组件可替换；密度、主题、accent 可调，不做死模板。</p>
+          </div>
+        </article>
+        <article class="card" data-od-id="three-principles">
+          <h2 style="font-size:16px;margin-bottom:16px;">三条表现原则</h2>
+          <div class="stack" style="font-size:13px;color:var(--text-secondary);">
+            <p><strong>克制</strong>：工具界面不做密集控制台；高级控件默认隐藏。</p>
+            <p><strong>诚实</strong>：概率不是承诺；示例数据必须标注。观澜声明「非中奖预言」属于设计本身。</p>
+            <p><strong>可退</strong>：破坏性操作二次确认并可撤销；首次运行风险门不可默认同意。</p>
+          </div>
+        </article>
+      </div>
+      <article class="card" data-od-id="product-matrix">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+          <h2 style="font-size:16px;">四大矩阵 · 12 款正式产品</h2>
+          <span class="badge badge-neutral">accent 只用于强调，不替换鹿溪绿主按钮</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>矩阵</th><th>产品</th><th>代号</th><th>Slogan</th><th>Accent</th><th>方标意象</th></tr>
+            </thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="card" data-od-id="future-matrix" style="margin-top:24px;">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+          <h2 style="font-size:16px;">未来产品矩阵 · 8 款孵化候选（版本二）</h2>
+          <span class="badge badge-warn">概念储备 · 未立项，不作为既成产品对外表述</span>
+        </div>
+        <p class="note" style="margin-bottom:16px;">
+          遵循同一方标设定：鹿溪绿圆角砖（Squircle 22% 半径）+ 业务象形主符号 + 底部进化蓝溪流弧光 + 右上角源启星。
+          与 12 款正式产品共用四色与双层标规则，仅业务图形不同。
+        </p>
+        <div class="grid-4">
+          <article class="card" data-od-id="fut-qilin" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <path d="M24 10L14 24H34L24 10Z" stroke="#F5F7FA" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M24 20L12 36H36L24 20Z" stroke="#F1C40F" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">栖林 · QiLin</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 资产</div>
+            <p class="note" style="margin-top:6px;">集群资产管理与资源池沉淀</p>
+          </article>
+          <article class="card" data-od-id="fut-qingxiu" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <path d="M10 36L22 14L28 24L38 36" stroke="#F5F7FA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="22" cy="14" r="3" fill="#00D2FF"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">青岫 · QingXiu</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 边缘</div>
+            <p class="note" style="margin-top:6px;">微型嵌入式边缘算力端</p>
+          </article>
+          <article class="card" data-od-id="fut-yunze" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <path d="M14 28C14 23 18 20 22 20C24 17 28 16 31 18C34 19 35 22 35 24C37 24 38 26 38 28C38 30 36 32 34 32H16C14 32 14 30 14 28Z" stroke="#F5F7FA" stroke-width="2"/>
+              <path d="M10 36H38" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">云泽 · YunZe</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 存储</div>
+            <p class="note" style="margin-top:6px;">湖仓一体异构数据汇聚</p>
+          </article>
+          <article class="card" data-od-id="fut-yinquan" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <rect x="14" y="20" width="20" height="16" rx="4" stroke="#F5F7FA" stroke-width="2"/>
+              <path d="M18 20V14C18 10.7 20.7 8 24 8C27.3 8 30 10.7 30 14V20" stroke="#F5F7FA" stroke-width="2"/>
+              <circle cx="24" cy="27" r="2" fill="#F1C40F"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">隐泉 · YinQuan</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 安全</div>
+            <p class="note" style="margin-top:6px;">隐私计算与零知识隔离沙箱</p>
+          </article>
+          <article class="card" data-od-id="fut-zhuoying" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <circle cx="24" cy="24" r="12" stroke="#F5F7FA" stroke-width="2" stroke-dasharray="4 4"/>
+              <path d="M24 16C28 16 30 20 28 24C26 28 22 28 20 24" stroke="#00D2FF" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">濯缨 · ZhuoYing</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 治理</div>
+            <p class="note" style="margin-top:6px;">模型自净与对抗样本清洗</p>
+          </article>
+          <article class="card" data-od-id="fut-fanzhou" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <path d="M10 30C16 34 32 34 38 30L34 24H14L10 30Z" stroke="#F5F7FA" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M24 10V24M24 14L32 18" stroke="#F1C40F" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">泛舟 · FanZhou</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 向导</div>
+            <p class="note" style="margin-top:6px;">低代码人机协同向导</p>
+          </article>
+          <article class="card" data-od-id="fut-shaolu" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <path d="M16 34V20C16 16 19 14 24 14C29 14 32 16 32 20V34" stroke="#F5F7FA" stroke-width="2.5"/>
+              <circle cx="24" cy="14" r="3" fill="#F1C40F"/>
+              <path d="M10 12C18 6 30 6 38 12" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">哨鹿 · ShaoLu</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 防御</div>
+            <p class="note" style="margin-top:6px;">前哨威胁侦测与雷达哨兵</p>
+          </article>
+          <article class="card" data-od-id="fut-guipu" style="text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
+              <rect x="14" y="14" width="20" height="20" stroke="#F5F7FA" stroke-width="2"/>
+              <rect x="19" y="19" width="10" height="10" stroke="#F1C40F" stroke-width="1.8"/>
+              <circle cx="24" cy="24" r="2" fill="#00D2FF"/>
+              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
+            </svg>
+            <div style="font-weight:600;font-size:13px;margin-top:8px;">归朴 · GuiPu</div>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);">候选 · 优化</div>
+            <p class="note" style="margin-top:6px;">模型剪枝压缩与边缘轻量归一</p>
+          </article>
+        </div>
+        <div class="quote" style="margin-top:16px;">
+          <p class="note" style="margin:0;">
+            <strong>命名一致性提示：</strong>候选池中的「聆涧 · LingJian」与既成产品「聆涧 · LingJian（VoiceStream，知行·三动）」重名，
+            正式立项前须改名或合并，避免品牌冲突。
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="scene" id="scene-vi" data-od-id="vi-section">
+      <div class="section-header">
+        <p class="eyebrow">Visual Identity</p>
+        <h1 class="section-title">四色基石、双标等大、排印阶梯</h1>
+        <p class="section-desc">主标不得重绘。产品方标 = 鹿溪绿圆角砖 + 业务图形 + 进化蓝溪流 + 源启星。主标与产品标并排等大（64 或 48）。</p>
+      </div>
+      <div class="grid-4" style="margin-bottom:32px;" data-od-id="core-colors">
+        <div class="swatch"><div class="swatch-chip" style="background:#0D5E42;color:#fff;">#0D5E42</div><div class="swatch-meta">鹿溪绿 --luxi-green<small>主底色、Primary 按钮</small></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#F5F7FA;color:#1A2428;border-bottom:1px solid var(--border-line);">#F5F7FA</div><div class="swatch-meta">源启白 --origin-white<small>画布、面板反白</small></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#00D2FF;color:#1A2428;">#00D2FF</div><div class="swatch-meta">进化蓝 --luxi-cyan<small>溪流、焦点环、高亮</small></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#F1C40F;color:#1A2428;">#F1C40F</div><div class="swatch-meta">标题金 --luxi-gold<small>落点、命中热区</small></div></div>
+      </div>
+      <div class="grid-2" style="margin-bottom:32px;">
+        <article class="card" data-od-id="dual-mark">
+          <h2 style="font-size:16px;margin-bottom:8px;">双标并排 64×64</h2>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">README、官网、关于页必须等大并排。安全留白 ≥ 1/4 标高。</p>
+          <div style="display:flex;align-items:center;gap:24px;justify-content:center;padding:24px;background:var(--bg-sunken);border-radius:10px;">
+            <div style="text-align:center;">
+              <svg width="64" height="64" aria-label="实验室主标"><use href="#luxi-lab-mark"></use></svg>
+              <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px;">LUXI LAB</div>
+            </div>
+            <span style="color:var(--text-muted);">×</span>
+            <div style="text-align:center;">
+              <div class="brick" style="width:64px;height:64px;margin:0 auto;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12h6"/></svg>
+                <span class="stream"></span><span class="star"></span>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px;">PRODUCT</div>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-od-id="type-scale">
+          <h2 style="font-size:16px;margin-bottom:8px;">中文优先排印</h2>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">默认 PingFang SC；ink 主题切宋体；数字与 ID 用等宽并对齐。</p>
+          <p style="font-size:28px;font-weight:700;letter-spacing:-0.02em;">页面标题 28 / 1.25</p>
+          <p style="font-size:17px;font-weight:600;margin:8px 0;">卡片标题 17 / 1.4</p>
+          <p style="font-size:14px;line-height:1.6;color:var(--text-secondary);">正文 14 / 1.6。间距取 4 的倍数；圆角 输入 4 · 按钮 6 · 卡片 10 · 方标 12。</p>
+          <div style="margin-top:16px;display:flex;gap:8px;">
+            <button class="btn btn-secondary" data-od-id="focus-demo-1">Tab 聚焦示范</button>
+            <button class="btn btn-secondary">焦点环 进化蓝</button>
+          </div>
+        </article>
+      </div>
+      <h2 style="font-size:16px;margin-bottom:16px;">12 款产品方标</h2>
+      <div class="grid-3" id="tile-grid" data-od-id="product-tiles"></div>
+    </section>
+
+    <section class="scene" id="scene-web" data-od-id="web-section">
+      <div class="section-header">
+        <p class="eyebrow">Web Archetypes</p>
+        <h1 class="section-title">营销、工作台、仪表盘、沉浸播放</h1>
+        <p class="section-desc">每屏一个 Primary。数据区必须有加载 / 空 / 错误。图表必须有口径脚注。</p>
+      </div>
+      <div class="sub-tabs" data-od-id="web-subnav">
+        <button class="sub-tab active" data-arch="marketing">营销落地页</button>
+        <button class="sub-tab" data-arch="workbench">工具工作台</button>
+        <button class="sub-tab" data-arch="dashboard">推演仪表盘</button>
+        <button class="sub-tab" data-arch="immersive">沉浸播放页</button>
+      </div>
+
+      <div class="archetype active" id="arch-marketing" data-od-id="arch-marketing">
+        <article class="card" style="text-align:center;padding:48px 32px;">
+          <div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:20px;">
+            <svg width="48" height="48" aria-hidden="true"><use href="#luxi-lab-mark"></use></svg>
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16M10 4v16"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+          </div>
+          <p class="eyebrow">LUXI Joint Innovation Lab</p>
+          <h2 style="font-size:clamp(28px,4vw,40px);margin:8px 0 12px;">在复杂中看见价值，在流动中定义未来</h2>
+          <p style="max-width:60ch;margin:0 auto 24px;color:var(--text-secondary);">把 12 款产品的设计实践收敛为可执行的统一范式，供 OpenDesign、Agent 与前端共同消费。</p>
+          <button class="btn btn-primary" style="height:44px;padding:0 28px;" data-od-id="marketing-cta">查阅完整工程标准</button>
+        </article>
+      </div>
+
+      <div class="archetype" id="arch-workbench" data-od-id="arch-workbench">
+        <div class="state-bar">
+          <span class="note" style="margin:0;">三态切换（示例批次）</span>
+          <button class="btn btn-secondary" data-state="ok">正常</button>
+          <button class="btn btn-secondary" data-state="loading">加载</button>
+          <button class="btn btn-secondary" data-state="empty">空</button>
+          <button class="btn btn-secondary" data-state="error">错误</button>
+          <button class="btn btn-ghost" id="open-gate" style="margin-left:auto;color:var(--color-primary);">打开 LegalGate</button>
+        </div>
+        <div class="app-frame">
+          <div class="app-bar">
+            <strong style="display:flex;align-items:center;gap:8px;">
+              <span class="brick" style="width:24px;height:24px;border-radius:6px;"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h16M10 4v16"/></svg></span>
+              澄矩 IQS · 批次质检
+            </strong>
+            <button class="btn btn-primary" data-od-id="workbench-cta">开始新批次检验</button>
+          </div>
+          <div class="app-body">
+            <aside class="app-side">
+              <div class="side-item active">全部批次</div>
+              <div class="side-item">容差超限</div>
+              <div class="side-item">正交控制台</div>
+            </aside>
+            <div class="app-main" id="wb-main"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="archetype" id="arch-dashboard" data-od-id="arch-dashboard">
+        <div class="grid-4" style="margin-bottom:24px;">
+          <div class="card"><div class="note">推演收敛率 · 示例</div><div class="num" style="font-size:24px;font-weight:700;color:var(--color-primary);">98.42%</div><div class="note">置信区间 95%</div></div>
+          <div class="card"><div class="note">状态熵 · 示例</div><div class="num" style="font-size:24px;font-weight:700;">0.142 nats</div><div class="note">边界 [0.08, 0.20]</div></div>
+          <div class="card"><div class="note">认识不确定性</div><div class="num" style="font-size:24px;font-weight:700;">±3.2%</div><div class="note">蒙特卡洛 500 次</div></div>
+          <div class="card"><div class="note">吞吐 · 示例</div><div class="num" style="font-size:24px;font-weight:700;">3,820 tps</div><div class="note">非实时生产值</div></div>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <div style="display:flex;justify-content:space-between;margin-bottom:16px;"><h3 style="font-size:15px;">衡流 · 序列权重（示例）</h3><span class="badge badge-neutral">accent #60A5FA</span></div>
+            <div class="chart" style="--max: 5; --product-accent:#60A5FA;">
+              <div class="bar-row"><span>稳态</span><div class="bar-track"><div class="bar" style="--v:4.6"></div></div><span class="num bar-value">4.6</span></div>
+              <div class="bar-row"><span>过渡</span><div class="bar-track"><div class="bar" style="--v:2.1"></div></div><span class="num bar-value">2.1</span></div>
+              <div class="bar-row"><span>冲击</span><div class="bar-track"><div class="bar" style="--v:0.8"></div></div><span class="num bar-value">0.8</span></div>
+            </div>
+            <p class="note">口径：GMM 三态权重，样本窗口 2026-01 至 2026-09。推演不是交易指令。</p>
+          </article>
+          <article class="card">
+            <div style="display:flex;justify-content:space-between;margin-bottom:16px;"><h3 style="font-size:15px;">观澜 · 红蓝拥挤度（示例）</h3><span class="badge badge-danger">非中奖预言</span></div>
+            <div class="chart" style="--max: 100;">
+              <div class="bar-row"><span>红球</span><div class="bar-track"><div class="bar" style="--v:62;background:#E74C3C;"></div></div><span class="num">62</span></div>
+              <div class="bar-row"><span>蓝球</span><div class="bar-track"><div class="bar" style="--v:41;background:#3498DB;"></div></div><span class="num">41</span></div>
+              <div class="bar-row"><span>持平</span><div class="bar-track"><div class="bar" style="--v:28;background:#94A3B8;"></div></div><span class="num">28</span></div>
+            </div>
+            <p class="note">自查：观澜刻画奖池拥挤，不承诺中奖。历史样本 2026-01–09。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="archetype" id="arch-immersive" data-od-id="arch-immersive">
+        <div class="immersive">
+          <div class="glow"></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;letter-spacing:.08em;position:relative;">
+            <span>聆涧 · VoiceStream</span><span class="num" style="font-family:var(--font-mono);opacity:.5;">00:14:28</span>
+          </div>
+          <div style="text-align:center;margin:48px 0 24px;position:relative;">
+            <p style="font-size:22px;max-width:36ch;margin:0 auto 28px;line-height:1.6;">林深风籁静，源启细流清。言语落地，自然生成万象生境。</p>
+            <button class="play" id="play-btn" aria-label="播放或暂停" data-od-id="immersive-play">
+              <svg id="play-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <p class="note" style="color:rgba(243,238,230,.45);">Space 播放/暂停 · Esc 退出 · 进度为会话计时，不是曲长</p>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;opacity:.35;font-family:var(--font-mono);">
+            <span>24-bit / 48kHz</span><span>粒子预算 240</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="scene-ui" data-od-id="ui-section">
+      <div class="section-header">
+        <p class="eyebrow">Components</p>
+        <h1 class="section-title">按钮、表单、标签与风险门</h1>
+        <p class="section-desc">Primary 每屏一个。选中用颜色，不用加粗。禁用 opacity .38。破坏操作必须可退。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card" data-od-id="buttons">
+          <h2 style="font-size:16px;margin-bottom:16px;">按钮层级</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <button class="btn btn-primary">主行动</button>
+            <button class="btn btn-secondary">次行动</button>
+            <button class="btn btn-ghost">幽灵</button>
+            <button class="btn btn-danger" id="danger-btn">删除批次</button>
+            <button class="btn btn-primary" disabled>禁用</button>
+          </div>
+          <p class="note">Danger 会打开二次确认。主行动在本卡片内只保留一个实心底。</p>
+        </article>
+        <article class="card" data-od-id="form-fields">
+          <h2 style="font-size:16px;margin-bottom:16px;">输入与密度</h2>
+          <div class="stack">
+            <label class="field">工号<input placeholder="例如 LUXI-042" /></label>
+            <label class="field">工位
+              <select><option>视觉对齐 02 站</option><option>正交走线测试</option></select>
+            </label>
+          </div>
+        </article>
+        <article class="card" data-od-id="tags">
+          <h2 style="font-size:16px;margin-bottom:16px;">状态标签</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="badge badge-ok">正常放行</span>
+            <span class="badge badge-warn">待复核</span>
+            <span class="badge badge-danger">容差偏离</span>
+            <span class="badge badge-neutral">示例数据</span>
+          </div>
+        </article>
+        <article class="card" data-od-id="toast-demo">
+          <h2 style="font-size:16px;margin-bottom:16px;">Toast 反馈</h2>
+          <button class="btn btn-secondary" id="toast-btn">复制主标 SVG 提示</button>
+          <p class="note">成功反馈不抢 Primary。Esc 关闭上层。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene" id="scene-merch" data-od-id="merch-section">
+      <div class="section-header">
+        <p class="eyebrow">Collateral</p>
+        <h1 class="section-title">办公识别、数字传播、实体触点</h1>
+        <p class="section-desc">
+          合并版本一（数字物料与周边）与版本二（工程规格与档案袋/工牌）的完整物料体系。
+          线下物料沿用四色与双标规则；<strong>ESC 键帽按版本二特别修订——剥离源启星，改为「双鹿角交汇 + 清溪贯通」图腾</strong>。
+          每件均给出标称尺寸、材质工艺与可矢量复现的图样。
+        </p>
+      </div>
+
+      <h2 style="font-size:15px;margin:0 0 12px;">A · 身份识别（办公）</h2>
+      <div class="grid-3">
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-badge">
+          <div class="merch-stage">
+            <svg width="150" height="120" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M85 0V15M95 0V15" stroke="#0D5E42" stroke-width="6"/>
+              <rect x="78" y="12" width="24" height="6" rx="3" fill="#334155"/>
+              <rect x="15" y="18" width="150" height="95" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+              <path d="M15 24C15 20.6 17.6 18 21 18H159C162.4 18 165 20.6 165 24V32H15V24Z" fill="#0D5E42"/>
+              <rect x="25" y="42" width="28" height="36" rx="3" fill="#E2E8F0"/>
+              <rect x="62" y="44" width="48" height="8" rx="2" fill="#1E293B"/>
+              <rect x="62" y="58" width="80" height="5" rx="1.5" fill="#64748B"/>
+              <rect x="62" y="68" width="60" height="4" rx="1" fill="#94A3B8"/>
+              <circle cx="145" cy="88" r="10" fill="none" stroke="#F1C40F" stroke-width="1.5"/>
+              <path d="M145 82L147 86L151 87L147 89L145 93L143 89L139 87L143 86L145 82Z" fill="#F1C40F"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>多功能员工工牌与提花挂带</strong>
+            <p class="note">双面规范：正面鹿溪主标 + 身份铭牌，背面开源身份哈希与二维码。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              ISO/IEC 7810 ID-1 · 85.6×54.0×0.84mm · 挂带宽 20mm<br/>
+              环保哑光再生 PVC · 局部 UV 浮雕光油 · 内嵌 RFID/NFC 复合芯片 · 锌合金黑铬快拆扣
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-card">
+          <div class="merch-stage">
+            <svg width="170" height="110" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="160" height="90" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+              <path d="M10 10H170" stroke="#F1C40F" stroke-width="2"/>
+              <circle cx="36" cy="40" r="12" fill="#0D5E42"/>
+              <path d="M36 32L37 36L41 37L37 38L36 42L35 38L31 37L35 36L36 32Z" fill="#F1C40F"/>
+              <rect x="56" y="32" width="64" height="8" rx="2" fill="#0F172A"/>
+              <rect x="56" y="44" width="40" height="5" rx="1.5" fill="#64748B"/>
+              <line x1="26" y1="64" x2="154" y2="64" stroke="#E2E8F0" stroke-width="1"/>
+              <rect x="26" y="74" width="80" height="4" rx="1" fill="#94A3B8"/>
+              <rect x="26" y="82" width="60" height="4" rx="1" fill="#94A3B8"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>特种纸商务名片（双面烫金）</strong>
+            <p class="note">正面极简留白：主标 + 姓名；背面罗列四大矩阵与实验室公开信息。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              90.0×54.0mm · 厚度 0.48mm（350gsm）<br/>
+              英国霍顿自然白超感棉纸 · 鹿溪绿专色微压凹印 · Pantone 10121C 哑金烫印 · 三边沉金滚边
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-c4-folder">
+          <div class="merch-stage">
+            <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="15" y="10" width="130" height="100" rx="4" fill="#093F2C" stroke="#167D59" stroke-width="1.5"/>
+              <polygon points="15,10 80,45 145,10" fill="#0D5E42" stroke="#167D59" stroke-width="1.5"/>
+              <circle cx="80" cy="50" r="6" fill="#F1C40F" stroke="#B45309" stroke-width="1"/>
+              <circle cx="80" cy="74" r="6" fill="#F1C40F" stroke="#B45309" stroke-width="1"/>
+              <path d="M80 50C86 58 74 66 80 74" stroke="#F5F7FA" stroke-width="2"/>
+              <rect x="30" y="88" width="40" height="4" rx="1" fill="#F1C40F"/>
+              <rect x="30" y="96" width="60" height="3" rx="1" fill="#167D59"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>C4 公文封套与档案袋</strong>
+            <p class="note">机密级工程方案归档专用；封口烫印实验室归档铭牌（署名按对外口径统一，不用个人工作室名）。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              324.0×229.0×15.0mm（容差 ±1mm）· 容纳无折叠 A4<br/>
+              400gsm 鹿溪深绿原浆环保卡纸 · 封面大面积压凹水波纹样 · 纯铜双鸡眼扣缠绕棉绳封口
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h2 style="font-size:15px;margin:24px 0 12px;">B · 极客硬件与生活生态（实体周边）</h2>
+      <div class="grid-3">
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-keycap">
+          <div class="merch-stage">
+            <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="120" height="120" rx="14" fill="#05261A" stroke="#167D59" stroke-width="1.5"/>
+              <rect x="24" y="24" width="92" height="92" rx="10" fill="#0D5E42" stroke="#00D2FF" stroke-width="1.5"/>
+              <path d="M50 86C50 72 45 62 38 56C48 58 54 66 56 74M44 58C40 50 42 44 46 42" stroke="#F5F7FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M90 86C90 72 95 62 102 56C92 58 86 66 84 74M96 58C100 50 98 44 94 42" stroke="#F5F7FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M70 36C68 46 74 52 70 62C66 72 73 78 70 94" stroke="#00D2FF" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="70" cy="46" r="2" fill="#F1C40F"/>
+              <circle cx="68" cy="78" r="2" fill="#F1C40F"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>「见鹿」ESC 机械键帽（鹿角溪水限定）</strong>
+            <p class="note">版本二特别修订：<strong>剥离源启星</strong>，顶面为双鹿角交汇 + 清溪贯通高光精雕。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              底 18×18mm · 顶 14×14mm · 高 11.5mm · Cherry MX 轴体 · 1U R4<br/>
+              铝合金 6063-T6 · 150# 细锆砂喷砂 · 鹿溪绿阳极着色 · 顶面 CNC 高光精雕
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-tumbler">
+          <div class="merch-stage">
+            <svg width="120" height="150" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="35" y="10" width="50" height="10" rx="3" fill="#1E293B"/>
+              <rect x="30" y="20" width="60" height="8" rx="2" fill="#334155"/>
+              <path d="M32 28L38 135C38 138 41 140 45 140H75C79 140 82 138 82 135L88 28H32Z" fill="#0D5E42" stroke="#167D59" stroke-width="2"/>
+              <circle cx="60" cy="70" r="14" fill="none" stroke="#F5F7FA" stroke-width="1.5"/>
+              <path d="M54 74C56 68 64 68 66 74M60 62V66" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M60 58L61 60L63 61L61 62L60 64L59 62L57 61L59 60L60 58Z" fill="#F1C40F"/>
+              <rect x="50" y="94" width="20" height="3" rx="1" fill="#F5F7FA"/>
+              <rect x="46" y="100" width="28" height="2" rx="1" fill="#94A3B8"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>哑光双层真空随行杯（480ml）</strong>
+            <p class="note">杯身激光剥漆露出金属光泽图腾，附「林深见鹿，源启清溪」中英铭牌。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              底径 68mm · 口径 88mm · 高 178mm<br/>
+              316L 医用级不锈钢内胆 · 高耐磨水性哑光粉末喷涂 · 激光精细剥漆 · 磁吸开合防溅盖
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-pin-metal">
+          <div class="merch-stage">
+            <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="65" cy="65" r="54" fill="#0A4631" stroke="#F1C40F" stroke-width="5"/>
+              <circle cx="65" cy="65" r="48" fill="none" stroke="#F1C40F" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <path d="M42 52C48 58 54 58 65 64C76 58 82 52 88 52C84 66 76 70 76 80C76 92 65 96 65 96C65 96 54 92 54 80C54 70 46 66 42 52Z" stroke="#F1C40F" stroke-width="3.5" fill="#0D5E42" stroke-linejoin="round"/>
+              <path d="M56 80C60 84 70 84 74 80" stroke="#00D2FF" stroke-width="3" stroke-linecap="round"/>
+              <path d="M65 40L67 45L72 47L67 49L65 54L63 49L58 47L63 45L65 40Z" fill="#F1C40F"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>硬珐琅金属纪念徽章（24K 镀金）</strong>
+            <p class="note">立体浮雕鹿角起凸，溪流填透明进化蓝珐琅，底面磨砂防伪细纹。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              直径 28.0mm · 厚度 2.2mm · 红铜冲压坯体 · 刺马针平头扣<br/>
+              精密模具液压冲压 · 手工填色硬珐琅 · 800℃ 烧结研磨 · 边缘镜面抛光镀 24K 真金
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h2 style="font-size:15px;margin:24px 0 12px;">C · 携带与通勤（环保材质）</h2>
+      <div class="grid-3">
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-tote-bag">
+          <div class="merch-stage">
+            <svg width="130" height="150" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M45 45V15C45 10 52 8 65 8C78 8 85 10 85 15V45" stroke="#0D5E42" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <rect x="20" y="45" width="90" height="95" rx="3" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.8"/>
+              <circle cx="45" cy="80" r="8" stroke="#0D5E42" stroke-width="2" fill="none"/>
+              <circle cx="85" cy="80" r="8" stroke="#00D2FF" stroke-width="2" fill="none"/>
+              <circle cx="65" cy="110" r="8" stroke="#0D5E42" stroke-width="2" fill="none"/>
+              <path d="M53 80H77M49 87L61 103M81 87L69 103" stroke="#94A3B8" stroke-width="1.5"/>
+              <rect x="16" y="90" width="4" height="14" fill="#0D5E42"/>
+            </svg>
+          </div>
+          <div style="padding:16px;">
+            <strong>杜邦纸（Tyvek）复合轻量托特包</strong>
+            <p class="note">随使用产生自然褶皱；印智能体矩阵拓扑架构图。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              380×420×100mm · 提手垂直高 280mm · 承重 15kg<br/>
+              Tyvek 1056D 原色 · 水性双色丝印（进化蓝 + 鹿溪绿）· 加厚尼龙衬里
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-laptop-sleeve">
+          <div class="merch-stage">
+            <div style="width:140px;height:110px;background:#EFECE6;border-radius:6px;border:1px solid #D8D4CC;display:flex;flex-direction:column;justify-content:space-between;padding:12px;color:#2A363B;">
+              <div style="font-size:10px;font-weight:700;color:#0D5E42;">LUXI LAB · 鹿溪</div>
+              <div class="mono" style="font-size:8px;color:#64748B;">GEO: 28.45°N, 117.94°E<br/>EST. 2026</div>
+            </div>
+          </div>
+          <div style="padding:16px;">
+            <strong>轻量防水杜邦纸 Tyvek 电脑包</strong>
+            <p class="note">丝印实验室真实经纬坐标（上饶 28.45°N, 117.94°E）与清溪流线图谱。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              适配 14″ 机身 · 内置加厚防震防泼溅隔层<br/>
+              可回收 Tyvek 基材 · 质轻抗撕裂 · 天然纸质褶皱 · 丝网印刷
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-readme-template">
+          <div class="merch-stage">
+            <div style="width:90%;background:var(--bg-card);border:1px solid var(--border-line);border-radius:6px;padding:12px;text-align:center;">
+              <div style="display:flex;justify-content:center;gap:6px;margin-bottom:8px;">
+                <span class="badge" style="background:#0D5E42;color:#fff;font-size:9px;">Product</span>
+                <span class="badge" style="background:#00D2FF;color:#000;font-size:9px;">v1.0</span>
+              </div>
+              <div style="font-size:11px;font-weight:600;">README 规范 Banner 模版</div>
+              <div class="mono" style="font-size:9px;color:var(--text-muted);margin-top:4px;">64×64 双标等大并排 · 居中</div>
+            </div>
+          </div>
+          <div style="padding:16px;">
+            <strong>GitHub 权威源 README 规范模版</strong>
+            <p class="note">版本一数字传播物料：规范徽章次序、主副标题字体、双标并排等大规则，保证不崩版。</p>
+            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
+              Markdown + 内联 HTML · 双标 64/48px · 徽章行 ≤5 枚<br/>
+              引用仓库：github.com/itrilogy/LUCY-DESIGN
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="quote" style="margin-top:20px;">
+        <p class="note" style="margin:0;">
+          <strong>材质与配色红线：</strong>实体物料四色仅取鹿溪绿（主）、源启白（底/反白）、进化蓝（溪流点缀）、标题金（落点烫印）；
+          不得引入第五专色。全部图样须可 100% 矢量复现（SVG 展开），不接受位图描摹。
+        </p>
+      </div>
+    </section>
+
+<section class="scene" id="scene-check" data-od-id="check-section">
+      <div class="section-header">
+        <p class="eyebrow">Engineering Checklist</p>
+        <h1 class="section-title">OpenDesign 交付自检</h1>
+        <p class="section-desc">生成后逐条核对。P0 不通过不得交付。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card" data-od-id="p0-pass">
+          <h2 style="font-size:16px;margin-bottom:12px;">P0 必须满足</h2>
+          <div class="check"><span class="ok">✓</span>双标等大；主标来自官方路径，不重绘。</div>
+          <div class="check"><span class="ok">✓</span>每屏一个 Primary，鹿溪绿实底白字。</div>
+          <div class="check"><span class="ok">✓</span>数据区具备加载 / 空 / 错误，空状态有下一步。</div>
+          <div class="check"><span class="ok">✓</span>焦点环可见；Esc 关闭 LegalGate。</div>
+          <div class="check"><span class="ok">✓</span>图表有口径；预测带置信度；观澜有非预言声明。</div>
+          <div class="check"><span class="ok">✓</span>prefers-reduced-motion 取消位移与光晕。</div>
+          <div class="check"><span class="ok">✓</span>实体物料给出标称尺寸 / 材质 / 工艺；图样可 100% 矢量复现。</div>
+          <div class="check"><span class="ok">✓</span>孵化候选方标明确标注「未立项」，不与既成产品混列。</div>
+        </article>
+        <article class="card" data-od-id="p0-forbid">
+          <h2 style="font-size:16px;margin-bottom:12px;">禁止项</h2>
+          <div class="check"><span class="no">✕</span>紫色渐变洗底、霓虹赛博配色。</div>
+          <div class="check"><span class="no">✕</span>Emoji 充当功能图标。</div>
+          <div class="check"><span class="no">✕</span>把模型输出写成确定事实。</div>
+          <div class="check"><span class="no">✕</span>隐藏焦点环或默认勾选风险门。</div>
+          <div class="check"><span class="no">✕</span>产品 accent 替换 Primary 按钮色。</div>
+          <div class="check"><span class="no">✕</span>3D 图表、渐变阴影堆砌、重绘实验室主标。</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div class="dialog">
+      <p class="eyebrow">LegalGate</p>
+      <h3 id="gate-title" style="font-size:17px;margin:8px 0;">外发推理数据授权</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">首次运行不得默认同意。当前操作会把离线缺陷特征发到外部推理节点，必须显式确认。</p>
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;background:var(--bg-sunken);padding:12px;border-radius:4px;">
+        <input type="checkbox" id="gate-agree" />
+        <span>我已核实不含敏感工装图纸，并确认授权外发。</span>
+      </label>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:20px;">
+        <button class="btn btn-secondary" id="gate-cancel">取消并返回</button>
+        <button class="btn btn-primary" id="gate-ok" disabled>显式授权并启动</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="dialog">
+      <h3 id="confirm-title" style="font-size:17px;margin-bottom:8px;">确认删除该批次？</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">此操作可撤销。系统会保留 .bak 副本 7 天。</p>
+      <div style="display:flex;justify-content:flex-end;gap:8px;">
+        <button class="btn btn-secondary" id="confirm-cancel">保留</button>
+        <button class="btn btn-danger" id="confirm-ok">删除并保留备份</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status">已复制</div>
+
+  <script>
+    const PRODUCTS = [
+      { zh:"见鹿", en:"JianLu", matrix:"知行·三动", slogan:"指间林深，心澄见鹿", accent:"#0D5E42", motif:"键帽 + 光标 + 溪流",
+        glyph:'<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 12h6"/>' },
+      { zh:"听默", en:"Tingmo", matrix:"知行·三动", slogan:"谛听万籁，默化成文", accent:"#0D5E42", motif:"声纹弧 + 溪流",
+        glyph:'<path d="M8 8v8M12 5v14M16 8v8"/>' },
+      { zh:"绘流", en:"HuiLiu", matrix:"知行·三动", slogan:"引线定锚，聚迹成流", accent:"#0D5E42", motif:"贝塞尔锚 + 金落点",
+        glyph:'<path d="M4 14c4-8 8 8 12 0"/><circle cx="17" cy="12" r="2" fill="#F1C40F" stroke="none"/>' },
+      { zh:"聆涧", en:"LingJian", matrix:"知行·三动", slogan:"耳畔清涧，一字生境", accent:"#E8D4B0", motif:"两岸山涧 + 一字",
+        glyph:'<path d="M5 18l5-10 3 6 6-9" stroke="#E8D4B0"/><path d="M12 12c-1 3 2 5 0 8" stroke="#00D2FF"/>' },
+      { zh:"脉息", en:"MaiXi", matrix:"具身·二察", slogan:"光映微澜，脉息自明", accent:"#00D2FF", motif:"同心环 + 脉搏波",
+        glyph:'<circle cx="12" cy="12" r="7" stroke="#00D2FF"/><path d="M6 12h3l2-3 2 6 2-3h3" stroke="#00D2FF"/>' },
+      { zh:"审微", en:"ShenWei", matrix:"具身·二察", slogan:"察于至微，防于未萌", accent:"#2F7A73", motif:"光学分划 + 隐患点",
+        glyph:'<circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="1.6" fill="#F1C40F" stroke="none"/>' },
+      { zh:"问津", en:"WenJin", matrix:"理数·三思", slogan:"向道问津，顺溪成程", accent:"#0D5E42", motif:"双枝航道 + 落点",
+        glyph:'<path d="M6 18c4-10 8-10 12 0"/><path d="M12 8v4"/><circle cx="12" cy="7" r="1.6" fill="#F1C40F" stroke="none"/>' },
+      { zh:"衡流", en:"HengLiu", matrix:"理数·三思", slogan:"审度称衡，守正观流", accent:"#60A5FA", motif:"马尔可夫环 + K线",
+        glyph:'<circle cx="12" cy="12" r="7" stroke="#60A5FA"/><path d="M8 15l3-6 3 4 2-3" stroke="#60A5FA"/>' },
+      { zh:"观澜", en:"GuanLan", matrix:"理数·三思", slogan:"观水有术，由表及澜", accent:"#E74C3C", motif:"红蓝球 + 市场曲线",
+        glyph:'<circle cx="9" cy="13" r="3" fill="#E74C3C" stroke="none"/><circle cx="15" cy="11" r="3" fill="#3498DB" stroke="none"/>' },
+      { zh:"澄矩", en:"ChengJu", matrix:"工坊·一法", slogan:"源清流澈，行止应矩", accent:"#0D5E42", motif:"控制限 + 正交走线",
+        glyph:'<path d="M4 10h16M10 4v16"/>' },
+      { zh:"溯知", en:"SuZhi", matrix:"工坊·一法", slogan:"溯流求源，知汇成章", accent:"#0D5E42", motif:"三信源汇流 + 成章",
+        glyph:'<path d="M6 7h12M8 7v10h8"/><path d="M6 17c3-4 9-4 12 0" stroke="#00D2FF"/>' },
+      { zh:"听默 Android", en:"Tingmo Android", matrix:"知行·三动", slogan:"听而有迹，默而成文", accent:"#0D5E42", motif:"声纹弧",
+        glyph:'<rect x="7" y="4" width="10" height="16" rx="2"/><path d="M10 8v6M14 9v4"/>' }
+    ];
+
+    document.getElementById("matrix-body").innerHTML = PRODUCTS.map((p,i) => {
+      const start = i === 0 || PRODUCTS[i-1].matrix !== p.matrix;
+      const span = PRODUCTS.filter(x => x.matrix === p.matrix).length;
+      return `<tr>
+        ${start ? `<td rowspan="${span}" style="font-weight:600;color:var(--color-primary);">${p.matrix}</td>` : ""}
+        <td><span class="dot" style="background:${p.accent}"></span> ${p.zh}</td>
+        <td class="mono">${p.en}</td>
+        <td>${p.slogan}</td>
+        <td class="num">${p.accent}</td>
+        <td>${p.motif}</td>
+      </tr>`;
+    }).join("");
+
+    document.getElementById("tile-grid").innerHTML = PRODUCTS.map(p => `
+      <div class="tile" data-od-id="tile-${p.en.toLowerCase().replace(/\s+/g,'-')}">
+        <div class="brick" style="background:${p.accent === '#E8D4B0' ? '#1B2421' : '#0D5E42'}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${p.glyph}</svg>
+          <span class="stream"></span><span class="star"></span>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:13px;">${p.zh} · ${p.en}</div>
+          <div style="font-size:12px;color:var(--text-muted);">${p.motif}</div>
+        </div>
+      </div>`).join("");
+
+    const html = document.documentElement;
+    document.getElementById("theme").addEventListener("change", e => html.setAttribute("data-theme", e.target.value));
+    document.getElementById("density").addEventListener("change", e => html.setAttribute("data-density", e.target.value));
+
+    document.querySelectorAll(".nav-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".nav-tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".scene").forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("scene-" + btn.dataset.scene).classList.add("active");
+      });
+    });
+    document.querySelectorAll(".sub-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".sub-tab").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".archetype").forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("arch-" + btn.dataset.arch).classList.add("active");
+      });
+    });
+
+    const tableOK = `<table>
+      <thead><tr><th>批次</th><th>工位</th><th>样本</th><th>合格率</th><th>置信度</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">LOT-2026-0910-A</td><td>视觉对齐 02</td><td class="num">1,240</td><td class="num" style="color:var(--state-up)">99.84%</td><td class="num">99.5%</td><td><span class="badge badge-ok">正常放行</span></td></tr>
+        <tr><td class="mono">LOT-2026-0910-B</td><td>激光分划 04</td><td class="num">820</td><td class="num" style="color:var(--state-up)">99.12%</td><td class="num">99.0%</td><td><span class="badge badge-ok">正常放行</span></td></tr>
+        <tr><td class="mono">LOT-2026-0909-C</td><td>正交走线</td><td class="num">450</td><td class="num" style="color:var(--state-down)">94.20%</td><td class="num">95.0%</td><td><span class="badge badge-danger">容差偏离</span></td></tr>
+      </tbody></table>
+      <p class="note">口径：GB/T 2828.1 抽样。以下为界面示例批次，不是实时产线数据。</p>`;
+    const wb = document.getElementById("wb-main");
+    const states = {
+      ok: tableOK,
+      loading: `<div class="loading"><div class="spinner"></div>正在拉取批次明细…</div>`,
+      empty: `<div class="empty"><strong style="color:var(--text-primary)">本班次暂无批次</strong><span>下一步：创建检验任务或导入历史 LOT。</span><button class="btn btn-primary" style="margin-top:8px">开始新批次检验</button></div>`,
+      error: `<div class="error"><strong style="color:var(--alert-red)">质检服务暂时不可达</strong><span>可重试，或先在本地查看上次 .bak 快照。</span><button class="btn btn-secondary" style="margin-top:8px" data-state="ok">重试</button></div>`
+    };
+    function setState(name) { wb.innerHTML = states[name]; }
+    setState("ok");
+    document.querySelectorAll("[data-state]").forEach(btn => btn.addEventListener("click", () => setState(btn.dataset.state)));
+    wb.addEventListener("click", e => { if (e.target.dataset.state) setState(e.target.dataset.state); });
+
+    const gate = document.getElementById("gate");
+    const confirm = document.getElementById("confirm");
+    const agree = document.getElementById("gate-agree");
+    const gateOk = document.getElementById("gate-ok");
+    const toast = document.getElementById("toast");
+    function open(el) { el.classList.add("open"); }
+    function close(el) { el.classList.remove("open"); }
+    function showToast(t) { toast.textContent = t; toast.classList.add("show"); setTimeout(() => toast.classList.remove("show"), 1800); }
+    document.getElementById("open-gate").addEventListener("click", () => { agree.checked = false; gateOk.disabled = true; open(gate); });
+    document.getElementById("gate-cancel").addEventListener("click", () => close(gate));
+    agree.addEventListener("change", () => { gateOk.disabled = !agree.checked; });
+    gateOk.addEventListener("click", () => { close(gate); showToast("已显式授权，任务进入队列"); });
+    document.getElementById("danger-btn").addEventListener("click", () => open(confirm));
+    document.getElementById("confirm-cancel").addEventListener("click", () => close(confirm));
+    document.getElementById("confirm-ok").addEventListener("click", () => { close(confirm); showToast("已删除，.bak 保留 7 天"); });
+    document.getElementById("toast-btn").addEventListener("click", () => showToast("主标请使用官方 luxi-lab-main.svg，禁止重绘"));
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") { close(gate); close(confirm); }
+      if (e.code === "Space" && document.getElementById("arch-immersive").classList.contains("active") && e.target === document.body) {
+        e.preventDefault(); togglePlay();
+      }
+    });
+
+    let playing = false;
+    function togglePlay() {
+      playing = !playing;
+      document.getElementById("play-icon").innerHTML = playing
+        ? '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>'
+        : '<polygon points="5 3 19 12 5 21 5 3"/>';
+    }
+    document.getElementById("play-btn").addEventListener("click", togglePlay);
+  </script>
+</body>
+</html>

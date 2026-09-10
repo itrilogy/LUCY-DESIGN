@@ -1,0 +1,2100 @@
+
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-density="comfortable">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>鹿溪设计范式 · 全场景参考套件 (LUXI Design System)</title>
+  <style>
+    /* =============================================================================
+       鹿溪设计范式 (LUXI Design System v1.0) 核心 Tokens
+       遵循 DESIGN.md 与 tokens.css 规范
+       ========================================================================== */
+    :root {
+      /* 品牌四色（VI 核心，不可覆写） */
+      --luxi-green: #0D5E42;
+      --origin-white: #F5F7FA;
+      --luxi-cyan: #00D2FF;
+      --luxi-gold: #F1C40F;
+
+      /* 业务状态色 */
+      --alert-red: #E74C3C;
+      --info-blue: #3498DB;
+      --state-up: #22C55E;
+      --state-down: #EF4444;
+      --state-flat: #94A3B8;
+
+      /* 语义层 · 亮色（默认） */
+      --text-primary: #1A2428;
+      --text-secondary: #42525C;
+      --text-muted: #64748B;
+      --text-inverse: #F5F7FA;
+
+      --bg-page: #F5F7FA;
+      --bg-card: #FFFFFF;
+      --bg-raised: #FFFFFF;
+      --bg-sunken: #EEF2F5;
+
+      --border-subtle: rgba(13, 94, 66, 0.10);
+      --border-line: rgba(13, 94, 66, 0.18);
+      --border-strong: rgba(13, 94, 66, 0.32);
+
+      --color-primary: var(--luxi-green);
+      --color-primary-hover: #127A55;
+      --color-primary-active: #0A4A33;
+      --color-accent: var(--luxi-cyan);
+      --color-highlight: var(--luxi-gold);
+
+      --product-accent: var(--luxi-green);
+      --product-accent-2: var(--luxi-cyan);
+
+      /* 字体排印 */
+      --font-sans-zh: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      --font-serif-zh: "Songti SC", "Source Han Serif SC", "Noto Serif SC", Georgia, serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+      --font-body: var(--font-sans-zh);
+      --font-display: var(--font-sans-zh);
+
+      --fs-display: 36px;
+      --fs-h1: 28px;
+      --fs-h2: 22px;
+      --fs-h3: 17px;
+      --fs-body: 14px;
+      --fs-body-lg: 16px;
+      --fs-small: 13px;
+      --fs-caption: 12px;
+      --fs-micro: 11px;
+
+      /* 空间与圆角 */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+
+      --radius-xs: 4px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --radius-tile: 12px;
+
+      --shadow-xs: 0 1px 2px rgba(13, 94, 66, 0.05);
+      --shadow-sm: 0 2px 8px rgba(13, 94, 66, 0.08);
+      --shadow-md: 0 8px 24px rgba(13, 94, 66, 0.10);
+      --shadow-lg: 0 16px 48px rgba(13, 94, 66, 0.14);
+      --shadow-focus: 0 0 0 3px rgba(0, 210, 255, 0.35);
+
+      /* 密度档变量 */
+      --density-row: 44px;
+      --density-control: 36px;
+      --density-gap: 12px;
+
+      --container-max: 1240px;
+      --header-h: 60px;
+    }
+
+    /* 深色主题 */
+    [data-theme="dark"] {
+      --text-primary: #E6EFEA;
+      --text-secondary: #C3D3CB;
+      --text-muted: #8FA3BF;
+      --text-inverse: #121A17;
+
+      --bg-page: #121A17;
+      --bg-card: #1A2428;
+      --bg-raised: #22302B;
+      --bg-sunken: #0E1613;
+
+      --border-subtle: rgba(245, 247, 250, 0.08);
+      --border-line: rgba(245, 247, 250, 0.14);
+      --border-strong: rgba(245, 247, 250, 0.28);
+
+      --color-primary: #14805C;
+      --color-primary-hover: #17946B;
+      --color-primary-active: #0D5E42;
+    }
+
+    /* 沉浸主题 (ink) */
+    [data-theme="ink"] {
+      --text-primary: #F3EEE6;
+      --text-secondary: rgba(243, 238, 230, 0.78);
+      --text-muted: rgba(243, 238, 230, 0.55);
+      --text-inverse: #0B0C0E;
+
+      --bg-page: #0B0C0E;
+      --bg-card: #141517;
+      --bg-raised: #1B1D20;
+      --bg-sunken: #08090A;
+
+      --border-subtle: rgba(243, 238, 230, 0.08);
+      --border-line: rgba(243, 238, 230, 0.14);
+      --border-strong: rgba(243, 238, 230, 0.26);
+
+      --color-primary: #14805C;
+      --font-body: var(--font-serif-zh);
+      --font-display: var(--font-serif-zh);
+    }
+
+    /* 密度档切换 */
+    [data-density="compact"] {
+      --density-row: 36px;
+      --density-control: 30px;
+      --density-gap: 8px;
+    }
+    [data-density="comfortable"] {
+      --density-row: 44px;
+      --density-control: 36px;
+      --density-gap: 12px;
+    }
+
+    /* =============================================================================
+       基础重置与全局排版
+       ========================================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-page);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    h1, h2, h3, h4, p { margin: 0; }
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; color: inherit; }
+    code, .mono { font-family: var(--font-mono); }
+    .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+    :focus-visible {
+      outline: 2px solid var(--luxi-cyan);
+      outline-offset: 2px;
+    }
+
+    /* =============================================================================
+       导航与工具条
+       ========================================================================== */
+    .top-shell {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-line);
+      backdrop-filter: blur(12px);
+    }
+    .top-nav {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      height: var(--header-h);
+      padding: 0 var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .brand-mark svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .brand-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: var(--space-2);
+      background: var(--bg-sunken);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+    .nav-tab-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      border: none;
+      background: transparent;
+      border-radius: var(--radius-xs);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    .nav-tab-btn:hover {
+      color: var(--text-primary);
+    }
+    .nav-tab-btn.active {
+      background: var(--bg-card);
+      color: var(--color-primary);
+      box-shadow: var(--shadow-xs);
+      font-weight: 600;
+    }
+
+    .controller-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .select-control {
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-xs);
+      padding: 4px 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    /* =============================================================================
+       主容器与场景视口
+       ========================================================================== */
+    .viewport-container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6) var(--space-12);
+    }
+    .scene-view {
+      display: none;
+      animation: fadeIn 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .scene-view.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 章节标题区块 */
+    .section-header {
+      margin-bottom: var(--space-8);
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: var(--space-5);
+    }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+      font-weight: 600;
+    }
+    .section-title {
+      font-size: var(--fs-h1);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: var(--fs-body);
+      max-width: 72ch;
+    }
+
+    /* 通用卡片与网格 */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-xs);
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+
+    /* 按钮系统（每屏至多一个 Primary 绿底实色按钮） */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: var(--density-control);
+      padding: 0 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.12s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      border-color: var(--color-primary);
+    }
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+    }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--color-primary);
+      border-color: var(--border-line);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-sunken);
+      border-color: var(--border-strong);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+    .btn-ghost:hover {
+      background: var(--bg-sunken);
+      color: var(--text-primary);
+    }
+
+    /* =============================================================================
+       01. CI 理念识别系统专有样式
+       ========================================================================== */
+    .ci-quote-card {
+      background: linear-gradient(135deg, rgba(13, 94, 66, 0.04) 0%, rgba(0, 210, 255, 0.03) 100%);
+      border: 1px solid var(--border-line);
+      border-left: 4px solid var(--luxi-green);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+    .ci-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .ci-matrix-table th, .ci-matrix-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-line);
+    }
+    .ci-matrix-table th {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .product-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .accent-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* =============================================================================
+       02. VI 视觉识别规范专有样式
+       ========================================================================== */
+    .color-chip {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .color-swatch {
+      height: 72px;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .color-meta {
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+    .color-meta .token-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .color-meta .token-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .logo-spec-box {
+      border: 1px dashed var(--border-strong);
+      background: var(--bg-sunken);
+      border-radius: var(--radius-md);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      position: relative;
+    }
+    .logo-safe-guide {
+      position: absolute;
+      inset: 16px;
+      border: 1px dashed rgba(0, 210, 255, 0.4);
+      pointer-events: none;
+    }
+
+    /* 产品方标模拟展示 */
+    /* 产品方标规范展示 */
+    .mark-filter-bar {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .mark-filter-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-line);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .mark-filter-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .mark-filter-btn.active {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      border-color: var(--color-primary);
+    }
+    .product-mark-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .product-mark-card:hover {
+      border-color: var(--luxi-cyan);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-1px);
+    }
+    .product-mark-card.selected {
+      border-color: var(--color-primary);
+      background: rgba(13, 94, 66, 0.04);
+      box-shadow: 0 0 0 1px var(--color-primary);
+    }
+    .square-brick {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--luxi-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      position: relative;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 2px 6px rgba(13, 94, 66, 0.15);
+      overflow: hidden;
+    }
+    .square-brick svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .mark-badge {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      padding: 1px 6px;
+      border-radius: 4px;
+      line-height: 1.4;
+      display: inline-block;
+    }
+    .mark-badge-formal {
+      background: rgba(13, 94, 66, 0.1);
+      color: var(--color-primary);
+      border: 1px solid rgba(13, 94, 66, 0.2);
+    }
+    .mark-badge-candidate {
+      background: rgba(0, 210, 255, 0.1);
+      color: #0384A3;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+    }
+    [data-theme="dark"] .mark-badge-candidate,
+    [data-theme="ink"] .mark-badge-candidate {
+      color: #7CF0FF;
+    }
+    .mark-inspect-panel {
+      margin-top: var(--space-6);
+      padding: var(--space-5);
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-md);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-6);
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .mark-inspect-panel { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================================================
+       03. 网页各种页场景（工作台、仪表盘、官网、沉浸页）
+       ========================================================================== */
+    .sub-tabs {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: var(--space-3);
+    }
+    .sub-tab-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      border-radius: var(--radius-xs);
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      color: var(--text-secondary);
+    }
+    .sub-tab-btn.active {
+      background: var(--bg-card);
+      border-color: var(--border-line);
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .page-archetype { display: none; }
+    .page-archetype.active { display: block; }
+
+    /* 工作台骨架 */
+    .app-frame {
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .app-header {
+      height: 50px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-5);
+    }
+    .app-body {
+      display: flex;
+      min-height: 420px;
+    }
+    .app-sidebar {
+      width: 220px;
+      border-right: 1px solid var(--border-line);
+      background: var(--bg-sunken);
+      padding: var(--space-4);
+      flex-shrink: 0;
+    }
+    .sidebar-menu-item {
+      padding: 8px 12px;
+      border-radius: var(--radius-xs);
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-menu-item.active {
+      background: var(--bg-card);
+      color: var(--color-primary);
+      font-weight: 600;
+      box-shadow: var(--shadow-xs);
+    }
+    .app-main {
+      flex: 1;
+      padding: var(--space-6);
+      background: var(--bg-page);
+      overflow-x: auto;
+    }
+
+    /* 工作台数据表格 */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-line);
+    }
+    .data-table th, .data-table td {
+      padding: 0 var(--space-4);
+      height: var(--density-row);
+      border-bottom: 1px solid var(--border-line);
+      font-size: 13px;
+      text-align: left;
+    }
+    .data-table th {
+      background: var(--bg-sunken);
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .data-table tr:hover td {
+      background: var(--bg-sunken);
+    }
+
+    /* 状态指示徽标 */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .badge-success { background: rgba(34, 197, 94, 0.12); color: #15803d; }
+    .badge-warning { background: rgba(241, 196, 15, 0.18); color: #a16207; }
+    .badge-danger { background: rgba(239, 68, 68, 0.12); color: #b91c1c; }
+    .badge-neutral { background: var(--bg-sunken); color: var(--text-muted); }
+
+    /* 三态切换演示区 */
+    .state-switch-bar {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      align-items: center;
+    }
+
+    /* 沉浸页范式 (聆涧范式) */
+    .immersive-container {
+      background: #0B0C0E;
+      color: #F3EEE6;
+      border-radius: var(--radius-lg);
+      padding: var(--space-12) var(--space-8);
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(243, 238, 230, 0.1);
+      font-family: var(--font-serif-zh);
+    }
+    .immersive-bg-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(13, 94, 66, 0.35) 0%, rgba(0, 210, 255, 0.05) 50%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .play-trigger-btn {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 1px solid rgba(243, 238, 230, 0.25);
+      background: rgba(243, 238, 230, 0.05);
+      color: #F3EEE6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+    .play-trigger-btn:hover {
+      background: rgba(243, 238, 230, 0.15);
+      border-color: var(--luxi-cyan);
+      transform: scale(1.04);
+    }
+
+    /* =============================================================================
+       04. 周边设计物场景（工牌、名片、数码物料、文创礼品）
+       ========================================================================== */
+    .merch-spec-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+    }
+    .merch-preview-stage {
+      height: 220px;
+      background: var(--bg-sunken);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+      position: relative;
+    }
+    .merch-detail {
+      padding: var(--space-5);
+    }
+    .merch-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .merch-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .merch-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* 模拟名片实体 */
+    .business-card-mock {
+      width: 240px;
+      height: 140px;
+      background: #FFFFFF;
+      border-radius: 6px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #1A2428;
+      position: relative;
+      border: 1px solid #E5E9EC;
+    }
+    .business-card-back {
+      background: var(--luxi-green);
+      color: #FFFFFF;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* 模拟工牌胸卡 */
+    .badge-card-mock {
+      width: 140px;
+      height: 200px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      border: 1px solid #E2E8F0;
+    }
+    .badge-lanyard-hole {
+      width: 28px;
+      height: 5px;
+      background: #E2E8F0;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+    .badge-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--bg-sunken);
+      border: 2px solid var(--luxi-green);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--luxi-green);
+    }
+
+    /* 模拟周边键帽 (ESC) */
+    .keycap-mock {
+      width: 76px;
+      height: 76px;
+      background: linear-gradient(145deg, #106f4e, #0a4833);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(13, 94, 66, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* =============================================================================
+       05. 范式字典与硬约束清单
+       ========================================================================== */
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-line);
+      font-size: 13px;
+    }
+    .check-icon {
+      color: var(--color-primary);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* 模态框 / 风险显式门 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-dialog {
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-md);
+      width: 100%;
+      max-width: 480px;
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-6);
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 920px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .app-body { flex-direction: column; }
+      .app-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-line); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 顶部全局控制与导航 ==================== -->
+  <header class="top-shell">
+    <div class="top-nav">
+      <div class="brand-mark">
+        <!-- 官方权威主标 SVG（缩放为 32x32 规格） -->
+        <svg viewBox="0 0 2048 2048" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="鹿溪联合创新实验室">
+          <path fill="#0D5E42" d="M 864 794 C 988 781 1110 812 1208 891 C 1243 919 1280 963 1286 1009 C 1290 1031 1282 1045 1260 1050 C 1258 1001 1228 960 1192 929 C 930 704 479 884 458 1233 C 457 1253 456 1271 456 1291 C 457 1307 468 1304 479 1302 C 532 1282 541 1211 556 1162 C 595 1035 723 920 863 936 C 867 936 881 938 882 943 C 833 967 806 989 781 1016 C 731 1072 703 1144 702 1219 C 701 1310 737 1396 802 1460 C 922 1580 1096 1610 1256 1565 C 1348 1533 1391 1518 1483 1510 C 1545 1510 1622 1529 1666 1574 C 1626 1570 1598 1566 1557 1570 C 1482 1578 1426 1615 1359 1645 C 1308 1669 1242 1682 1186 1685 C 1051 1693 910 1653 810 1558 C 779 1529 757 1495 724 1466 C 677 1423 620 1392 557 1381 C 514 1406 525 1409 549 1412 C 578 1417 605 1426 631 1439 C 669 1458 710 1493 738 1524 C 766 1557 781 1574 814 1603 C 919 1686 1047 1722 1179 1717 C 1264 1709 1235 1731 1130 1762 C 969 1800 807 1777 666 1689 C 551 1617 463 1509 430 1376 C 402 1258 420 1128 485 1025 C 540 937 622 869 718 830 L 864 794 Z"/>
+          <path fill="#00D2FF" d="M 479 1302 C 532 1282 541 1211 556 1162 C 595 1035 723 920 863 936 C 833 967 806 989 781 1016 C 687 1026 605 1101 570 1187 C 552 1232 541 1292 484 1302 Z"/>
+          <path fill="#2A0E01" d="M 1425 229 C 1440 236 1465 271 1519 515 C 1518 549 1512 582 1510 616 C 1527 632 1551 616 1600 550 C 1585 452 1572 376 1579 311 C 1597 352 1625 561 1573 673 C 1479 770 1341 747 1240 825 C 1178 859 1153 798 1215 749 C 1273 668 1274 617 1285 581 C 1305 664 1328 720 1408 703 C 1464 581 1441 472 1387 429 C 1339 381 1331 351 1360 361 C 1434 413 1465 407 1471 377 C 1438 290 1418 250 1425 229 Z"/>
+          <path fill="#2A0E01" d="M 768 810 C 645 764 606 753 525 729 C 436 685 411 597 425 374 C 440 314 471 323 464 350 C 454 391 439 508 451 559 C 492 629 508 632 517 594 C 511 534 519 359 557 283 C 581 234 606 230 611 243 C 594 282 565 404 575 415 C 637 387 652 374 684 346 C 700 355 615 450 568 606 C 593 671 625 690 716 720 C 728 706 723 667 728 591 C 740 582 751 585 755 631 C 780 722 820 756 862 790 L 768 810 Z"/>
+        </svg>
+        <div class="brand-title">
+          <span>鹿溪设计范式</span>
+          <span class="brand-subtitle">LUXI DESIGN SYSTEM · 场景套件</span>
+        </div>
+      </div>
+
+      <!-- 场景大类切换 -->
+      <nav class="nav-tabs" role="tablist" aria-label="场景模块导航">
+        <button class="nav-tab-btn active" data-target="scene-ci" role="tab">01 理念识别 (CI)</button>
+        <button class="nav-tab-btn" data-target="scene-vi" role="tab">02 视觉规范 (VI)</button>
+        <button class="nav-tab-btn" data-target="scene-web" role="tab">03 网页场景集 (Web)</button>
+        <button class="nav-tab-btn" data-target="scene-merch" role="tab">04 周边设计物 (Collateral)</button>
+        <button class="nav-tab-btn" data-target="scene-tokens" role="tab">05 约束与字典</button>
+      </nav>
+
+      <!-- 场景交互档位 -->
+      <div class="controller-bar">
+        <select id="themeSelector" class="select-control" aria-label="主题切换">
+          <option value="light">亮色 (Light 默认)</option>
+          <option value="dark">深色 (Dark 数据)</option>
+          <option value="ink">沉浸 (Ink 播放)</option>
+        </select>
+        <select id="densitySelector" class="select-control" aria-label="密度调节">
+          <option value="comfortable">舒适密度 (Comfortable)</option>
+          <option value="compact">紧凑密度 (Compact)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="viewport-container">
+
+    <!-- =======================================================================
+         01. CI 理念识别系统 (Corporate Identity)
+         ======================================================================= -->
+    <section id="scene-ci" class="scene-view active" data-od-id="ci-section">
+      <div class="section-header">
+        <p class="eyebrow">CORPORATE IDENTITY · 理念根基</p>
+        <h1 class="section-title">林深见鹿，源启清溪</h1>
+        <p class="section-desc">收敛实验室 12 个产品的业务实践，构建“知行·具身·理数·工坊”四大矩阵。统一技术哲学，杜绝自嗨与界面浮夸。</p>
+      </div>
+
+      <div class="ci-quote-card">
+        <h3 style="font-size: 16px; margin-bottom: 8px; color: var(--color-primary);">品牌身份与三维代号解构</h3>
+        <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);">
+          <strong>LUXI</strong> ＝ <strong>Lucy</strong>（始祖基因 · 敬畏源头与演化韧性）＋ <strong>Lucky</strong>（务实价值 · 致力于为业务产生确定性正向收益）＋ <strong>Xi / Stream</strong>（鹿溪清流 · 本土生态自然流淌，虚实共生）。
+        </p>
+        <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted); display: flex; gap: var(--space-6);">
+          <span><strong>使命：</strong>在复杂中看见价值，在流动中定义未来</span>
+          <span><strong>愿景：</strong>构建空地一体、虚实共生的行业进化母体</span>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom: var(--space-8);">
+        <!-- L-U-X-I 设计法则 -->
+        <div class="card">
+          <h3 style="font-size: 16px; margin-bottom: var(--space-4);">L-U-X-I 设计法则 (设计过滤器)</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); font-size: 13px;">
+            <div>
+              <strong style="color: var(--color-primary);">L · Link (连接)</strong>：界面连接空地与业务，数据与操作同屏闭环，空状态明确提供下一步导向。
+            </div>
+            <div>
+              <strong style="color: var(--color-primary);">U · Unveil (揭示)</strong>：剥除遮蔽，关键指标第一眼呈现；图表必须严格标注口径与样本量边界。
+            </div>
+            <div>
+              <strong style="color: var(--color-primary);">X · X-Factor (变量)</strong>：拥抱客观不确定性，模型推演与概率必须附带置信度，严禁包装为绝对事实。
+            </div>
+            <div>
+              <strong style="color: var(--color-primary);">I · Iterate (迭代)</strong>：组件支持插拔替换，通过密度档与语义主题适应不同工况，拒绝僵死模板。
+            </div>
+          </div>
+        </div>
+
+        <!-- 交互三项铁律 -->
+        <div class="card">
+          <h3 style="font-size: 16px; margin-bottom: var(--space-4);">核心工程与交互准则</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); font-size: 13px;">
+            <div>
+              <strong>1. 克制 (Restraint)</strong>：工具类界面拒绝密集无意义旋钮，遵循主次分层，高级功能按需显露。
+            </div>
+            <div>
+              <strong>2. 诚实 (Honesty)</strong>：模型输出绝不伪装为确定真相，示例数据明确打标，客观呈现局限性。
+            </div>
+            <div>
+              <strong>3. 可退与显式授权 (Reversible & LegalGate)</strong>：破坏性操作支持二次确认与撤销；模型外发、隐私及密钥门强制显式同意。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 五大业务序列与 19 款产品品牌全景矩阵表 -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
+          <div>
+            <h3 style="font-size: 16px; margin-bottom: 4px;">品牌产品矩阵全景演进 (11 款已落地正式工程 + 8 款前瞻储备候选)</h3>
+            <p style="font-size: 12.5px; color: var(--text-muted); max-width: 80ch; line-height: 1.5;">
+              实验室在洪光华劳模创新工作室引领下，从初期单一工具形态演进为五大核心业务序列。全系产品恪守“纯双字中文 + 经典英文代号”与“动静结构”，动词定机理、静词赋意象，严守科学底线与务实工程准则。
+            </p>
+          </div>
+          <div style="display: flex; gap: var(--space-2);">
+            <span class="badge" style="background: rgba(13, 94, 66, 0.1); color: var(--color-primary); border: 1px solid rgba(13, 94, 66, 0.2);">正式工程：11 款</span>
+            <span class="badge" style="background: rgba(0, 210, 255, 0.1); color: #0384A3; border: 1px solid rgba(0, 210, 255, 0.3);">候选储备：8 款</span>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="ci-matrix-table" style="min-width: 840px;">
+            <thead>
+              <tr>
+                <th>序列分类</th>
+                <th>产品定名</th>
+                <th>代号 / 英文</th>
+                <th>状态</th>
+                <th>动静结构</th>
+                <th>Slogan / 业务定位与机理</th>
+                <th>视觉 Accent</th>
+                <th>方标核心意象</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 1. 感官交互 (知行系列) -->
+              <tr>
+                <td rowspan="4" style="font-weight: 600; color: var(--color-primary); background: rgba(13, 94, 66, 0.02);">
+                  感官交互<br/><span style="font-size:11px; font-weight:400; color:var(--text-muted);">知行系列</span>
+                </td>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#0D5E42;"></span>见鹿</span></td>
+                <td class="mono">JianLu</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>见（目·察）+ 鹿（灵·知）</td>
+                <td><strong>指间林深，心澄见鹿。</strong>键盘盲打肌肉记忆与代码语法内化</td>
+                <td class="num">#0D5E42</td>
+                <td>机械键帽 + 击键光标 + 溪流 + 源启星</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#0D5E42;"></span>听默</span></td>
+                <td class="mono">Tingmo</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>听（耳·动）+ 默（心·静）</td>
+                <td><strong>谛听万籁，默化成文。</strong>常驻托盘无摩擦语音捕捉与静默转写</td>
+                <td class="num">#0D5E42</td>
+                <td>三重声纹弧 + 纵深清流 + 源启星</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#F1C40F;"></span>绘流</span></td>
+                <td class="mono">HuiLiu</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>绘（手·构）+ 流（意·转）</td>
+                <td><strong>引线定锚，聚迹成流。</strong>本地优先 SVG 矢量资产与语义节点管理</td>
+                <td class="num">#0D5E42 / #F1C40F</td>
+                <td>贝塞尔控制手柄 + 锚点 + 标题金落点</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#0D5E42;"></span>聆涧</span></td>
+                <td class="mono">LingJian</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>聆（耳·雅）+ 涧（山泉·静）</td>
+                <td><strong>耳畔清涧，一字生境。</strong>本机多轨环境声混音器与沉浸心流生境</td>
+                <td class="num">#0D5E42 / #00D2FF</td>
+                <td>夹岸山泉双涧壁 + 耳廓开合弧 + 清涧水珠</td>
+              </tr>
+
+              <!-- 2. 具身感知与物联 (具身系列) -->
+              <tr>
+                <td rowspan="4" style="font-weight: 600; color: #0284C7; background: rgba(2, 132, 199, 0.02);">
+                  具身感知与物联<br/><span style="font-size:11px; font-weight:400; color:var(--text-muted);">具身系列</span>
+                </td>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#00D2FF;"></span>脉息</span></td>
+                <td class="mono">MaiXi</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>脉（血·动）+ 息（气·生）</td>
+                <td><strong>光映微澜，脉息自明。</strong>普通摄像头无感 rPPG 面部血容积与呼吸监测</td>
+                <td class="num">#00D2FF</td>
+                <td>面部光学同心环 + BVP脉搏波 + 呼吸节律</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#2F7A73;"></span>审微</span></td>
+                <td class="mono">ShenWei</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>审（思·辨）+ 微（细·隐）</td>
+                <td><strong>察于至微，防于未萌。</strong>工业厂区安全隐患排查标定与交互式测评</td>
+                <td class="num">#2F7A73</td>
+                <td>十字光学分划准星 + 标题金隐患命中点</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#00D2FF;"></span>寻微</span></td>
+                <td class="mono">XunWei</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>寻（探·索）+ 微（点·迹）</td>
+                <td><strong>寻迹入幽，标微见序。</strong>RFID仓库物资高并发寻迹与条零关联追溯</td>
+                <td class="num">#00D2FF</td>
+                <td>同心射频雷达波束 + 倾斜芯片菱形标签</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#10B981;"></span>境视</span></td>
+                <td class="mono">JingShi</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>境（界·场）+ 视（察·观）</td>
+                <td><strong>虚实合境，全息洞视。</strong>园区大脑、数字孪生与全息三维立体安防</td>
+                <td class="num">#10B981</td>
+                <td>等角轴测建筑框架 + 空间视锥点云</td>
+              </tr>
+
+              <!-- 3. 数理建模与推演 (理数系列) -->
+              <tr>
+                <td rowspan="3" style="font-weight: 600; color: #D97706; background: rgba(217, 119, 6, 0.02);">
+                  数理建模与推演<br/><span style="font-size:11px; font-weight:400; color:var(--text-muted);">理数系列</span>
+                </td>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#0D5E42;"></span>问津</span></td>
+                <td class="mono">WenJin</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>问（求·行）+ 津（渡·枢）</td>
+                <td><strong>向道问津，顺溪成程。</strong>新高考 3+1+2 位次位移模型与梯度推演算法</td>
+                <td class="num">#0D5E42</td>
+                <td>双枝决策航道 + 标题金最优志愿渡口</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#60A5FA;"></span>衡流</span></td>
+                <td class="mono">HengLiu</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>衡（度·准）+ 流（势·变）</td>
+                <td><strong>审度称衡，守正观流。</strong>GMM状态分类、马尔可夫链与本地量化行情发现</td>
+                <td class="num">#60A5FA</td>
+                <td>马尔可夫三态状态环 + K线波段显著模式</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#E74C3C;"></span>观澜</span></td>
+                <td class="mono">GuanLan</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>观（照·知）+ 澜（波·势）</td>
+                <td><strong>观水有术，由表及澜。</strong>奖池状态客观刻画与组合拥挤度（严守科学底线）</td>
+                <td class="num">#E74C3C / #3498DB</td>
+                <td>双色球红蓝微球 + 市场曲率折线 + 溪流</td>
+              </tr>
+
+              <!-- 4. 专业工程与知识工坊 (工坊系列) -->
+              <tr>
+                <td rowspan="4" style="font-weight: 600; color: #7C3AED; background: rgba(124, 58, 237, 0.02);">
+                  工程与知识工坊<br/><span style="font-size:11px; font-weight:400; color:var(--text-muted);">工坊系列</span>
+                </td>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#0D5E42;"></span>澄矩</span></td>
+                <td class="mono">ChengJu</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>澄（透·清）+ 矩（法·律）</td>
+                <td><strong>源清流澈，行止应矩。</strong>工业级 SPC 统计过程控制与 IQS-DSL 渲染引擎</td>
+                <td class="num">#0D5E42</td>
+                <td>休哈特控制限 (UCL/CL/LCL) + 正交质控折线</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#0D5E42;"></span>溯知</span></td>
+                <td class="mono">SuZhi</td>
+                <td><span class="mark-badge mark-badge-formal">正式工程</span></td>
+                <td>溯（求·源）+ 知（识·体）</td>
+                <td><strong>溯流求源，知汇成章。</strong>多视角检索、三信源树状递归探索与学术长文策展</td>
+                <td class="num">#0D5E42</td>
+                <td>成文大纲长页 + 三信源汇流 + 逆向溯流</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#F1C40F;"></span>鹿印</span></td>
+                <td class="mono">LuYin</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>鹿（印·证）+ 印（章·信）</td>
+                <td><strong>立规成格，刊印成章。</strong>“立法—执行—司法”流水线工业级 PPTX 编译引擎</td>
+                <td class="num">#F1C40F</td>
+                <td>16:9 版面网格 + 编译指令光标 + 刊刻印记</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#00D2FF;"></span>智枢</span></td>
+                <td class="mono">ZhiShu</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>智（脑·筹）+ 枢（轴·转）</td>
+                <td><strong>机枢运化，智汇无声。</strong>私有化大模型推理集群（8×V100）与企业级智能体调度</td>
+                <td class="num">#00D2FF</td>
+                <td>六边形智能体多节点互联网络 + 调度总线</td>
+              </tr>
+
+              <!-- 5. 企业治理与组织赋能 (经纬系列) -->
+              <tr>
+                <td rowspan="4" style="font-weight: 600; color: #E11D48; background: rgba(225, 29, 72, 0.02);">
+                  企业治理与赋能<br/><span style="font-size:11px; font-weight:400; color:var(--text-muted);">经纬系列</span>
+                </td>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#F59E0B;"></span>明鉴</span></td>
+                <td class="mono">MingJian</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>明（昭·析）+ 鉴（照·镜）</td>
+                <td><strong>明烛幽微，持律自鉴。</strong>国家局垂类智能体执法合规督查与合同智能审查平台</td>
+                <td class="num">#F59E0B</td>
+                <td>律法平准天平/法典基准 + 审计探照光束</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#38BDF8;"></span>经纬</span></td>
+                <td class="mono">JingWei</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>经（贯·通）+ 纬（织·络）</td>
+                <td><strong>理析经纬，通达无阻。</strong>低成本企业业务流程拓扑、动态知识库与组织沉淀</td>
+                <td class="num">#38BDF8</td>
+                <td>正交经纬流程拓扑线 + 流程活动节点环</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#EF4444;"></span>循途</span></td>
+                <td class="mono">XunTu</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>循（规·蹈）+ 途（径·轨）</td>
+                <td><strong>按图索骥，循道前行。</strong>基层党务全流程标准化、“按图索骥”合规导行管控</td>
+                <td class="num">#EF4444</td>
+                <td>指南罗盘方正外框 + 规矩刻度与标准航道</td>
+              </tr>
+              <tr>
+                <td><span class="product-tag"><span class="accent-dot" style="background:#A855F7;"></span>淬砺</span></td>
+                <td class="mono">CuiLi</td>
+                <td><span class="mark-badge mark-badge-candidate">候选储备</span></td>
+                <td>淬（炼·锻）+ 砺（磨·纯）</td>
+                <td><strong>切磋琢磨，自省乃砺。</strong>知识图谱驱动的技能自适应训练与进阶评测平台</td>
+                <td class="num">#A855F7</td>
+                <td>知识图谱技能树拓扑 + 阶梯跃迁多边形</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         02. VI 视觉识别规范 (Visual Identity)
+         ======================================================================= -->
+    <section id="scene-vi" class="scene-view" data-od-id="vi-section">
+      <div class="section-header">
+        <p class="eyebrow">VISUAL IDENTITY · 视觉规范</p>
+        <h1 class="section-title">核心色彩、双层标识与排印阶梯</h1>
+        <p class="section-desc">严格锚定品牌四色，主标与产品标并排等大，字距与网格规范严明，严禁游离色值与无意义渐变。</p>
+      </div>
+
+      <!-- 四色基石色卡 -->
+      <h3 style="font-size: 16px; margin-bottom: var(--space-4);">品牌核心四色 (Core Tokens)</h3>
+      <div class="grid-4" style="margin-bottom: var(--space-8);">
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #0D5E42; color: #FFFFFF;">#0D5E42</div>
+          <div class="color-meta">
+            <div class="token-name">鹿溪绿 --luxi-green</div>
+            <div class="token-role">主底色、品牌识别、Primary 按钮</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #F5F7FA; color: #1A2428; border-bottom: 1px solid var(--border-line);">#F5F7FA</div>
+          <div class="color-meta">
+            <div class="token-name">源启白 --origin-white</div>
+            <div class="token-role">画布背景、工作台留白、面板反白</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #00D2FF; color: #1A2428;">#00D2FF</div>
+          <div class="color-meta">
+            <div class="token-name">进化蓝 --luxi-cyan</div>
+            <div class="token-role">溪流、源启星、数据高亮、焦点环</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #F1C40F; color: #1A2428;">#F1C40F</div>
+          <div class="color-meta">
+            <div class="token-name">标题金 --luxi-gold</div>
+            <div class="token-role">落点、命中热区、重要信号标志</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 双标等大规范展示 -->
+      <div class="grid-2" style="margin-bottom: var(--space-8);">
+        <div class="card">
+          <h3 style="font-size: 16px; margin-bottom: var(--space-3);">双标并排等大规范 (64×64 交付基线)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: var(--space-6);">
+            严禁修改主标几何图形；产品方标与实验室主标在 README、官网与软件关于页中<strong>必须等大并排</strong>（64px 或 48px），严禁一大一小。
+          </p>
+          <div class="logo-spec-box">
+            <div class="logo-safe-guide"></div>
+            <div style="display: flex; align-items: center; gap: var(--space-6); position: relative; z-index: 1;">
+              <!-- 实验室主标 -->
+              <div style="text-align: center;">
+                <svg viewBox="0 0 2048 2048" width="64" height="64" fill="none">
+                  <path fill="#0D5E42" d="M 864 794 C 988 781 1110 812 1208 891 C 1243 919 1280 963 1286 1009 C 1290 1031 1282 1045 1260 1050 C 1258 1001 1228 960 1192 929 C 930 704 479 884 458 1233 C 457 1253 456 1271 456 1291 C 457 1307 468 1304 479 1302 C 532 1282 541 1211 556 1162 C 595 1035 723 920 863 936 C 867 936 881 938 882 943 C 833 967 806 989 781 1016 C 731 1072 703 1144 702 1219 C 701 1310 737 1396 802 1460 C 922 1580 1096 1610 1256 1565 C 1348 1533 1391 1518 1483 1510 C 1545 1510 1622 1529 1666 1574 C 1626 1570 1598 1566 1557 1570 C 1482 1578 1426 1615 1359 1645 C 1308 1669 1242 1682 1186 1685 C 1051 1693 910 1653 810 1558 C 779 1529 757 1495 724 1466 C 677 1423 620 1392 557 1381 C 514 1406 525 1409 549 1412 C 578 1417 605 1426 631 1439 C 669 1458 710 1493 738 1524 C 766 1557 781 1574 814 1603 C 919 1686 1047 1722 1179 1717 C 1264 1709 1235 1731 1130 1762 C 969 1800 807 1777 666 1689 C 551 1617 463 1509 430 1376 C 402 1258 420 1128 485 1025 C 540 937 622 869 718 830 L 864 794 Z"/>
+                  <path fill="#00D2FF" d="M 479 1302 C 532 1282 541 1211 556 1162 C 595 1035 723 920 863 936 C 833 967 806 989 781 1016 C 687 1026 605 1101 570 1187 C 552 1232 541 1292 484 1302 Z"/>
+                </svg>
+                <div style="font-size: 11px; margin-top: 6px; font-family: var(--font-mono); color: var(--text-muted);">LUXI LAB (64)</div>
+              </div>
+              <div style="color: var(--border-strong); font-size: 20px;">×</div>
+              <!-- 业务方标示范 (见鹿) -->
+              <div style="text-align: center;">
+                <div class="square-brick" style="width: 64px; height: 64px; border-radius: 14px;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width: 28px; height: 28px;">
+                    <rect x="3" y="3" width="18" height="18" rx="4"/>
+                    <path d="M9 10l3 3-3 3"/>
+                  </svg>
+                  <div class="stream-line" style="bottom: 6px; height: 3px;"></div>
+                  <div class="origin-star" style="width: 5px; height: 5px; top: 6px; right: 6px;"></div>
+                </div>
+                <div style="font-size: 11px; margin-top: 6px; font-family: var(--font-mono); color: var(--text-muted);">PRODUCT (64)</div>
+              </div>
+            </div>
+            <div style="font-size: 11px; color: var(--luxi-cyan); font-family: var(--font-mono);">安全留白区 ≥ 1/4 标高</div>
+          </div>
+        </div>
+
+        <!-- 空间、圆角与键盘焦点环 -->
+        <div class="card">
+          <h3 style="font-size: 16px; margin-bottom: var(--space-3);">空间、圆角与键盘可达性</h3>
+          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+            <p><strong>4px 空间栅格：</strong>所有外边距、内边距严格取 4 的倍数（4, 8, 12, 16, 20, 24, 32, 48px）。</p>
+            <p style="margin-top: 8px;"><strong>圆角梯度：</strong>输入框 4px、按钮 6px、卡片 10px、浮层面板 16px、业务方标 12px。</p>
+            <p style="margin-top: 8px;"><strong>键盘优先焦点环：</strong>全局强制实现 <code class="mono">:focus-visible</code>，轮廓环为 2px 进化蓝（#00D2FF）并偏移 2px，任何情况下不予隐藏。</p>
+          </div>
+          <div style="margin-top: var(--space-4); display: flex; gap: var(--space-3); align-items: center;">
+            <button class="btn btn-secondary">尝试 Tab 键聚焦我</button>
+            <button class="btn btn-secondary">聚焦状态环示范</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 产品方标语义陈列 -->
+      <h3 style="font-size: 16px; margin-bottom: var(--space-4);">产品方标结构规范 (鹿溪绿砖 + 业务图形 + 进化蓝溪流 + 源启星)</h3>
+      <div class="grid-4">
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">见鹿 JianLu</div>
+            <div style="font-size: 11px; color: var(--text-muted);">键帽 + 光标 + 溪流</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16M8 8v8M16 8v8"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">听默 Tingmo</div>
+            <div style="font-size: 11px; color: var(--text-muted);">声纹弧 + 溪流</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12c4-6 8 6 12 0"/><circle cx="16" cy="12" r="2" fill="#F1C40F"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">绘流 HuiLiu</div>
+            <div style="font-size: 11px; color: var(--text-muted);">贝塞尔锚 + 导出点</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick" style="background:#1B2421;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E8D4B0" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><path d="M12 8v4l2 2"/></svg>
+            <div class="stream-line" style="background:#E8D4B0;"></div><div class="origin-star" style="background:#E8D4B0;"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">聆涧 LingJian</div>
+            <div style="font-size: 11px; color: var(--text-muted);">山涧 + 一字生境</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#00D2FF" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M6 12h3l2-3 2 6 2-3h3"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">脉息 MaiXi</div>
+            <div style="font-size: 11px; color: var(--text-muted);">同心环 + 脉搏波</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">审微 ShenWei</div>
+            <div style="font-size: 11px; color: var(--text-muted);">光学分划 + 隐患点</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M9 15l3-6 3 6"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">衡流 HengLiu</div>
+            <div style="font-size: 11px; color: var(--text-muted);">马尔可夫环 + K线</div>
+          </div>
+        </div>
+
+        <div class="product-mark-card">
+          <div class="square-brick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+            <div class="stream-line"></div><div class="origin-star"></div>
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 13px;">澄矩 ChengJu</div>
+            <div style="font-size: 11px; color: var(--text-muted);">控制限 + 正交走线</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         03. 网页各种页场景骨架 (Web Page Archetypes)
+         ======================================================================= -->
+    <section id="scene-web" class="scene-view" data-od-id="web-section">
+      <div class="section-header">
+        <p class="eyebrow">WEB PAGE ARCHETYPES · 页面骨架</p>
+        <h1 class="section-title">官网营销、工具工作台、推演仪表盘与沉浸播放</h1>
+        <p class="section-desc">实现规范中定义的四类核心页面骨架。遵循每屏单一 Primary 按钮、三态齐全与口径标注等工程铁律。</p>
+      </div>
+
+      <!-- 子场景选择器 -->
+      <div class="sub-tabs">
+        <button class="sub-tab-btn active" data-subtarget="arch-workbench">1. 工具工作台 (Workbench)</button>
+        <button class="sub-tab-btn" data-subtarget="arch-dashboard">2. 推演仪表盘 (Dashboard)</button>
+        <button class="sub-tab-btn" data-subtarget="arch-marketing">3. 官网落地页 (Landing)</button>
+        <button class="sub-tab-btn" data-subtarget="arch-immersive">4. 沉浸播放页 (Immersive)</button>
+      </div>
+
+      <!-- 3.1 工具工作台 -->
+      <div id="arch-workbench" class="page-archetype active">
+        <div class="state-switch-bar">
+          <span style="font-size: 12px; color: var(--text-muted); font-weight: 500;">演示三态切换：</span>
+          <button class="btn btn-secondary" onclick="setWorkbenchState('normal')">正常数据态</button>
+          <button class="btn btn-secondary" onclick="setWorkbenchState('loading')">加载态 (Loading)</button>
+          <button class="btn btn-secondary" onclick="setWorkbenchState('empty')">空状态 (Empty)</button>
+          <button class="btn btn-secondary" onclick="setWorkbenchState('error')">错误异常态 (Error)</button>
+          <button class="btn btn-ghost" onclick="openLegalGateModal()" style="margin-left: auto; color: var(--color-primary);">预览风险显式门 (LegalGate)</button>
+        </div>
+
+        <div class="app-frame">
+          <div class="app-header">
+            <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px;">
+              <span class="square-brick" style="width: 24px; height: 24px; border-radius: 6px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h16M10 4v16"/></svg>
+              </span>
+              澄矩 IQS · 工业质检与工程溯源
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary">导出检验日志</button>
+              <button class="btn btn-primary" onclick="alert('执行主质检任务')">开始新批次检验</button>
+            </div>
+          </div>
+          <div class="app-body">
+            <div class="app-sidebar">
+              <div class="sidebar-menu-item active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                全部批次明细
+              </div>
+              <div class="sidebar-menu-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg>
+                容差超限记录
+              </div>
+              <div class="sidebar-menu-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                正交控制台
+              </div>
+            </div>
+            <div class="app-main" id="workbenchContent">
+              <!-- 正常态内容 -->
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>批次编号 (LOT ID)</th>
+                    <th>检测工位</th>
+                    <th>样本量</th>
+                    <th>合格率 (Yield)</th>
+                    <th>置信度 (CI)</th>
+                    <th>质检状态</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono">LOT-2026-0910-A</td>
+                    <td>视觉对齐 02 站</td>
+                    <td class="num">1,240</td>
+                    <td class="num" style="color: var(--state-up); font-weight: 600;">99.84%</td>
+                    <td class="num">99.5%</td>
+                    <td><span class="badge badge-success">正常放行</span></td>
+                    <td><a href="#" style="color: var(--color-primary); font-size: 12px;">查验报告</a></td>
+                  </tr>
+                  <tr>
+                    <td class="mono">LOT-2026-0910-B</td>
+                    <td>激光分划 04 站</td>
+                    <td class="num">820</td>
+                    <td class="num" style="color: var(--state-up); font-weight: 600;">99.12%</td>
+                    <td class="num">99.0%</td>
+                    <td><span class="badge badge-success">正常放行</span></td>
+                    <td><a href="#" style="color: var(--color-primary); font-size: 12px;">查验报告</a></td>
+                  </tr>
+                  <tr>
+                    <td class="mono">LOT-2026-0909-C</td>
+                    <td>正交走线测试</td>
+                    <td class="num">450</td>
+                    <td class="num" style="color: var(--state-down); font-weight: 600;">94.20%</td>
+                    <td class="num">95.0%</td>
+                    <td><span class="badge badge-danger">容差偏离复核</span></td>
+                    <td><a href="#" style="color: var(--alert-red); font-size: 12px;">调取断点</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="margin-top: 12px; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">
+                注：口径基于国家标准 GB/T 2828.1 抽样检验方案，置信度下限 95.0%。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.2 推演仪表盘 -->
+      <div id="arch-dashboard" class="page-archetype">
+        <div style="margin-bottom: var(--space-6);">
+          <div class="grid-4" style="margin-bottom: var(--space-6);">
+            <div class="card">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">当前推演收敛率</div>
+              <div class="num" style="font-size: 24px; font-weight: 700; color: var(--color-primary);">98.42%</div>
+              <div style="font-size: 11px; color: var(--state-up); margin-top: 4px;">↑ +0.35% (相比前一轮迭代)</div>
+            </div>
+            <div class="card">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">马尔可夫环状态熵</div>
+              <div class="num" style="font-size: 24px; font-weight: 700;">0.142 <span style="font-size:12px; font-weight:400;">nats</span></div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">受敛边界 [0.08, 0.20]</div>
+            </div>
+            <div class="card">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">模型不确定性 (Epistemic)</div>
+              <div class="num" style="font-size: 24px; font-weight: 700; color: #a16207;">±3.2%</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">基于蒙特卡洛 500 次采样</div>
+            </div>
+            <div class="card">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">实时推理吞吐</div>
+              <div class="num" style="font-size: 24px; font-weight: 700;">3,820 <span style="font-size:12px; font-weight:400;">tps</span></div>
+              <div style="font-size: 11px; color: var(--state-up); margin-top: 4px;">GPU 显存负载稳定在 68%</div>
+            </div>
+          </div>
+
+          <!-- 双列图表容器与严格口径标注 -->
+          <div class="grid-2">
+            <div class="card">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-4);">
+                <h3 style="font-size: 15px;">衡流 QuantFlow · 序列推演置信带</h3>
+                <span class="badge badge-neutral">置信区间 95%</span>
+              </div>
+              <div style="height: 180px; background: var(--bg-sunken); border-radius: var(--radius-sm); display: flex; align-items: flex-end; padding: 12px; gap: 8px;">
+                <!-- 模拟条形置信图表 -->
+                <div style="flex:1; height:45%; background:rgba(96, 165, 250, 0.4); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+                <div style="flex:1; height:60%; background:rgba(96, 165, 250, 0.4); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+                <div style="flex:1; height:75%; background:rgba(96, 165, 250, 0.4); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+                <div style="flex:1; height:70%; background:rgba(96, 165, 250, 0.4); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+                <div style="flex:1; height:85%; background:rgba(96, 165, 250, 0.7); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+                <div style="flex:1; height:80%; background:rgba(96, 165, 250, 0.7); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+                <div style="flex:1; height:92%; background:rgba(96, 165, 250, 0.9); border-top:2px solid #60A5FA; border-radius:2px;"></div>
+              </div>
+              <p style="margin-top: 10px; font-size: 11px; color: var(--text-muted);">
+                口径说明：主序列采用衡流蓝 (#60A5FA)，填充透明度 ≤ 0.45。严格遵循 X-Factor 法则，推演结果仅供参考，不作为绝对性决策断言。
+              </p>
+            </div>
+
+            <div class="card">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-4);">
+                <h3 style="font-size: 15px;">观澜 GuanLan · 市场波动观测</h3>
+                <span class="badge badge-neutral">双变量对比</span>
+              </div>
+              <div style="height: 180px; background: var(--bg-sunken); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; position: relative;">
+                <svg viewBox="0 0 300 120" style="width: 90%; height: 80%;">
+                  <path d="M 10 90 Q 70 30 140 70 T 290 30" fill="none" stroke="#3498DB" stroke-width="2"/>
+                  <path d="M 10 105 Q 80 80 150 40 T 290 85" fill="none" stroke="#E74C3C" stroke-width="2" stroke-dasharray="4 2"/>
+                </svg>
+              </div>
+              <p style="margin-top: 10px; font-size: 11px; color: var(--text-muted);">
+                自查声明：观澜范式严禁“中奖/盈利确定性预言”，双色曲线表达观测数据之波动张力，已标明历史样本时间跨度 (2026.01-09)。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.3 官网落地页 -->
+      <div id="arch-marketing" class="page-archetype">
+        <div class="card" style="text-align: center; padding: var(--space-12) var(--space-8);">
+          <div style="display: flex; justify-content: center; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5);">
+            <!-- 双标并排等大 (48x48) -->
+            <svg viewBox="0 0 2048 2048" width="48" height="48" fill="none">
+              <path fill="#0D5E42" d="M 864 794 C 988 781 1110 812 1208 891 C 1243 919 1280 963 1286 1009 C 1290 1031 1282 1045 1260 1050 C 1258 1001 1228 960 1192 929 C 930 704 479 884 458 1233 C 457 1253 456 1271 456 1291 C 457 1307 468 1304 479 1302 C 532 1282 541 1211 556 1162 C 595 1035 723 920 863 936 C 867 936 881 938 882 943 C 833 967 806 989 781 1016 C 731 1072 703 1144 702 1219 C 701 1310 737 1396 802 1460 C 922 1580 1096 1610 1256 1565 C 1348 1533 1391 1518 1483 1510 C 1545 1510 1622 1529 1666 1574 C 1626 1570 1598 1566 1557 1570 C 1482 1578 1426 1615 1359 1645 C 1308 1669 1242 1682 1186 1685 C 1051 1693 910 1653 810 1558 C 779 1529 757 1495 724 1466 C 677 1423 620 1392 557 1381 C 514 1406 525 1409 549 1412 C 578 1417 605 1426 631 1439 C 669 1458 710 1493 738 1524 C 766 1557 781 1574 814 1603 C 919 1686 1047 1722 1179 1717 C 1264 1709 1235 1731 1130 1762 C 969 1800 807 1777 666 1689 C 551 1617 463 1509 430 1376 C 402 1258 420 1128 485 1025 C 540 937 622 869 718 830 L 864 794 Z"/>
+              <path fill="#00D2FF" d="M 479 1302 C 532 1282 541 1211 556 1162 C 595 1035 723 920 863 936 C 833 967 806 989 781 1016 C 687 1026 605 1101 570 1187 C 552 1232 541 1292 484 1302 Z"/>
+            </svg>
+            <div class="square-brick" style="width: 48px; height: 48px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <div class="stream-line"></div><div class="origin-star"></div>
+            </div>
+          </div>
+
+          <p class="eyebrow">LUXI JOINT INNOVATION LAB</p>
+          <h1 style="font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: var(--space-3);">
+            在复杂中看见价值，在流动中定义未来
+          </h1>
+          <p style="font-size: 16px; color: var(--text-secondary); max-width: 60ch; margin: 0 auto var(--space-6);">
+            鹿溪联合创新实验室出品。将 12 款研发产品的设计与工程实践，凝炼为一套坚固、自洽且不移位的系统范式。
+          </p>
+          <div>
+            <!-- 单一 Primary 行动 CTA -->
+            <button class="btn btn-primary" style="height: 44px; padding: 0 28px; font-size: 14px;">查阅完整工程标准</button>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: var(--space-6);">
+          <div class="card">
+            <h3 style="font-size: 15px; margin-bottom: 8px;">一、三层交付体系</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">
+              包含叙事规范 DESIGN.md、可执行层 tokens.css 以及结构化变量 tokens.json，供代码生成与设计工具同步消费。
+            </p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 15px; margin-bottom: 8px;">二、交互五项铁律</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">
+              三态齐全、全键盘可达与焦点环显式、破坏操作可撤销、敏感数据显式授权门，杜绝死胡同。
+            </p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 15px; margin-bottom: 8px;">三、动效帧预算约束</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">
+              严格控制粒子与动画预算（≤8ms/帧），尊重 prefers-reduced-motion 降级，拒绝无意义视觉扰动。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.4 沉浸播放页 (聆涧范式) -->
+      <div id="arch-immersive" class="page-archetype">
+        <div class="immersive-container">
+          <div class="immersive-bg-glow"></div>
+          <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="display:inline-block; width:6px; height:6px; background:var(--luxi-gold); border-radius:50%;"></span>
+              <span style="font-size: 13px; letter-spacing: 0.1em; color: rgba(243, 238, 230, 0.75);">聆涧 · VOICE STREAM 沉浸会话</span>
+            </div>
+            <div class="num" style="font-size: 12px; color: rgba(243, 238, 230, 0.5);">会话计时：00:14:28</div>
+          </div>
+
+          <div style="text-align: center; margin: 40px auto; z-index: 2; max-width: 48ch;">
+            <p style="font-size: 22px; line-height: 1.6; color: #F3EEE6; margin-bottom: var(--space-8);">
+              “林深风籁静，源启细流清。言语落地，自然生成万象生境。”
+            </p>
+            <button class="play-trigger-btn" id="immersivePlayBtn" aria-label="播放或暂停" onclick="togglePlayState()">
+              <svg id="playIcon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <div style="font-size: 12px; color: rgba(243, 238, 230, 0.45); margin-top: 16px; font-family: var(--font-mono);">
+              按空格键 [Space] 播放/暂停 · [Esc] 退出沉浸模式
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: rgba(243, 238, 230, 0.35); z-index: 2; font-family: var(--font-mono);">
+            <span>音频引擎：24-bit / 48kHz FLAC</span>
+            <span>粒子预算：240 (已按权重归一)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         04. 周边设计物场景 (Collateral & Merchandising)
+         ======================================================================= -->
+    <section id="scene-merch" class="scene-view" data-od-id="merch-section">
+      <div class="section-header">
+        <p class="eyebrow">BRAND COLLATERAL · 周边物料体系</p>
+        <h1 class="section-title">行政办公物料、数字传播资产与实体文创</h1>
+        <p class="section-desc">将鹿溪的克制美学延伸至线下办公与实体触点，秉持务实、环保与精工质感，杜绝粗制滥造与视觉漂移。</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: var(--space-8);">
+        <!-- 1. 办公文具：工牌与挂带 -->
+        <div class="merch-spec-card">
+          <div class="merch-preview-stage">
+            <div class="badge-card-mock">
+              <div class="badge-lanyard-hole"></div>
+              <div class="badge-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+              </div>
+              <div style="font-weight: 600; font-size: 13px; color: #1A2428;">鹿溪实验室成员</div>
+              <div style="font-size: 10px; color: #64748B; margin-top: 2px;" class="mono">RESEARCH FELLOW</div>
+              <div style="margin-top: auto; width: 100%; border-top: 1px solid #E2E8F0; padding-top: 6px; font-size: 9px; color: var(--luxi-green);" class="mono">
+                LUXI LAB ID #042
+              </div>
+            </div>
+          </div>
+          <div class="merch-detail">
+            <div class="merch-tag">行政识别</div>
+            <div class="merch-title">实验室工牌与编织挂带</div>
+            <div class="merch-desc">
+              双面磨砂亚克力卡套，鹿溪绿（#0D5E42）高密度细密织带配金属暗扣；内置双频 RFID/NFC 芯片，支持正反双向感应。
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 商务文具：特种纸名片 -->
+        <div class="merch-spec-card">
+          <div class="merch-preview-stage">
+            <div class="business-card-mock">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <div style="font-weight: 700; font-size: 14px;">林向远</div>
+                  <div style="font-size: 10px; color: #64748B;" class="mono">SYSTEM ARCHITECT</div>
+                </div>
+                <div style="width: 20px; height: 20px; background: var(--luxi-green); border-radius: 4px;"></div>
+              </div>
+              <div style="font-size: 9px; color: #64748B; line-height: 1.4;" class="mono">
+                E: xiangyuan@luxilab.org<br/>
+                W: https://github.com/itrilogy/LUCY-DESIGN
+              </div>
+            </div>
+          </div>
+          <div class="merch-detail">
+            <div class="merch-tag">商务文书</div>
+            <div class="merch-title">350g 原色触感纸商务名片</div>
+            <div class="merch-desc">
+              标准 90×54mm 规格；正面源启白底色配等宽数字排版，背面鹿溪绿专色哑光丝印，配以标题金（#F1C40F）微烫落点标识。
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 数字物料：开源 README 标识头 -->
+        <div class="merch-spec-card">
+          <div class="merch-preview-stage">
+            <div style="width: 90%; background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 6px; padding: 12px; text-align: center;">
+              <div style="display: flex; justify-content: center; gap: 6px; margin-bottom: 8px;">
+                <span class="badge" style="background:#0D5E42; color:#fff; font-size:9px;">Product: 鹿溪范式</span>
+                <span class="badge" style="background:#00D2FF; color:#000; font-size:9px;">v1.0</span>
+              </div>
+              <div style="font-size: 11px; font-weight: 600;">README 规范 Banner 模版</div>
+              <div style="font-size: 9px; color: var(--text-muted); margin-top: 4px;" class="mono">64x64 双标等大并排规范居中</div>
+            </div>
+          </div>
+          <div class="merch-detail">
+            <div class="merch-tag">数字传播物料</div>
+            <div class="merch-title">GitHub 权威源 README 规范模版</div>
+            <div class="merch-desc">
+              严格规范仓库徽章排列次序、主副标题字体及 48/64px 双标并排等大规则，确保在任何 GitHub 客户端与 Markdown 阅读器下排版不崩解。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- 4. 实体周边：定制机械键盘键帽 -->
+        <div class="merch-spec-card">
+          <div class="merch-preview-stage">
+            <div class="keycap-mock" title="鹿角与清溪交融激光微雕">
+              <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                <!-- 鹿角轮廓 (Antlers) -->
+                <path d="M16 21 V14 M16 17 C13.8 14, 9.5 12, 7.5 8 M11.5 13.5 C10.2 11.2, 8.5 10.5, 6.8 11.5 M16 17 C18.2 14, 22.5 12, 24.5 8 M20.5 13.5 C21.8 11.2, 23.5 10.5, 25.2 11.5" 
+                      stroke="#F5F7FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- 贯穿清溪水流 (Stream) -->
+                <path d="M6 24 C10.5 21.2, 13.5 25, 17.5 22.8 C21 21, 23.5 23.8, 26.5 22" 
+                      stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="16" cy="11.5" r="1.2" fill="#F1C40F"/>
+              </svg>
+              <span style="font-size: 9px; margin-top: 2px; font-family: var(--font-mono); letter-spacing: 0.08em; opacity: 0.85;">ESC</span>
+            </div>
+          </div>
+          <div class="merch-detail">
+            <div class="merch-tag">极客硬件周边</div>
+            <div class="merch-title">“见鹿”阳极氧化铝定制 ESC 键帽（鹿角溪水限定版）</div>
+            <div class="merch-desc">
+              6063 航空铝材 CNC 精雕成型，表面经 180 目锆砂喷砂与鹿溪绿专属硬质阳极氧化着色；顶部高精度光纤微雕【鹿角迎晨，清溪贯注】的品牌母题意象，底部紧密配合标准十字机械轴芯（Cherry MX 规格），R4 阶梯高度。
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. 实体周边：伴行保温随身杯 -->
+        <div class="merch-spec-card">
+          <div class="merch-preview-stage">
+            <div style="width: 54px; height: 130px; background: var(--luxi-green); border-radius: 16px 16px 8px 8px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #FFFFFF; box-shadow: 0 10px 24px rgba(13, 94, 66, 0.25);">
+              <div style="width: 48px; height: 12px; background: #083c2a; border-radius: 4px; position: absolute; top: -6px;"></div>
+              <div style="font-size: 9px; transform: rotate(-90deg); white-space: nowrap; font-family: var(--font-mono); letter-spacing: 0.1em; opacity: 0.7;">
+                LUXI STREAM
+              </div>
+            </div>
+          </div>
+          <div class="merch-detail">
+            <div class="merch-tag">生活生态</div>
+            <div class="merch-title">哑光森林绿双层真空伴行杯</div>
+            <div class="merch-desc">
+              316L 医用级不锈钢内胆，400ml 紧凑容量；哑光聚酯耐磨涂层，激光微雕 12 产品流线隐显矩阵，经久耐用。
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. 实体周边：杜邦纸通勤包 -->
+        <div class="merch-spec-card">
+          <div class="merch-preview-stage">
+            <div style="width: 140px; height: 110px; background: #EFECE6; border-radius: 6px; border: 1px solid #D8D4CC; display: flex; flex-direction: column; justify-content: space-between; padding: 12px; color: #2A363B; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);">
+              <div style="font-size: 10px; font-weight: 700; color: var(--luxi-green);">LUXI LAB · 鹿溪</div>
+              <div style="font-size: 8px; font-family: var(--font-mono); color: #64748B;">
+                GEO: 30.57°N, 104.06°E<br/>
+                EST. 2026
+              </div>
+            </div>
+          </div>
+          <div class="merch-detail">
+            <div class="merch-tag">环保通勤</div>
+            <div class="merch-title">轻量防水杜邦纸 Tyvek 电脑包</div>
+            <div class="merch-desc">
+              可回收杜邦纸基材，质轻、抗撕裂且具天然纸质褶皱感；丝网印刷鹿溪经纬坐标与清溪流线图谱，内置加厚防震防泼溅隔层。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         05. 约束自检清单与设计 Tokens 字典
+         ======================================================================= -->
+    <section id="scene-tokens" class="scene-view" data-od-id="tokens-section">
+      <div class="section-header">
+        <p class="eyebrow">ENGINEERING CHECKLIST · 自检清单与字典</p>
+        <h1 class="section-title">OpenDesign 交付自检清单与 Tokens</h1>
+        <p class="section-desc">面向工程师与生成式 Agent 的刚性自检表，保障产出代码符合 P0/P1 规范，杜绝 AI 生成样式的常见坏味道。</p>
+      </div>
+
+      <div class="grid-2" style="margin-bottom: var(--space-8);">
+        <div class="card">
+          <h3 style="font-size: 16px; margin-bottom: var(--space-4);">P0 级交付硬约束核对</h3>
+          <div class="checklist-item">
+            <span class="check-icon">✓</span>
+            <div><strong>全色值绑定语义 Tokens</strong>：`:root` 外严禁书写游离 Hex 色值，严格采用 `var(--bg-*)` 与 `var(--color-*)`。</div>
+          </div>
+          <div class="checklist-item">
+            <span class="check-icon">✓</span>
+            <div><strong>每屏至多一个 Primary 按钮</strong>：严格保持行动经济性，辅助操作一律降级为 Secondary、Ghost 或文字链接。</div>
+          </div>
+          <div class="checklist-item">
+            <span class="check-icon">✓</span>
+            <div><strong>三态齐全与空状态引导</strong>：数据载体必须完备设计“加载、空状态、错误”三态，且空状态必须提供明确的下一步操作。</div>
+          </div>
+          <div class="checklist-item">
+            <span class="check-icon">✓</span>
+            <div><strong>双标等大并排</strong>：主标单向源自官方源 SVG，与各产品业务方标并排等大（64x64 或 48x48），绝不大主小客。</div>
+          </div>
+          <div class="checklist-item">
+            <span class="check-icon">✓</span>
+            <div><strong>数据诚实性与口径脚注</strong>：推演图表与 KPI 必须严格标注统计口径、样本量与置信区间，禁止将预测包装为绝对事实。</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 16px; margin-bottom: var(--space-4);">设计坏味道禁令清单 (Anti-Patterns)</h3>
+          <div class="checklist-item" style="color: var(--alert-red);">
+            <span>✕</span>
+            <div><strong>严禁使用紫色渐变洗底</strong>：拒绝 AI 生成界面常见的泛滥紫色/霓虹赛博渐变底色。</div>
+          </div>
+          <div class="checklist-item" style="color: var(--alert-red);">
+            <span>✕</span>
+            <div><strong>严禁使用 Emoji 充当功能图标</strong>：功能标识必须使用单线精确矢量 SVG，绝不使用 🚀、✨ 等作为功能标。</div>
+          </div>
+          <div class="checklist-item" style="color: var(--alert-red);">
+            <span>✕</span>
+            <div><strong>严禁伪造无依据业务数据</strong>：未获真实数据前，必须显式标注为占位或计算口径，杜绝凭空编造 99.99% 类指标。</div>
+          </div>
+          <div class="checklist-item" style="color: var(--alert-red);">
+            <span>✕</span>
+            <div><strong>严禁隐藏键盘焦点环</strong>：不得对可操作元素实施 `outline: none` 而不提供替代的清晰 `:focus-visible` 焦点环。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 交互弹窗：风险显式门示范 ==================== -->
+  <div id="legalGateModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <div style="display: flex; align-items: center; gap: 8px; color: var(--color-primary); margin-bottom: 8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span style="font-size: 12px; font-weight: 600; font-family: var(--font-mono);">LEGAL GATE · 风险显式门</span>
+      </div>
+      <h3 id="modalTitle" style="font-size: 17px; margin-bottom: 8px;">首次运行外发推理数据授权确认</h3>
+      <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: var(--space-4);">
+        根据鹿溪设计范式<strong>“风险显式（LegalGate）铁律”</strong>，当前质检作业涉及将离线缺陷图像特征传输至外部大模型节点。此操作<strong>默认不予勾选同意</strong>，必须由操作工程师显式确认授权。
+      </p>
+      <div style="background: var(--bg-sunken); padding: 12px; border-radius: var(--radius-xs); font-size: 12px; margin-bottom: var(--space-6);">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" id="gateAgreeCheckbox" onchange="toggleGateSubmitBtn()">
+          <span>我已核实数据不涉及敏感工装图纸并确认授权外发</span>
+        </label>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: var(--space-3);">
+        <button class="btn btn-secondary" onclick="closeLegalGateModal()">取消并返回安全模式</button>
+        <button id="gateSubmitBtn" class="btn btn-primary" style="opacity: 0.4; cursor: not-allowed;" disabled onclick="submitLegalGate()">显式授权并启动任务</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 交互脚本 ==================== -->
+  <script>
+    // 场景大类切换
+    const navButtons = document.querySelectorAll('.nav-tab-btn');
+    const sceneViews = document.querySelectorAll('.scene-view');
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        sceneViews.forEach(v => v.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        const targetView = document.getElementById(targetId);
+        if (targetView) targetView.classList.add('active');
+      });
+    });
+
+    // 网页子场景切换
+    const subTabBtns = document.querySelectorAll('.sub-tab-btn');
+    const archetypes = document.querySelectorAll('.page-archetype');
+
+    subTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        subTabBtns.forEach(b => b.classList.remove('active'));
+        archetypes.forEach(a => a.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-subtarget');
+        const targetArch = document.getElementById(targetId);
+        if (targetArch) targetArch.classList.add('active');
+      });
+    });
+
+    // 全局主题切换
+    const themeSelector = document.getElementById('themeSelector');
+    themeSelector.addEventListener('change', (e) => {
+      document.documentElement.setAttribute('data-theme', e.target.value);
+    });
+
+    // 密度切换
+    const densitySelector = document.getElementById('densitySelector');
+    densitySelector.addEventListener('change', (e) => {
+      document.documentElement.setAttribute('data-density', e.target.value);
+    });
+
+    // 工作台三态切换交互
+    function setWorkbenchState(state) {
+      const container = document.getElementById('workbenchContent');
+      if (state === 'normal') {
+        container.innerHTML = `
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>批次编号 (LOT ID)</th>
+                <th>检测工位</th>
+                <th>样本量</th>
+                <th>合格率 (Yield)</th>
+                <th>置信度 (CI)</th>
+                <th>质检状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">LOT-2026-0910-A</td>
+                <td>视觉对齐 02 站</td>
+                <td class="num">1,240</td>
+                <td class="num" style="color: var(--state-up); font-weight: 600;">99.84%</td>
+                <td class="num">99.5%</td>
+                <td><span class="badge badge-success">正常放行</span></td>
+                <td><a href="#" style="color: var(--color-primary); font-size: 12px;">查验报告</a></td>
+              </tr>
+              <tr>
+                <td class="mono">LOT-2026-0910-B</td>
+                <td>激光分划 04 站</td>
+                <td class="num">820</td>
+                <td class="num" style="color: var(--state-up); font-weight: 600;">99.12%</td>
+                <td class="num">99.0%</td>
+                <td><span class="badge badge-success">正常放行</span></td>
+                <td><a href="#" style="color: var(--color-primary); font-size: 12px;">查验报告</a></td>
+              </tr>
+              <tr>
+                <td class="mono">LOT-2026-0909-C</td>
+                <td>正交走线测试</td>
+                <td class="num">450</td>
+                <td class="num" style="color: var(--state-down); font-weight: 600;">94.20%</td>
+                <td class="num">95.0%</td>
+                <td><span class="badge badge-danger">容差偏离复核</span></td>
+                <td><a href="#" style="color: var(--alert-red); font-size: 12px;">调取断点</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top: 12px; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">
+            注：口径基于国家标准 GB/T 2828.1 抽样检验方案，置信度下限 95.0%。
+          </p>`;
+      } else if (state === 'loading') {
+        container.innerHTML = `
+          <div style="padding: 48px; text-align: center;">
+            <div style="width: 32px; height: 32px; border: 3px solid var(--border-line); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px;"></div>
+            <div style="font-size: 13px; color: var(--text-muted);">正在同步工业视觉终端批次数据...</div>
+          </div>
+          <style>@keyframes spin { to { transform: rotate(360deg); } }</style>`;
+      } else if (state === 'empty') {
+        container.innerHTML = `
+          <div style="padding: 48px; text-align: center; border: 1px dashed var(--border-line); border-radius: var(--radius-md);">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin-bottom: 12px;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6"/></svg>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">当前工位暂无待检批次</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">空状态严格遵循 L-U-X-I 法则，不把用户丢在死胡同。</p>
+            <button class="btn btn-secondary" onclick="setWorkbenchState('normal')">从料盘缓存重新抓取批次</button>
+          </div>`;
+      } else if (state === 'error') {
+        container.innerHTML = `
+          <div style="padding: 48px; text-align: center; border: 1px solid rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.04); border-radius: var(--radius-md);">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--alert-red)" stroke-width="1.5" style="margin-bottom: 12px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--alert-red); margin-bottom: 4px;">工控总线通信超时 (BUS_TIMEOUT_504)</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">未能与 PLC 走线站建立安全握手。请排查现场 Profinet 网关。</p>
+            <button class="btn btn-primary" onclick="setWorkbenchState('loading')">尝试链路重新协商</button>
+          </div>`;
+      }
+    }
+
+    // 沉浸模式模拟播放交互
+    let isPlaying = false;
+    function togglePlayState() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('playIcon');
+      if (isPlaying) {
+        playIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`;
+      } else {
+        playIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"/>`;
+      }
+    }
+
+    // 键盘支持快捷控制沉浸页
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && document.getElementById('arch-immersive').classList.contains('active')) {
+        e.preventDefault();
+        togglePlayState();
+      }
+    });
+
+    // 风险显式门弹窗
+    function openLegalGateModal() {
+      const modal = document.getElementById('legalGateModal');
+      modal.classList.add('active');
+    }
+    function closeLegalGateModal() {
+      const modal = document.getElementById('legalGateModal');
+      modal.classList.remove('active');
+    }
+    function toggleGateSubmitBtn() {
+      const chk = document.getElementById('gateAgreeCheckbox');
+      const btn = document.getElementById('gateSubmitBtn');
+      if (chk.checked) {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+      } else {
+        btn.disabled = true;
+        btn.style.opacity = '0.4';
+        btn.style.cursor = 'not-allowed';
+      }
+    }
+    function submitLegalGate() {
+      alert('已记录操作员显式授权凭证，开始执行外发推理。');
+      closeLegalGateModal();
+    }
+  </script>
+</body>
+</html>
