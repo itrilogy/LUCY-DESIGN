@@ -203,6 +203,26 @@
     .star { position: absolute; top: 5px; right: 5px; width: 5px; height: 5px; background: var(--luxi-gold);
       clip-path: polygon(50% 0, 61% 35%, 100% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 0 35%, 39% 35%); }
 
+    /* ── 物料实体预览（版本一规范） ───────────────────────────────── */
+    .merch-preview-stage { height: 220px; background: var(--bg-sunken); display: flex; align-items: center;
+      justify-content: center; padding: var(--space-6); position: relative; }
+    .merch-detail { padding: var(--space-5); }
+    .merch-tag { font-family: var(--font-mono); font-size: 11px; color: var(--color-primary);
+      text-transform: uppercase; margin-bottom: 4px; }
+    .merch-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .merch-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .badge-card-mock { width: 140px; height: 200px; background: #FFFFFF; border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.14); padding: 14px; display: flex; flex-direction: column;
+      align-items: center; text-align: center; position: relative; border: 1px solid #E2E8F0; }
+    .badge-lanyard-hole { width: 28px; height: 5px; background: #E2E8F0; border-radius: 3px; margin-bottom: 10px; }
+    .badge-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--bg-sunken);
+      border: 2px solid var(--luxi-green); margin-bottom: 8px; display: flex; align-items: center;
+      justify-content: center; color: var(--luxi-green); }
+    .keycap-mock { width: 76px; height: 76px; background: linear-gradient(145deg, #106f4e, #0a4833);
+      border-radius: 12px; box-shadow: 0 10px 20px rgba(13,94,66,0.3), inset 0 2px 4px rgba(255,255,255,0.25);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #FFFFFF; border: 1px solid rgba(255,255,255,0.1); }
+
     .sub-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: var(--space-5); }
     .sub-tab {
       border: 1px solid var(--border-line); background: var(--bg-card); color: var(--text-secondary);
@@ -374,297 +394,198 @@
           <span class="badge badge-warn">储备池 · 未立项</span>
         </div>
         <p class="note" style="margin-bottom:16px;">
-          版式与组件沿用<strong>版本三</strong>；主图案借自<strong>版本二</strong>（方标储备 15 款 + 孵化候选 8 款）。
-          已剔除与正式产品重名的条目（版本二「聆涧 · LingJian」与既成产品同名，命名与图形不予采用）。
-          全部方标遵循同一设定：鹿溪绿圆角砖（Squircle 22%）+ 业务象形主符号 + 底部进化蓝溪流弧光 + 右上角源启星。
+          与上表 12 款正式方标<strong>完全同构</strong>：48×48 鹿溪绿圆角砖（<span class="mono">.brick</span>，圆角 12px）+ 24 视口单色业务图形（<span class="mono">stroke 1.7</span>）
+          + 底部<strong>水平</strong>溪流（<span class="mono">.stream</span>）+ 右上角金色五角星（<span class="mono">.star</span>）。仅业务图形不同。
+          已剔除与正式产品重名的条目（版本二「聆涧 · LingJian」的命名与图形均不采用）。
         </p>
 
         <h3 style="font-size:14px;margin:14px 0 10px;color:var(--color-primary);">A · 四大矩阵方标储备（15 款）</h3>
 
         <p class="mono" style="font-size:11px;color:var(--text-muted);margin:0 0 8px;">知行 · 动律</p>
-        <div class="grid-4">
-          <article class="card" data-od-id="fut-yuelu" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M14 34C18 26 24 22 34 18M34 18L24 16M34 18L32 28" stroke="#F1C40F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="18" cy="18" r="3" fill="#F5F7FA"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">跃鹿 · YueLu</div>
-            <p class="note" style="margin-top:4px;">任务规划与智能体执行</p>
-          </article>
-          <article class="card" data-od-id="fut-xunxi" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M12 24C16 18 20 30 26 24C32 18 36 28 40 22" stroke="#F5F7FA" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="26" cy="24" r="12" stroke="#F1C40F" stroke-width="1.8" stroke-dasharray="3 3"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">巡溪 · XunXi</div>
-            <p class="note" style="margin-top:4px;">全景流程巡检与监控</p>
-          </article>
-          <article class="card" data-od-id="fut-mingjian" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M12 32L18 20L24 28L30 14L38 32" stroke="#F1C40F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M24 10V6M36 14L39 11M12 14L9 11" stroke="#F5F7FA" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">鸣涧 · MingJian</div>
-            <p class="note" style="margin-top:4px;">事件感知与应急分发调度</p>
-          </article>
-          <article class="card" data-od-id="fut-duyue" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M10 32C18 20 30 20 38 32" stroke="#F5F7FA" stroke-width="3" stroke-linecap="round"/>
-              <path d="M16 25L24 16L32 25" stroke="#F1C40F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">渡越 · DuYue</div>
-            <p class="note" style="margin-top:4px;">异构多系统协同与跨越</p>
-          </article>
+        <div class="grid-3">
+          <div class="tile" data-od-id="fut-yuelu">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17C9 13 12 11 17 9M17 9L12 8M17 9L16 14"/><circle cx="9" cy="9" r="1.5" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">跃鹿 · YueLu</div><div style="font-size:12px;color:var(--text-muted);">任务规划与智能体执行</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-xunxi">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 12C8 9 10 15 13 12C16 9 18 14 20 11"/><circle cx="13" cy="12" r="6" stroke-dasharray="1.5 1.5" stroke="#F1C40F"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">巡溪 · XunXi</div><div style="font-size:12px;color:var(--text-muted);">全景流程巡检与监控</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-mingjian">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16L9 10L12 14L15 7L19 16" stroke="#F1C40F"/><path d="M12 5V3M18 7L19.5 5.5M6 7L4.5 5.5"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">鸣涧 · MingJian</div><div style="font-size:12px;color:var(--text-muted);">事件感知与应急分发调度</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-duyue">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16C9 10 15 10 19 16"/><path d="M8 12.5L12 8L16 12.5" stroke="#F1C40F"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">渡越 · DuYue</div><div style="font-size:12px;color:var(--text-muted);">异构多系统协同与跨越</div></div>
+          </div>
         </div>
 
         <p class="mono" style="font-size:11px;color:var(--text-muted);margin:16px 0 8px;">具身 · 察觉</p>
-        <div class="grid-4">
-          <article class="card" data-od-id="fut-lingtong" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <circle cx="24" cy="24" r="10" stroke="#F5F7FA" stroke-width="2.5"/>
-              <circle cx="24" cy="24" r="4" fill="#F1C40F"/>
-              <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">灵瞳 · LingTong</div>
-            <p class="note" style="margin-top:4px;">工业多模态高精视觉感知</p>
-          </article>
-          <article class="card" data-od-id="fut-xunji" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M12 18L24 12L36 18L24 24L12 18Z" stroke="#F5F7FA" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M24 24V36M12 18V30L24 36M36 18V30L24 36" stroke="#F5F7FA" stroke-width="2"/>
-              <circle cx="24" cy="18" r="2.5" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">寻迹 · XunJi</div>
-            <p class="note" style="margin-top:4px;">空间定位与三维位姿还原</p>
-          </article>
-          <article class="card" data-od-id="fut-ganjie" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M24 10L35 17V31L24 38L13 31V17L24 10Z" stroke="#F5F7FA" stroke-width="2"/>
-              <path d="M24 18L29 21V27L24 30L19 27V21L24 18Z" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">感界 · GanJie</div>
-            <p class="note" style="margin-top:4px;">触觉阵列与物理传感融合</p>
-          </article>
-                  </div>
+        <div class="grid-3">
+          <div class="tile" data-od-id="fut-lingtong">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="2" fill="#F1C40F" stroke="none"/><path d="M12 4V6M12 18V20M4 12H6M18 12H20" stroke="#00D2FF"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">灵瞳 · LingTong</div><div style="font-size:12px;color:var(--text-muted);">工业多模态高精视觉感知</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-xunji">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 9L12 6L18 9L12 12L6 9Z"/><path d="M12 12V18M6 9V15L12 18M18 9V15L12 18"/><circle cx="12" cy="9" r="1.25" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">寻迹 · XunJi</div><div style="font-size:12px;color:var(--text-muted);">空间定位与三维位姿还原</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-ganjie">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 5L17.5 8.5V15.5L12 19L6.5 15.5V8.5L12 5Z"/><path d="M12 9L14.5 10.5V13.5L12 15L9.5 13.5V10.5L12 9Z" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">感界 · GanJie</div><div style="font-size:12px;color:var(--text-muted);">触觉阵列与物理传感融合</div></div>
+          </div>
+        </div>
 
         <p class="mono" style="font-size:11px;color:var(--text-muted);margin:16px 0 8px;">理数 · 思辨</p>
-        <div class="grid-4">
-          <article class="card" data-od-id="fut-chengxi" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M12 14H36L27 26V34L21 34V26L12 14Z" stroke="#F5F7FA" stroke-width="2" stroke-linejoin="round"/>
-              <circle cx="24" cy="32" r="2.5" fill="#00D2FF"/>
-              <path d="M18 10L24 14L30 10" stroke="#F1C40F" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">澄溪 · ChengXi</div>
-            <p class="note" style="margin-top:4px;">数据深度清洗与知识蒸馏</p>
-          </article>
-          <article class="card" data-od-id="fut-suyuan" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <circle cx="24" cy="12" r="3" fill="#F1C40F"/>
-              <circle cx="16" cy="32" r="3" fill="#F5F7FA"/>
-              <circle cx="32" cy="32" r="3" fill="#F5F7FA"/>
-              <path d="M24 15V22M24 22L16 29M24 22L32 29" stroke="#F5F7FA" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">溯源 · SuYuan</div>
-            <p class="note" style="margin-top:4px;">因果逻辑推断与可解释性回溯</p>
-          </article>
-          <article class="card" data-od-id="fut-yanzhen" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M10 32C14 24 18 14 24 14C30 14 34 24 38 32" stroke="#F5F7FA" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M12 34C18 30 21 22 24 22C27 22 30 30 36 34" stroke="#F1C40F" stroke-width="1.8" stroke-dasharray="2 2"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">衍真 · YanZhen</div>
-            <p class="note" style="margin-top:4px;">蒙特卡洛仿真与多态推演</p>
-          </article>
-          <article class="card" data-od-id="fut-wudao" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <polygon points="24,10 36,18 36,30 24,38 12,30 12,18" stroke="#F5F7FA" stroke-width="2" fill="none"/>
-              <circle cx="24" cy="24" r="4" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">悟道 · WuDao</div>
-            <p class="note" style="margin-top:4px;">大模型深层认知与决策中枢</p>
-          </article>
+        <div class="grid-3">
+          <div class="tile" data-od-id="fut-chengxi">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 7H18L13.5 13V17L10.5 17V13L6 7Z"/><circle cx="12" cy="16" r="1.25" fill="#00D2FF" stroke="none"/><path d="M9 5L12 7L15 5" stroke="#F1C40F"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">澄溪 · ChengXi</div><div style="font-size:12px;color:var(--text-muted);">数据深度清洗与知识蒸馏</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-suyuan">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="6" r="1.5" fill="#F1C40F" stroke="none"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/><path d="M12 7.5V11M12 11L8 14.5M12 11L16 14.5"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">溯源 · SuYuan</div><div style="font-size:12px;color:var(--text-muted);">因果逻辑推断与可解释性回溯</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-yanzhen">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M5 16C7 12 9 7 12 7C15 7 17 12 19 16"/><path d="M6 17C9 15 10.5 11 12 11C13.5 11 15 15 18 17" stroke="#F1C40F" stroke-dasharray="1 1"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">衍真 · YanZhen</div><div style="font-size:12px;color:var(--text-muted);">蒙特卡洛仿真与多态推演</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-wudao">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><polygon points="12,5 18,9 18,15 12,19 6,15 6,9"/><circle cx="12" cy="12" r="2" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">悟道 · WuDao</div><div style="font-size:12px;color:var(--text-muted);">大模型深层认知与决策中枢</div></div>
+          </div>
         </div>
 
         <p class="mono" style="font-size:11px;color:var(--text-muted);margin:16px 0 8px;">工坊 · 赋能</p>
-        <div class="grid-4">
-          <article class="card" data-od-id="fut-zhuji" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M10 36H38M14 28H34M18 20H30M24 12V20" stroke="#F5F7FA" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="24" cy="10" r="2.5" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">筑基 · ZhuJi</div>
-            <p class="note" style="margin-top:4px;">弹性基础设施与算力底座调度</p>
-          </article>
-          <article class="card" data-od-id="fut-cuilian" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M14 16H34L30 32C30 34 28 36 24 36C20 36 18 34 18 32L14 16Z" stroke="#F5F7FA" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M24 20L25 24L29 25L25 26L24 30L23 26L19 25L23 24L24 20Z" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">淬炼 · CuiLian</div>
-            <p class="note" style="margin-top:4px;">模型微调、蒸馏与强化对齐</p>
-          </article>
-          <article class="card" data-od-id="fut-zhugui" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M24 10L36 15V25C36 32 24 38 24 38C24 38 12 32 12 25V15L24 10Z" stroke="#F5F7FA" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M24 18V28M20 22H28" stroke="#F1C40F" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">铸规 · ZhuGui</div>
-            <p class="note" style="margin-top:4px;">安全合规门限与防护网关</p>
-          </article>
-          <article class="card" data-od-id="fut-mogui" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M14 12V34H36M14 26H22V34M24 16L34 26" stroke="#F5F7FA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="28" cy="18" r="3" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">墨规 · MoGui</div>
-            <p class="note" style="margin-top:4px;">开放 SDK 与开发者工具链</p>
-          </article>
+        <div class="grid-3">
+          <div class="tile" data-od-id="fut-zhuji">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M5 18H19M7 14H17M9 10H15M12 6V10"/><circle cx="12" cy="5" r="1.25" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">筑基 · ZhuJi</div><div style="font-size:12px;color:var(--text-muted);">弹性基础设施与算力底座调度</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-cuilian">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M7 8H17L15 16C15 17 14 18 12 18C10 18 9 17 9 16L7 8Z"/><path d="M12 10.5L12.5 12.5L14.5 13L12.5 13.5L12 15.5L11.5 13.5L9.5 13L11.5 12.5L12 10.5Z" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">淬炼 · CuiLian</div><div style="font-size:12px;color:var(--text-muted);">模型微调、蒸馏与强化对齐</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-zhugui">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M12 5L18 7.5V12.5C18 16 12 19 12 19C12 19 6 16 6 12.5V7.5L12 5Z"/><path d="M12 9V14M10 11H14" stroke="#F1C40F"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">铸规 · ZhuGui</div><div style="font-size:12px;color:var(--text-muted);">安全合规门限与防护网关</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-mogui">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6V17H18M7 13H11V17M12 8L17 13"/><circle cx="14" cy="9" r="1.5" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">墨规 · MoGui</div><div style="font-size:12px;color:var(--text-muted);">开放 SDK 与开发者工具链</div></div>
+          </div>
         </div>
 
         <h3 style="font-size:14px;margin:20px 0 10px;color:var(--color-primary);">B · 孵化候选池（8 款）</h3>
-        <div class="grid-4">
-          <article class="card" data-od-id="fut-qilin" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M24 10L14 24H34L24 10Z" stroke="#F5F7FA" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M24 20L12 36H36L24 20Z" stroke="#F1C40F" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">栖林 · QiLin</div>
-            <p class="note" style="margin-top:4px;">集群资产管理与资源池沉淀</p>
-          </article>
-          <article class="card" data-od-id="fut-qingxiu" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M10 36L22 14L28 24L38 36" stroke="#F5F7FA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="22" cy="14" r="3" fill="#00D2FF"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">青岫 · QingXiu</div>
-            <p class="note" style="margin-top:4px;">微型嵌入式边缘算力端</p>
-          </article>
-          <article class="card" data-od-id="fut-yunze" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M14 28C14 23 18 20 22 20C24 17 28 16 31 18C34 19 35 22 35 24C37 24 38 26 38 28C38 30 36 32 34 32H16C14 32 14 30 14 28Z" stroke="#F5F7FA" stroke-width="2"/>
-              <path d="M10 36H38" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">云泽 · YunZe</div>
-            <p class="note" style="margin-top:4px;">湖仓一体异构数据汇聚</p>
-          </article>
-          <article class="card" data-od-id="fut-yinquan" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <rect x="14" y="20" width="20" height="16" rx="4" stroke="#F5F7FA" stroke-width="2"/>
-              <path d="M18 20V14C18 10.7 20.7 8 24 8C27.3 8 30 10.7 30 14V20" stroke="#F5F7FA" stroke-width="2"/>
-              <circle cx="24" cy="27" r="2" fill="#F1C40F"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">隐泉 · YinQuan</div>
-            <p class="note" style="margin-top:4px;">隐私计算与零知识隔离沙箱</p>
-          </article>
-          <article class="card" data-od-id="fut-zhuoying" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <circle cx="24" cy="24" r="12" stroke="#F5F7FA" stroke-width="2" stroke-dasharray="4 4"/>
-              <path d="M24 16C28 16 30 20 28 24C26 28 22 28 20 24" stroke="#00D2FF" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">濯缨 · ZhuoYing</div>
-            <p class="note" style="margin-top:4px;">模型自净与对抗样本清洗</p>
-          </article>
-          <article class="card" data-od-id="fut-fanzhou" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M10 30C16 34 32 34 38 30L34 24H14L10 30Z" stroke="#F5F7FA" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M24 10V24M24 14L32 18" stroke="#F1C40F" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">泛舟 · FanZhou</div>
-            <p class="note" style="margin-top:4px;">低代码人机协同向导</p>
-          </article>
-          <article class="card" data-od-id="fut-shaolu" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <path d="M16 34V20C16 16 19 14 24 14C29 14 32 16 32 20V34" stroke="#F5F7FA" stroke-width="2.5"/>
-              <circle cx="24" cy="14" r="3" fill="#F1C40F"/>
-              <path d="M10 12C18 6 30 6 38 12" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">哨鹿 · ShaoLu</div>
-            <p class="note" style="margin-top:4px;">前哨威胁侦测与雷达哨兵</p>
-          </article>
-          <article class="card" data-od-id="fut-guipu" style="text-align:center;">
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="46" height="46" rx="10.5" fill="#0D5E42" stroke="#167D59" stroke-width="1.2"/>
-              <rect x="14" y="14" width="20" height="20" stroke="#F5F7FA" stroke-width="2"/>
-              <rect x="19" y="19" width="10" height="10" stroke="#F1C40F" stroke-width="1.8"/>
-              <circle cx="24" cy="24" r="2" fill="#00D2FF"/>
-              <path d="M12 40C20 38 28 42 36 40" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M37 8L38 10.5L40.5 11.5L38 12.5L37 15L36 12.5L33.5 11.5L36 10.5L37 8Z" fill="#F1C40F"/>
-            </svg>
-            <div style="font-weight:600;font-size:13px;margin-top:8px;">归朴 · GuiPu</div>
-            <p class="note" style="margin-top:4px;">模型剪枝压缩与边缘轻量归一</p>
-          </article>
+        <div class="grid-3">
+          <div class="tile" data-od-id="fut-qilin">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 5L7 12H17L12 5Z"/><path d="M12 10L6 18H18L12 10Z" stroke="#F1C40F"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">栖林 · QiLin</div><div style="font-size:12px;color:var(--text-muted);">集群资产管理与资源池沉淀</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-qingxiu">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18L11 7L14 12L19 18"/><circle cx="11" cy="7" r="1.5" fill="#00D2FF" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">青岫 · QingXiu</div><div style="font-size:12px;color:var(--text-muted);">微型嵌入式边缘算力端</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-yunze">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 14C7 11.5 9 10 11 10C12 8.5 14 8 15.5 9C17 9.5 17.5 11 17.5 12C18.5 12 19 13 19 14C19 15 18 16 17 16H8C7 16 7 15 7 14Z"/><path d="M5 18H19" stroke="#00D2FF" stroke-linecap="round"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">云泽 · YunZe</div><div style="font-size:12px;color:var(--text-muted);">湖仓一体异构数据汇聚</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-yinquan">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="10" width="10" height="8" rx="2"/><path d="M9 10V7C9 5.3 10.3 4 12 4C13.7 4 15 5.3 15 7V10"/><circle cx="12" cy="13.5" r="1" fill="#F1C40F" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">隐泉 · YinQuan</div><div style="font-size:12px;color:var(--text-muted);">隐私计算与零知识隔离沙箱</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-zhuoying">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="6" stroke-dasharray="2 2"/><path d="M12 8C14 8 15 10 14 12C13 14 11 14 10 12" stroke="#00D2FF"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">濯缨 · ZhuoYing</div><div style="font-size:12px;color:var(--text-muted);">模型自净与对抗样本清洗</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-fanzhou">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M5 15C8 17 16 17 19 15L17 12H7L5 15Z"/><path d="M12 5V12M12 7L16 9" stroke="#F1C40F"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">泛舟 · FanZhou</div><div style="font-size:12px;color:var(--text-muted);">低代码人机协同向导</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-shaolu">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M8 17V10C8 8 9.5 7 12 7C14.5 7 16 8 16 10V17"/><circle cx="12" cy="7" r="1.5" fill="#F1C40F" stroke="none"/><path d="M5 6C9 3 15 3 19 6" stroke="#00D2FF"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">哨鹿 · ShaoLu</div><div style="font-size:12px;color:var(--text-muted);">前哨威胁侦测与雷达哨兵</div></div>
+          </div>
+          <div class="tile" data-od-id="fut-guipu">
+            <div class="brick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="7" width="10" height="10"/><rect x="9.5" y="9.5" width="5" height="5" stroke="#F1C40F"/><circle cx="12" cy="12" r="1" fill="#00D2FF" stroke="none"/></svg>
+              <span class="stream"></span><span class="star"></span>
+            </div>
+            <div><div style="font-weight:600;font-size:13px;">归朴 · GuiPu</div><div style="font-size:12px;color:var(--text-muted);">模型剪枝压缩与边缘轻量归一</div></div>
+          </div>
         </div>
 
         <div class="quote" style="margin-top:16px;">
           <p class="note" style="margin:0;">
-            <strong>命名规则：</strong>本池仅收录未实际落地的产品；与 12 款正式产品重名者一律剔除
-            （版本二「聆涧 · LingJian」已剔除，其命名与图形不予采用）。正式立项前须完成独立命名与商标近似检索。
+            <strong>命名与图形规则：</strong>本池仅收录未实际落地的产品；与 12 款正式产品重名者一律剔除（命名与图形均不采用）。
+            方标须与正式产品同构（.brick + .stream + .star），正式立项前须完成独立命名与商标近似检索。
           </p>
         </div>
       </article>
@@ -872,36 +793,38 @@
         <p class="eyebrow">Collateral</p>
         <h1 class="section-title">办公识别、数字传播、实体触点</h1>
         <p class="section-desc">
-          合并版本一（数字物料与周边）、版本二（工程规格 / 档案袋 / 工牌）与版本三（版式）的完整物料体系。
-          线下物料沿用四色与双标规则；<strong>ESC 键帽按版本二特别修订——剥离源启星，改为「双鹿角交汇 + 清溪贯通」图腾</strong>。
-          每件均给出标称尺寸、材质工艺与可矢量复现的图样。
+          线下物料沿用四色与双标规则。<strong>所有物料上的实验室标识统一引用权威主标 <span class="mono">#luxi-lab-mark</span>（与 VI 段双标并排同源），不自绘、不变形。</strong>
+          ESC 键帽取版本一图样（鹿角 + 贯穿清溪 + 金色源启点）；工牌保留「行政佩戴版（版本一）」与「工程规格版（ID-1）」两版。
         </p>
       </div>
 
       <h2 style="font-size:15px;margin:0 0 12px;">A · 身份识别（办公）</h2>
       <div class="grid-4">
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-badge-admin">
-          <div class="merch-stage">
-            <div style="width:120px;height:150px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;padding:12px;text-align:center;color:#1A2428;">
-              <div style="width:36px;height:36px;border-radius:50%;background:#EEF2F5;margin:12px auto 8px;"></div>
-              <div style="font-weight:600;font-size:13px;">鹿溪实验室成员</div>
-              <div class="mono" style="font-size:10px;color:#64748B;">RESEARCH FELLOW</div>
-              <div class="mono" style="font-size:9px;color:#0D5E42;margin-top:18px;border-top:1px solid #e2e8f0;padding-top:6px;">LUXI LAB ID #042</div>
+          <div class="merch-preview-stage">
+            <div class="badge-card-mock">
+              <div class="badge-lanyard-hole"></div>
+              <div class="badge-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+              </div>
+              <div style="font-weight:600;font-size:13px;color:#1A2428;">鹿溪实验室成员</div>
+              <div class="mono" style="font-size:10px;color:#64748B;margin-top:2px;">RESEARCH FELLOW</div>
+              <div style="margin-top:auto;width:100%;border-top:1px solid #E2E8F0;padding-top:6px;font-size:9px;color:var(--luxi-green);" class="mono">LUXI LAB ID #042</div>
             </div>
           </div>
-          <div style="padding:16px;">
-            <strong>工牌 · 行政佩戴版</strong>
-            <p class="note">版本三样式：源启白卡面 + 鹿溪绿识别条，配编织挂带。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              卡套 100×150mm · 挂带宽 20mm<br/>
-              双面磨砂亚克力卡套 · 鹿溪绿高密度织带 · 金属暗扣
+          <div class="merch-detail">
+            <div class="merch-tag">行政识别</div>
+            <div class="merch-title">实验室工牌 · 行政佩戴版</div>
+            <div class="merch-desc">
+              版本一图样：140×200mm 白卡 + 挂孔 + 头像位 + 姓名／职务／编号三段。
+              双面磨砂亚克力卡套，鹿溪绿高密度细密织带配金属暗扣，内置双频 RFID/NFC，正反双向感应。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-badge">
-          <div class="merch-stage">
-            <svg width="150" height="120" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="merch-preview-stage">
+            <svg width="180" height="120" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M85 0V15M95 0V15" stroke="#0D5E42" stroke-width="6"/>
               <rect x="78" y="12" width="24" height="6" rx="3" fill="#334155"/>
               <rect x="15" y="18" width="150" height="95" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
@@ -910,62 +833,61 @@
               <rect x="62" y="44" width="48" height="8" rx="2" fill="#1E293B"/>
               <rect x="62" y="58" width="80" height="5" rx="1.5" fill="#64748B"/>
               <rect x="62" y="68" width="60" height="4" rx="1" fill="#94A3B8"/>
-              <circle cx="145" cy="88" r="10" fill="none" stroke="#F1C40F" stroke-width="1.5"/>
-              <path d="M145 82L147 86L151 87L147 89L145 93L143 89L139 87L143 86L145 82Z" fill="#F1C40F"/>
+              <svg x="133" y="76" width="24" height="24" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
             </svg>
           </div>
-          <div style="padding:16px;">
-            <strong>工牌 · 工程规格版</strong>
-            <p class="note">版本二规格：双面规范，正面鹿溪主标 + 身份铭牌，背面开源身份哈希；内置芯片可正反双向感应。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              ISO/IEC 7810 ID-1 · 85.6×54.0×0.84mm · 挂带宽 20mm<br/>
-              环保哑光再生 PVC · 局部 UV 浮雕光油 · RFID/NFC 复合芯片 · 锌合金黑铬快拆扣
+          <div class="merch-detail">
+            <div class="merch-tag">工程识别</div>
+            <div class="merch-title">实验室工牌 · 工程规格版</div>
+            <div class="merch-desc">
+              双面规范：正面权威主标 + 身份铭牌，背面开源身份哈希。
+              ISO/IEC 7810 ID-1 85.6×54.0×0.84mm；环保哑光再生 PVC · 局部 UV 浮雕光油 · 锌合金黑铬快拆扣。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-card">
-          <div class="merch-stage">
-            <svg width="170" height="110" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="merch-preview-stage">
+            <svg width="180" height="110" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="10" width="160" height="90" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
               <path d="M10 10H170" stroke="#F1C40F" stroke-width="2"/>
-              <circle cx="36" cy="40" r="12" fill="#0D5E42"/>
-              <path d="M36 32L37 36L41 37L37 38L36 42L35 38L31 37L35 36L36 32Z" fill="#F1C40F"/>
-              <rect x="56" y="32" width="64" height="8" rx="2" fill="#0F172A"/>
-              <rect x="56" y="44" width="40" height="5" rx="1.5" fill="#64748B"/>
+              <svg x="22" y="28" width="28" height="28" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <rect x="62" y="32" width="64" height="8" rx="2" fill="#0F172A"/>
+              <rect x="62" y="44" width="40" height="5" rx="1.5" fill="#64748B"/>
               <line x1="26" y1="64" x2="154" y2="64" stroke="#E2E8F0" stroke-width="1"/>
               <rect x="26" y="74" width="80" height="4" rx="1" fill="#94A3B8"/>
               <rect x="26" y="82" width="60" height="4" rx="1" fill="#94A3B8"/>
             </svg>
           </div>
-          <div style="padding:16px;">
-            <strong>特种纸商务名片（双面烫金）</strong>
-            <p class="note">正面极简留白：主标 + 姓名；背面罗列四大矩阵与实验室公开信息（不含个人邮箱）。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              90.0×54.0mm · 厚度 0.48mm（350gsm）<br/>
-              自然白超感棉纸 · 鹿溪绿专色微压凹印 · 哑金烫印 · 三边沉金滚边
+          <div class="merch-detail">
+            <div class="merch-tag">商务文书</div>
+            <div class="merch-title">特种纸商务名片（双面烫金）</div>
+            <div class="merch-desc">
+              正面极简留白：权威主标 + 姓名；背面罗列四大矩阵与实验室公开信息（不含个人邮箱）。
+              90.0×54.0mm · 350gsm 自然白超感棉纸 · 鹿溪绿专色微压凹印 · 哑金烫印 · 三边沉金滚边。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-c4-folder">
-          <div class="merch-stage">
+          <div class="merch-preview-stage">
             <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="15" y="10" width="130" height="100" rx="4" fill="#093F2C" stroke="#167D59" stroke-width="1.5"/>
               <polygon points="15,10 80,45 145,10" fill="#0D5E42" stroke="#167D59" stroke-width="1.5"/>
               <circle cx="80" cy="50" r="6" fill="#F1C40F" stroke="#B45309" stroke-width="1"/>
               <circle cx="80" cy="74" r="6" fill="#F1C40F" stroke="#B45309" stroke-width="1"/>
               <path d="M80 50C86 58 74 66 80 74" stroke="#F5F7FA" stroke-width="2"/>
-              <rect x="30" y="88" width="40" height="4" rx="1" fill="#F1C40F"/>
-              <rect x="30" y="96" width="60" height="3" rx="1" fill="#167D59"/>
+              <svg x="24" y="84" width="18" height="18" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <rect x="48" y="88" width="40" height="4" rx="1" fill="#F1C40F"/>
+              <rect x="48" y="96" width="60" height="3" rx="1" fill="#167D59"/>
             </svg>
           </div>
-          <div style="padding:16px;">
-            <strong>C4 公文封套与档案袋</strong>
-            <p class="note">工程方案归档专用；封口烫印实验室归档铭牌（署名统一为实验室口径）。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              324.0×229.0×15.0mm（容差 ±1mm）· 容纳无折叠 A4<br/>
-              400gsm 原浆环保卡纸 · 封面大面积压凹水波纹样 · 纯铜双鸡眼扣缠绕棉绳封口
+          <div class="merch-detail">
+            <div class="merch-tag">机要归档</div>
+            <div class="merch-title">C4 公文封套与档案袋</div>
+            <div class="merch-desc">
+              工程方案归档专用；封口烫印权威主标与实验室归档铭牌（署名统一为实验室口径）。
+              324.0×229.0×15.0mm（容差 ±1mm）· 400gsm 原浆环保卡纸 · 封面压凹水波纹样 · 纯铜双鸡眼扣缠绕棉绳封口。
             </div>
           </div>
         </article>
@@ -974,66 +896,63 @@
       <h2 style="font-size:15px;margin:24px 0 12px;">B · 极客硬件与生活生态（实体周边）</h2>
       <div class="grid-3">
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-keycap">
-          <div class="merch-stage">
-            <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="120" height="120" rx="14" fill="#05261A" stroke="#167D59" stroke-width="1.5"/>
-              <rect x="24" y="24" width="92" height="92" rx="10" fill="#0D5E42" stroke="#00D2FF" stroke-width="1.5"/>
-              <path d="M50 86C50 72 45 62 38 56C48 58 54 66 56 74M44 58C40 50 42 44 46 42" stroke="#F5F7FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M90 86C90 72 95 62 102 56C92 58 86 66 84 74M96 58C100 50 98 44 94 42" stroke="#F5F7FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M70 36C68 46 74 52 70 62C66 72 73 78 70 94" stroke="#00D2FF" stroke-width="3.5" stroke-linecap="round"/>
-              <circle cx="70" cy="46" r="2" fill="#F1C40F"/>
-              <circle cx="68" cy="78" r="2" fill="#F1C40F"/>
-            </svg>
+          <div class="merch-preview-stage">
+            <div class="keycap-mock" title="鹿角与清溪交融激光微雕">
+              <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                <path d="M16 21 V14 M16 17 C13.8 14, 9.5 12, 7.5 8 M11.5 13.5 C10.2 11.2, 8.5 10.5, 6.8 11.5 M16 17 C18.2 14, 22.5 12, 24.5 8 M20.5 13.5 C21.8 11.2, 23.5 10.5, 25.2 11.5"
+                      stroke="#F5F7FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 24 C10.5 21.2, 13.5 25, 17.5 22.8 C21 21, 23.5 23.8, 26.5 22"
+                      stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="16" cy="11.5" r="1.2" fill="#F1C40F"/>
+              </svg>
+              <span style="font-size:9px;margin-top:2px;font-family:var(--font-mono);letter-spacing:.08em;opacity:.85;">ESC</span>
+            </div>
           </div>
-          <div style="padding:16px;">
-            <strong>「见鹿」ESC 机械键帽（鹿角溪水限定）</strong>
-            <p class="note">版本二特别修订：<strong>剥离源启星</strong>，顶面为双鹿角交汇 + 清溪贯通高光精雕。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              底 18×18mm · 顶 14×14mm · 高 11.5mm · Cherry MX 轴体 · 1U R4<br/>
-              铝合金 6063-T6 · 150# 细锆砂喷砂 · 鹿溪绿阳极着色 · 顶面 CNC 高光精雕
+          <div class="merch-detail">
+            <div class="merch-tag">极客硬件</div>
+            <div class="merch-title">「见鹿」阳极氧化铝定制 ESC 键帽</div>
+            <div class="merch-desc">
+              版本一图样：鹿角迎晨 + 清溪贯注 + 金色源启点。
+              6063 航空铝材 CNC 精雕 · 180 目锆砂喷砂 · 鹿溪绿硬质阳极氧化 · 顶部光纤微雕 · Cherry MX 十字轴 · R4 阶梯高度。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-tumbler">
-          <div class="merch-stage">
+          <div class="merch-preview-stage">
             <svg width="120" height="150" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="35" y="10" width="50" height="10" rx="3" fill="#1E293B"/>
               <rect x="30" y="20" width="60" height="8" rx="2" fill="#334155"/>
               <path d="M32 28L38 135C38 138 41 140 45 140H75C79 140 82 138 82 135L88 28H32Z" fill="#0D5E42" stroke="#167D59" stroke-width="2"/>
-              <circle cx="60" cy="70" r="14" fill="none" stroke="#F5F7FA" stroke-width="1.5"/>
-              <path d="M54 74C56 68 64 68 66 74M60 62V66" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M60 58L61 60L63 61L61 62L60 64L59 62L57 61L59 60L60 58Z" fill="#F1C40F"/>
+              <svg x="44" y="52" width="32" height="32" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
               <rect x="50" y="94" width="20" height="3" rx="1" fill="#F5F7FA"/>
               <rect x="46" y="100" width="28" height="2" rx="1" fill="#94A3B8"/>
             </svg>
           </div>
-          <div style="padding:16px;">
-            <strong>哑光双层真空随行杯（480ml）</strong>
-            <p class="note">杯身激光剥漆露出金属光泽图腾，附「林深见鹿，源启清溪」中英铭牌。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              底径 68mm · 口径 88mm · 高 178mm<br/>
-              316L 医用级不锈钢内胆 · 水性哑光粉末喷涂 · 激光精细剥漆 · 磁吸开合防溅盖
+          <div class="merch-detail">
+            <div class="merch-tag">生活生态</div>
+            <div class="merch-title">哑光双层真空随行杯（480ml）</div>
+            <div class="merch-desc">
+              杯身激光剥漆露出权威主标与「林深见鹿，源启清溪」中英铭牌。
+              316L 医用级不锈钢内胆 · 水性哑光粉末喷涂 · 激光精细剥漆 · 磁吸开合防溅盖。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-pin-metal">
-          <div class="merch-stage">
+          <div class="merch-preview-stage">
             <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="65" cy="65" r="54" fill="#0A4631" stroke="#F1C40F" stroke-width="5"/>
+              <circle cx="65" cy="65" r="54" fill="#F5F7FA" stroke="#F1C40F" stroke-width="5"/>
               <circle cx="65" cy="65" r="48" fill="none" stroke="#F1C40F" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <path d="M42 52C48 58 54 58 65 64C76 58 82 52 88 52C84 66 76 70 76 80C76 92 65 96 65 96C65 96 54 92 54 80C54 70 46 66 42 52Z" stroke="#F1C40F" stroke-width="3.5" fill="#0D5E42" stroke-linejoin="round"/>
-              <path d="M56 80C60 84 70 84 74 80" stroke="#00D2FF" stroke-width="3" stroke-linecap="round"/>
-              <path d="M65 40L67 45L72 47L67 49L65 54L63 49L58 47L63 45L65 40Z" fill="#F1C40F"/>
+              <svg x="35" y="35" width="60" height="60" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
             </svg>
           </div>
-          <div style="padding:16px;">
-            <strong>硬珐琅金属纪念徽章（24K 镀金）</strong>
-            <p class="note">立体浮雕鹿角起凸，溪流填透明进化蓝珐琅，底面磨砂防伪细纹。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              直径 28.0mm · 厚度 2.2mm · 红铜冲压坯体 · 刺马针平头扣<br/>
-              精密模具液压冲压 · 手工填色硬珐琅 · 800℃ 烧结研磨 · 边缘镜面抛光镀 24K 真金
+          <div class="merch-detail">
+            <div class="merch-tag">纪念徽章</div>
+            <div class="merch-title">硬珐琅金属纪念徽章（24K 镀金）</div>
+            <div class="merch-desc">
+              中央为权威主标硬珐琅填色（鹿溪绿底 + 进化蓝），外圈 24K 镀金镜面抛光。
+              Ø28.0mm · 厚 2.2mm · 红铜冲压坯体 · 手工填色硬珐琅 · 800℃ 烧结研磨 · 刺马针平头扣。
             </div>
           </div>
         </article>
@@ -1042,61 +961,63 @@
       <h2 style="font-size:15px;margin:24px 0 12px;">C · 携带与通勤（环保材质）+ 数字传播</h2>
       <div class="grid-3">
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-tote-bag">
-          <div class="merch-stage">
+          <div class="merch-preview-stage">
             <svg width="130" height="150" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M45 45V15C45 10 52 8 65 8C78 8 85 10 85 15V45" stroke="#0D5E42" stroke-width="4" stroke-linecap="round" fill="none"/>
               <rect x="20" y="45" width="90" height="95" rx="3" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.8"/>
-              <circle cx="45" cy="80" r="8" stroke="#0D5E42" stroke-width="2" fill="none"/>
-              <circle cx="85" cy="80" r="8" stroke="#00D2FF" stroke-width="2" fill="none"/>
-              <circle cx="65" cy="110" r="8" stroke="#0D5E42" stroke-width="2" fill="none"/>
-              <path d="M53 80H77M49 87L61 103M81 87L69 103" stroke="#94A3B8" stroke-width="1.5"/>
-              <rect x="16" y="90" width="4" height="14" fill="#0D5E42"/>
+              <svg x="47" y="62" width="36" height="36" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+              <path d="M30 118H100" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
-          <div style="padding:16px;">
-            <strong>杜邦纸（Tyvek）复合轻量托特包</strong>
-            <p class="note">随使用产生自然褶皱；印智能体矩阵拓扑架构图。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              380×420×100mm · 提手垂直高 280mm · 承重 15kg<br/>
-              Tyvek 1056D 原色 · 水性双色丝印（进化蓝 + 鹿溪绿）· 加厚尼龙衬里
+          <div class="merch-detail">
+            <div class="merch-tag">环保通勤</div>
+            <div class="merch-title">杜邦纸（Tyvek）复合轻量托特包</div>
+            <div class="merch-desc">
+              丝印权威主标 + 一条水平清溪线（与方标 <span class="mono">.stream</span> 同构）；随使用产生自然褶皱。
+              380×420×100mm · 提手垂直高 280mm · 承重 15kg · Tyvek 1056D 原色 · 加厚尼龙衬里。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-laptop-sleeve">
-          <div class="merch-stage">
-            <div style="width:140px;height:110px;background:#EFECE6;border-radius:6px;border:1px solid #D8D4CC;display:flex;flex-direction:column;justify-content:space-between;padding:12px;color:#2A363B;">
-              <div style="font-size:10px;font-weight:700;color:#0D5E42;">LUXI LAB · 鹿溪</div>
+          <div class="merch-preview-stage">
+            <div style="width:150px;height:112px;background:#EFECE6;border-radius:6px;border:1px solid #D8D4CC;display:flex;flex-direction:column;justify-content:space-between;padding:12px;color:#2A363B;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <svg width="18" height="18" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+                <span style="font-size:10px;font-weight:700;color:#0D5E42;">LUXI LAB · 鹿溪</span>
+              </div>
               <div class="mono" style="font-size:8px;color:#64748B;">GEO: 28.45°N, 117.94°E<br/>EST. 2026</div>
             </div>
           </div>
-          <div style="padding:16px;">
-            <strong>轻量防水杜邦纸 Tyvek 电脑包</strong>
-            <p class="note">丝印实验室真实经纬坐标（上饶 28.45°N, 117.94°E）与清溪流线图谱。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              适配 14″ 机身 · 内置加厚防震防泼溅隔层<br/>
-              可回收 Tyvek 基材 · 质轻抗撕裂 · 天然纸质褶皱 · 丝网印刷
+          <div class="merch-detail">
+            <div class="merch-tag">环保通勤</div>
+            <div class="merch-title">轻量防水杜邦纸 Tyvek 电脑包</div>
+            <div class="merch-desc">
+              丝印实验室真实经纬坐标（上饶 28.45°N, 117.94°E）与权威主标。
+              适配 14″ 机身 · 内置加厚防震隔层 · 可回收 Tyvek 基材 · 质轻抗撕裂。
             </div>
           </div>
         </article>
 
         <article class="card" style="padding:0;overflow:hidden;" data-od-id="merch-readme-template">
-          <div class="merch-stage">
-            <div style="width:90%;background:var(--bg-card);border:1px solid var(--border-line);border-radius:6px;padding:12px;text-align:center;">
-              <div style="display:flex;justify-content:center;gap:6px;margin-bottom:8px;">
-                <span class="badge" style="background:#0D5E42;color:#fff;font-size:9px;">Product</span>
-                <span class="badge" style="background:#00D2FF;color:#000;font-size:9px;">v1.0</span>
+          <div class="merch-preview-stage">
+            <div style="width:92%;background:var(--bg-card);border:1px solid var(--border-line);border-radius:6px;padding:12px;text-align:center;">
+              <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:8px;">
+                <svg width="20" height="20" aria-label="LUXI LAB"><use href="#luxi-lab-mark"></use></svg>
+                <div class="brick" style="width:20px;height:20px;border-radius:5px;">
+                  <svg viewBox="0 0 24 24" style="width:12px;height:12px;" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12h6"/></svg>
+                </div>
               </div>
               <div style="font-size:11px;font-weight:600;">README 规范 Banner 模版</div>
               <div class="mono" style="font-size:9px;color:var(--text-muted);margin-top:4px;">64×64 双标等大并排 · 居中</div>
             </div>
           </div>
-          <div style="padding:16px;">
-            <strong>GitHub 权威源 README 规范模版</strong>
-            <p class="note">版本一数字传播物料：规范徽章次序、主副标题字体、双标并排等大规则，保证不崩版。</p>
-            <div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.6;">
-              Markdown + 内联 HTML · 双标 64/48px · 徽章行 ≤5 枚<br/>
-              引用仓库：github.com/itrilogy/LUCY-DESIGN
+          <div class="merch-detail">
+            <div class="merch-tag">数字传播</div>
+            <div class="merch-title">GitHub 权威源 README 规范模版</div>
+            <div class="merch-desc">
+              规范徽章次序、主副标题字体、双标并排等大规则，保证不崩版。
+              Markdown + 内联 HTML · 双标 64/48px · 徽章行 ≤5 枚 · 引用仓库 github.com/itrilogy/LUCY-DESIGN。
             </div>
           </div>
         </article>
@@ -1104,8 +1025,8 @@
 
       <div class="quote" style="margin-top:20px;">
         <p class="note" style="margin:0;">
-          <strong>材质与配色红线：</strong>实体物料四色仅取鹿溪绿（主）、源启白（底/反白）、进化蓝（溪流点缀）、标题金（落点烫印）；
-          不得引入第五专色。全部图样须可 100% 矢量复现（SVG 展开），不接受位图描摹。
+          <strong>标识红线：</strong>物料上的实验室标识一律引用权威主标 <span class="mono">#luxi-lab-mark</span>（源自官方 <span class="mono">LUXI LAB.svg</span>），
+          不得自绘、简化或改色；实体配色仅取四色（鹿溪绿 / 源启白 / 进化蓝 / 标题金），不得引入第五专色。全部图样须可 100% 矢量复现。
         </p>
       </div>
     </section>
@@ -1127,6 +1048,7 @@
           <div class="check"><span class="ok">✓</span>prefers-reduced-motion 取消位移与光晕。</div>
           <div class="check"><span class="ok">✓</span>实体物料给出标称尺寸 / 材质 / 工艺；图样可 100% 矢量复现。</div>
           <div class="check"><span class="ok">✓</span>工牌保留「行政佩戴版 + 工程规格版」两版，规格互不替代。</div>
+          <div class="check"><span class="ok">✓</span>物料上的实验室标识统一引用权威主标（<span class="mono">#luxi-lab-mark</span>），不自绘、不简化、不改色。</div>
           <div class="check"><span class="ok">✓</span>未来产品池不含与正式产品重名的命名与图形。</div>
         </article>
         <article class="card" data-od-id="p0-forbid">
